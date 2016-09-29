@@ -61,3 +61,24 @@ C:\Users\guanr_000\Desktop\KDU\Game Dev\SEM 5 2016\GPS 2\Version Control\Temp\bi
 C:\Users\guanr_000\Desktop\KDU\Game Dev\SEM 5 2016\GPS 2\Version Control\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\guanr_000\Desktop\KDU\Game Dev\SEM 5 2016\GPS 2\Version Control\obj\Debug\Assembly-CSharp.dll
 C:\Users\guanr_000\Desktop\KDU\Game Dev\SEM 5 2016\GPS 2\Version Control\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Jimmy Suah\Desktop\PocketDancer\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Jimmy Suah\Desktop\PocketDancer\obj\Debug\Assembly-CSharp.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\UnityEngine.xml
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\UnityEditor.xml
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\Jimmy Suah\Desktop\PocketDancer\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Jimmy Suah\Desktop\PocketDancer\obj\Debug\Assembly-CSharp.pdb

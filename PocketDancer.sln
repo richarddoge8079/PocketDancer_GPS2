@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{0B259705-B755-C4CB-D672-E6663AE31905}") = "Version Control", "Assembly-CSharp.csproj", "{5023C123-049C-357D-27FD-02F98DCCCC1E}"
+Project("{09808B13-ECC5-3303-CF57-DC569F4917CA}") = "PocketDancer", "Assembly-CSharp.csproj", "{C70D993D-2FA0-5818-810E-4C2FDDF421E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5023C123-049C-357D-27FD-02F98DCCCC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5023C123-049C-357D-27FD-02F98DCCCC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5023C123-049C-357D-27FD-02F98DCCCC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5023C123-049C-357D-27FD-02F98DCCCC1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C70D993D-2FA0-5818-810E-4C2FDDF421E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C70D993D-2FA0-5818-810E-4C2FDDF421E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C70D993D-2FA0-5818-810E-4C2FDDF421E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C70D993D-2FA0-5818-810E-4C2FDDF421E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
