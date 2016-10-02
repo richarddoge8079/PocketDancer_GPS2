@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{09808B13-ECC5-3303-CF57-DC569F4917CA}") = "PocketDancer", "Assembly-CSharp.csproj", "{C70D993D-2FA0-5818-810E-4C2FDDF421E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C70D993D-2FA0-5818-810E-4C2FDDF421E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C70D993D-2FA0-5818-810E-4C2FDDF421E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C70D993D-2FA0-5818-810E-4C2FDDF421E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C70D993D-2FA0-5818-810E-4C2FDDF421E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
