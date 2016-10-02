@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class BeatsManager : MonoBehaviour {
@@ -67,11 +66,4 @@ public class BeatsManager : MonoBehaviour {
 
 	void FixedUpdate(){
 	}
-
-//	IEnumerator StartTimer(float t){
-//		yield return new WaitForSeconds (t);
-//		SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_EXPLOSION);
-//		StartCoroutine ("StartTimer",1.0f);
-////		startTimer = true;
-//	}
 }

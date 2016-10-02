@@ -36,32 +36,13 @@ public class BeatsObject : MonoBehaviour {
 		}
 		if(transform.position.x >= resetBeatPosition.position.x){
 			transform.position = new Vector3 (initialBeatPosition.position.x,transform.position.y,transform.position.z);
-//			counter += 1;
-//			if (randomBeatSpeed >= beatSpeed) {
-//				randomBeatSpeed = Random.Range (beatSpeed - randomRange, beatSpeed);
-////				randomBeatSpeed = beatSpeed - 0.01f;
-//			} 
-//			else {
-//				randomBeatSpeed = Random.Range (beatSpeed, beatSpeed + randomRange);
-////				randomBeatSpeed = beatSpeed + 0.01f;
-//			}
-//			SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_EXPLOSION);
-//			BeatsManager.Instance.onBeat = true;
-//			randomBeatSpeed = Random.Range (beatSpeed - randomRange, beatSpeed + randomRange);
+			UIManager.Instance.OnBeat ();
 			this.gameObject.SetActive(false);
-//			randomBeatSpeed = Random.Range (beatSpeed - randomRange, beatSpeed);
-//			Debug.Log (counter);
 		}
 
 		if(transform.position.x >= resetBeatPosition.position.x-0.5f){
 			BeatsManager.Instance.onBeat = true;
 		}
-
-//		if(Input.GetKeyDown(KeyCode.UpArrow)){
-//			test [counter] = transform.localPosition.x;
-//			counter += 1;
-//			transform.position = new Vector3 (initialBeatPosition.position.x,transform.position.y,transform.position.z);
-//		}
 
 	}
 
