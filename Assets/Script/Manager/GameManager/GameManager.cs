@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour {
 
 	public bool startBeat;
 
+	public float songLength;
+	public bool songEnded;
+
 	public GameObject beatCreator;
 
 	// Use this for initialization
@@ -50,7 +53,9 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		if(!songEnded){
+			songLength -= Time.deltaTime;
+		}
 	}
 
 	public void RestartLevel(){
@@ -59,7 +64,7 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator StartMusic(float t){
 		yield return new WaitForSeconds (t);
-		SoundManagerScript.Instance.PlayLoopingBGM (AudioClipID.BGM_BATTLE);
+		SoundManagerScript.Instance.PlayBGM (AudioClipID.BGM_BATTLE);
 		startBeat = true;
 	}
 }

@@ -56,7 +56,7 @@ public class SemiInvisibleWall : MonoBehaviour {
 			if (Vector3.Distance (playerPosition, transform.position) < 7f) {
 				if (Vector3.Distance (mainCameraPosition, transform.position) < 12f) {
 					color.a = 0.5f;
-					Debug.Log ("Near");
+//					Debug.Log ("Near");
 					material.color = color;
 				}
 			} else {
@@ -70,7 +70,7 @@ public class SemiInvisibleWall : MonoBehaviour {
 			if (Vector3.Distance (playerPosition, transform.position) < 6f) {
 				if (Vector3.Distance (mainCameraPosition, transform.position) < 9f) {
 					color.a = 0.5f;
-					Debug.Log ("Near");
+//					Debug.Log ("Near");
 					material.color = color;
 				}
 			} 

@@ -27,12 +27,14 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public Image beatImage;
+	Color color;
 
 	// Use this for initialization
 	void Awake () {
 	}
 
 	void Start(){
+		color = beatImage.color;
 	}
 
 	// Update is called once per frame
@@ -40,14 +42,18 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void OnBeat(){
-		beatImage.rectTransform.localScale = new Vector3 (2, 2, 2);
+		beatImage.rectTransform.localScale = new Vector3 (1.4f, 1.4f, 1.4f);
 		StopCoroutine ("ResetBeatSizeTimer");
 		StartCoroutine ("ResetBeatSizeTimer", 0.2f);
+		color.a = 1.0f;
+		beatImage.color = color;
 	}
 
 	IEnumerator ResetBeatSizeTimer(float t){
 		yield return new WaitForSeconds (t);
 		beatImage.rectTransform.localScale = new Vector3 (1, 1, 1);
+		color.a = 0.75f;
+		beatImage.color = color;
 	}
 
 }
