@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
@@ -34,7 +35,9 @@ public class UIManager : MonoBehaviour {
 	}
 
 	void Start(){
-		color = beatImage.color;
+		if(beatImage != null){
+			color = beatImage.color;
+		}
 	}
 
 	// Update is called once per frame
@@ -54,6 +57,14 @@ public class UIManager : MonoBehaviour {
 		beatImage.rectTransform.localScale = new Vector3 (1, 1, 1);
 		color.a = 0.75f;
 		beatImage.color = color;
+	}
+
+	public void GotoScene(string sceneName){
+		SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
+	}
+
+	public void ExitGame(){
+		Application.Quit ();
 	}
 
 }

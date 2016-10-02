@@ -15,7 +15,8 @@ public class ExitLevel : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
 		if(coll.CompareTag("Player")){
-			GameManager.Instance.RestartLevel ();
+//			GameManager.Instance.RestartLevel ();
+			UIManager.Instance.GotoScene("MainMenu");
 		}
 	}
 }
