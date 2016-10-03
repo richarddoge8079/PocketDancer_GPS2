@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 759ddf4f5defbbb45b660303b9eea494
-timeCreated: 1475127781
+guid: 46f983918f0a6dd44a2bad56e87721f3
+timeCreated: 1475512020
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Sofa_1
+    4300000: Sofa
   materials:
     importMaterials: 1
     materialName: 0

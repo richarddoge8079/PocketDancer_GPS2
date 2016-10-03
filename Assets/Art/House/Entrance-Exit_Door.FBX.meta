@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0a67194b425cc3941af4d19827e3b273
-timeCreated: 1475127780
+guid: dd57aded353f58241bd10aafd8ec27d9
+timeCreated: 1475512025
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Door
+    4300000: Door_Entrance
   materials:
     importMaterials: 1
     materialName: 0

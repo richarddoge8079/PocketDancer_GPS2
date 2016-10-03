@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4a1ff9f8a9159cd45bf65b76fa988d7f
-timeCreated: 1475127781
+guid: f1a931bf7f7952b49aa0c63315922afb
+timeCreated: 1475512026
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Wellcome Mat
+    4300000: Wellcome_Mat
   materials:
     importMaterials: 1
     materialName: 0

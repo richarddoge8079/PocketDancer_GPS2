@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0c707d6abe25b3b4a8af6d038e56a66c
-timeCreated: 1475127781
+guid: 664d4e6c39a742749975f79a441c5a49
+timeCreated: 1475512020
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Chair
+    4300000: Sofa_Small
   materials:
     importMaterials: 1
     materialName: 0

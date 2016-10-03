@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 77f1e544736340345aea548054c6bd31
-timeCreated: 1475127782
+guid: b6fa65f36ec7d154d8812465c87759bf
+timeCreated: 1475512023
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Plane003
+    4300000: Carpet_Large
   materials:
     importMaterials: 1
     materialName: 0

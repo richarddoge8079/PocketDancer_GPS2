@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 009ef54dafcd8e84ea865f23aa9f3b3c
-timeCreated: 1475127780
+guid: 726492fe6a0116f48bd15c3872d7e1ab
+timeCreated: 1475512020
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SubWoofer
+    4300000: LargeStereoSpeakers
   materials:
     importMaterials: 1
     materialName: 0
