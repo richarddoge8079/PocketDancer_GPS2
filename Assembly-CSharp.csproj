@@ -64,6 +64,7 @@
      <Compile Include="Assets\Script\Test\Move.cs" />
      <Compile Include="Assets\Script\UI\TestBeat.cs" />
      <Compile Include="Assets\Script\UI\TestUI.cs" />
+     <Compile Include="Assets\Script\UI\TutorialImage.cs" />
      <Compile Include="Assets\Script\UI\UIManager.cs" />
      <Compile Include="Assets\Script\Victim\VictimBehaviour.cs" />
      <Compile Include="Assets\Script\Victim\VictimCollision.cs" />

@@ -30,6 +30,9 @@ public class UIManager : MonoBehaviour {
 	public Image beatImage;
 	Color color;
 
+	public Image tutorialImage;
+//	public Color tutorialImageColor;
+
 	// Use this for initialization
 	void Awake () {
 	}
@@ -38,6 +41,10 @@ public class UIManager : MonoBehaviour {
 		if(beatImage != null){
 			color = beatImage.color;
 		}
+//		tutorialImageColor = tutorialImage.color;
+//		tutorialImageColor.a = 0.0f;
+//		tutorialImage.color = tutorialImageColor;
+		tutorialImage.enabled = false;
 	}
 
 	// Update is called once per frame
@@ -65,6 +72,10 @@ public class UIManager : MonoBehaviour {
 
 	public void ExitGame(){
 		Application.Quit ();
+	}
+
+	public void EnableTutorial(bool temp){
+		tutorialImage.enabled = temp;
 	}
 
 }
