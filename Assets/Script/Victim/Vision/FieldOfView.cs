@@ -21,6 +21,8 @@ public class FieldOfView : MonoBehaviour {
 	public MeshFilter viewMeshFilter;
 	Mesh viewMesh;
 
+	bool checkPlayer;
+
 	void Start()
 	{
 		viewMesh = new Mesh ();
@@ -61,6 +63,17 @@ public class FieldOfView : MonoBehaviour {
 					visibleTargets.Add (target);
 				}
 			}
+		}
+		for(int i= 0; i< visibleTargets.Count; i++){
+			if (visibleTargets [i].CompareTag ("Player")) {
+				GameManager.Instance.inSight = true;
+				checkPlayer = true;
+				return;
+			}
+		}
+		if(checkPlayer){
+			checkPlayer = false;
+			GameManager.Instance.inSight = false;
 		}
 	}
 
