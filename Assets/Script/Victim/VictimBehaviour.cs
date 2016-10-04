@@ -51,17 +51,17 @@ public class VictimBehaviour : MonoBehaviour {
 	IEnumerator PatrolLeft (float c)
 	{
 		yield return new WaitForSeconds (c);
-		MoveLeft ();
+		RotateLeft ();
+		MoveForward ();
 		isPatternCompleted = true;
-		//StartCoroutine("PatrolIdle1", moveCounter);
 	}
 
 	IEnumerator PatrolRight (float c)
 	{
 		yield return new WaitForSeconds (c);
-		MoveRight ();
+		RotateRight ();
+		MoveForward ();
 		isPatternCompleted = true;
-		//StartCoroutine("PatrolIdle2", moveCounter);
 	}
 
 	IEnumerator PatrolIdle (float c)
@@ -69,19 +69,18 @@ public class VictimBehaviour : MonoBehaviour {
 		yield return new WaitForSeconds (c);
 		Idle ();
 		isPatternCompleted = true;
-		//StartCoroutine("PatrolRight", moveCounter);
 	}
 
 	void Idle(){
 		transform.Translate (Vector3.zero);
 	}
 
-	void MoveLeft(){
-		transform.Translate (Vector3.left*speed);
+	void RotateLeft(){
+		transform.Rotate (0, -90.0f, 0);
 	}
 
-	void MoveRight(){
-		transform.Translate (Vector3.right*speed);
+	void RotateRight(){
+		transform.Rotate (0, 90.0f, 0);
 	}
 
 	void MoveForward(){
