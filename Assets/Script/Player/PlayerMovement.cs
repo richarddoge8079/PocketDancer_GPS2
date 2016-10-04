@@ -176,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void CheckBeat(){
 		if(BeatsManager.Instance.onBeat){
-			Debug.Log ("Yay");
+			UIManager.Instance.onBeatFX_Color.a += 0.25f;
 		}
 	}
 
@@ -185,6 +185,7 @@ public class PlayerMovement : MonoBehaviour
 		GameManager.Instance.playerPreviousPosition = transform.position;
 		transform.Translate(Vector3.forward * speed);
 		CheckDetection ();
+		CheckBeat ();
 	}
 
 	void CheckDetection(){
