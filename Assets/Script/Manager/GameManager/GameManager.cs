@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject beatCreator;
 
+	public bool inSight;
+
 	// Use this for initialization
 	void Awake () {
 		playerObject = GameObject.FindGameObjectWithTag ("Player");
