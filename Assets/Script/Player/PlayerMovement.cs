@@ -184,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
 		//		transform.position = new Vector3 (transform.position.x,transform.position.y,transform.position.z + speed);
 		GameManager.Instance.playerPreviousPosition = transform.position;
 		transform.Translate(Vector3.forward * speed);
-		CheckDetection ();
+		//CheckDetection ();
 	}
 
 	void CheckDetection(){
