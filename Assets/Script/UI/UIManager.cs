@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour {
 	public Image tutorialImage;
 //	public Color tutorialImageColor;
 
+
+	public Slider DetectionBar;
+
 	// Use this for initialization
 	void Awake () {
 	}
@@ -49,6 +52,7 @@ public class UIManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		DetectionBar.value = GameManager.Instance.playerStatsScript.detectionLevel;
 	}
 
 	public void OnBeat(){
