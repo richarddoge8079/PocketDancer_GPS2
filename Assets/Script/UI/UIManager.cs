@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour {
 	public Image tutorialImage;
 //	public Color tutorialImageColor;
 
+	public Image onBeatFX_Image;
+	public Color onBeatFX_Color;
+	public float onBeatFX_FadeSpeed;
 
 	public Slider DetectionBar;
 
@@ -48,11 +51,27 @@ public class UIManager : MonoBehaviour {
 //		tutorialImageColor.a = 0.0f;
 //		tutorialImage.color = tutorialImageColor;
 		tutorialImage.enabled = false;
+
+		onBeatFX_Color = onBeatFX_Image.color;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		DetectionBar.value = GameManager.Instance.playerStatsScript.detectionLevel;
+
+
+
+		if (onBeatFX_Color.a > 0) {
+			onBeatFX_Color.a -= onBeatFX_FadeSpeed * Time.deltaTime;
+
+			if(onBeatFX_Color.a > 0.8f){
+				onBeatFX_Color.a = 0.8f;
+			}
+		} 
+		else {
+			onBeatFX_Color.a = 0.0f;
+		}
+		onBeatFX_Image.color = onBeatFX_Color;
 	}
 
 	public void OnBeat(){
