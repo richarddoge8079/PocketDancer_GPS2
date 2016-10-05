@@ -37,6 +37,7 @@ public class BeatsObject : MonoBehaviour {
 		if(transform.position.x >= resetBeatPosition.position.x){
 			transform.position = new Vector3 (initialBeatPosition.position.x,transform.position.y,transform.position.z);
 			UIManager.Instance.OnBeat ();
+			UIManager.Instance.beatImage_Animator.Play ("BeatUI_On");
 			this.gameObject.SetActive(false);
 		}
 

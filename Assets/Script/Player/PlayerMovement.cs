@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 	public float playerSpeed;
 	float timer;
 
+	public Vector3 previousPos;
+
 	//	bool AllowRotate = false;
 	//	float InitialPosition = 0f; 
 	//	float DraggingPosition = 0f;
@@ -177,13 +179,16 @@ public class PlayerMovement : MonoBehaviour
 	void CheckBeat(){
 		if(BeatsManager.Instance.onBeat){
 			UIManager.Instance.onBeatFX_Color.a += 0.25f;
+			UIManager.Instance.beatImageFX_Color.a += 0.8f;
 		}
 	}
 
 	void MoveFoward(float speed){
 		//		transform.position = new Vector3 (transform.position.x,transform.position.y,transform.position.z + speed);
-		GameManager.Instance.playerPreviousPosition = transform.position;
+		//		GameManager.Instance.playerPreviousPosition = transform.position;
+//		previousPos = transform.position;
 		transform.Translate(Vector3.forward * speed);
+//		GameManager.Instance.playerCollisionScript.SetPreviousPosition(previousPos);
 		CheckDetection ();
 		CheckBeat ();
 	}

@@ -28,6 +28,11 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public Image beatImage;
+	public Animator beatImage_Animator;
+	public Image beatImageFX;
+	public Color beatImageFX_Color;
+	public float beatImageFX_FadeSpeed;
+
 	Color color;
 
 	public Image tutorialImage;
@@ -46,13 +51,19 @@ public class UIManager : MonoBehaviour {
 	void Start(){
 		if(beatImage != null){
 			color = beatImage.color;
+			beatImage_Animator = beatImage.GetComponent<Animator> ();
+
+			beatImageFX_Color = beatImageFX.color;
 		}
 //		tutorialImageColor = tutorialImage.color;
 //		tutorialImageColor.a = 0.0f;
 //		tutorialImage.color = tutorialImageColor;
 		tutorialImage.enabled = false;
 
+		//Initialize FX color
 		onBeatFX_Color = onBeatFX_Image.color;
+		onBeatFX_Color.a = 0.0f;
+		onBeatFX_Image.color = onBeatFX_Color;
 	}
 
 	// Update is called once per frame
@@ -60,17 +71,31 @@ public class UIManager : MonoBehaviour {
 		DetectionBar.value = GameManager.Instance.playerStatsScript.detectionLevel;
 
 
-
+		//Screen FX
 		if (onBeatFX_Color.a > 0) {
 			onBeatFX_Color.a -= onBeatFX_FadeSpeed * Time.deltaTime;
 
-			if(onBeatFX_Color.a > 0.8f){
-				onBeatFX_Color.a = 0.8f;
+			if(onBeatFX_Color.a > 1.0f){
+				onBeatFX_Color.a = 1.0f;
 			}
 		} 
 		else {
 			onBeatFX_Color.a = 0.0f;
 		}
+
+		//BeatUI FX
+		if (beatImageFX_Color.a > 0) {
+			beatImageFX_Color.a -= beatImageFX_FadeSpeed * Time.deltaTime;
+
+			if (beatImageFX_Color.a > 1.0f) {
+				beatImageFX_Color.a = 1.0f;
+			}
+		} 
+		else {
+			beatImageFX_Color.a = 0.0f;
+		}
+
+		beatImageFX.color = beatImageFX_Color;
 		onBeatFX_Image.color = onBeatFX_Color;
 	}
 
@@ -100,5 +125,7 @@ public class UIManager : MonoBehaviour {
 	public void EnableTutorial(bool temp){
 		tutorialImage.enabled = temp;
 	}
+
+
 
 }

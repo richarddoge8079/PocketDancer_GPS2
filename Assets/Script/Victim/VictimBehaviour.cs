@@ -29,37 +29,37 @@ public class VictimBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (isIdle) {
-			//Patrol Pattern
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolForward", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolRight", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolLeft", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolBackward", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-		} else {
-			//Idle Pattern
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolRight", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolLeft", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
-		}
+//		if (isIdle) {
+//			//Patrol Pattern
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolForward", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolRight", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolLeft", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolBackward", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//		} else {
+//			//Idle Pattern
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolRight", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolLeft", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//			patternInfoList.Add (new PatternInfo ("PatrolIdle", moveCounter));
+//		}
 		isPatternCompleted = true;
 	}
 

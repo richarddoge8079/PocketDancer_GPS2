@@ -19,7 +19,7 @@ public class TutorialImage : MonoBehaviour {
 		if (Physics.Raycast (tutorialRay, out isTutorial, tutorialRange)) {
 			checkPlayer ();
 		} else {
-			Debug.Log ("kdone");
+//			Debug.Log ("kdone");
 
 		}
 		Debug.DrawRay (transform.localPosition, transform.right * tutorialRange, Color.red);

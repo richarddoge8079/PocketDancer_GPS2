@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject playerObject;
 	public PlayerMovement playerMovementScript;
 	public PlayerStats playerStatsScript;
+	public PlayerCollsion playerCollisionScript;
 
 	public Vector3 playerPreviousPosition;
 
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour {
 		playerObject = GameObject.FindGameObjectWithTag ("Player");
 		playerMovementScript = playerObject.GetComponent<PlayerMovement> ();
 		playerStatsScript = playerObject.GetComponent<PlayerStats> ();
+		playerCollisionScript = playerObject.GetComponent<PlayerCollsion> ();
 	}
 
 	void Start(){
