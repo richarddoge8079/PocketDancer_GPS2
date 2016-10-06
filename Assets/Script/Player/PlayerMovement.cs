@@ -3,16 +3,10 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-	//	bool MovingForward = false;
-	//	bool MovingBackward = false;
 	public float playerSpeed;
 	float timer;
 
 	public Vector3 previousPos;
-
-	//	bool AllowRotate = false;
-	//	float InitialPosition = 0f; 
-	//	float DraggingPosition = 0f;
 
 	// Use this for initialization
 	void OnEnable () 
@@ -36,22 +30,6 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//		if (MovingForward == true) 
-		//		{
-		//			transform.Translate (Vector3.forward * Time.deltaTime * playerSpeed);
-		//		} 
-		//		else if (MovingBackward == true) 
-		//		{
-		//			transform.Translate (Vector3.back * Time.deltaTime * playerSpeed);
-		//		}
-		//		timer++;
-		//
-		//		if (timer >= 1f) 
-		//		{
-		//			MovingForward = false;
-		//			MovingBackward = false;
-		//			timer = 0f;
-		//		}
 	}
 
 	void Start()
@@ -61,101 +39,110 @@ public class PlayerMovement : MonoBehaviour
 
 	bool OnTouchDown(int fingerID, Vector2 pos)
 	{
+		//RestartLevel for POC
+		if(fingerID >= 4){
+			GameManager.Instance.RestartLevel ();
+		}
+		//End of RestartLevel for POC
+
 		// move to rayposition on the offset
 		//targetPosition = GetRayPosition (pos) + offset;
-		if (pos.y >= Screen.height / 2 && pos.x <= Screen.width / 6)
-		{
-			if (this.transform.eulerAngles.y == 0f) 
+		if(fingerID == 0){
+			if (pos.y >= Screen.height / 2 && pos.x <= Screen.width / 6)
 			{
-				// MovingForward = true;
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 90f) 
+				if (this.transform.eulerAngles.y == 0f) 
+				{
+					// MovingForward = true;
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 90f) 
+				{
+					transform.Rotate (Vector3.up * -90f);
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 180f) 
+				{
+					transform.Rotate (Vector3.up * -90f);
+					transform.Rotate (Vector3.up * -90f);
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 270f) 
+				{
+					transform.Rotate (Vector3.up * 90f);
+					MoveFoward(playerSpeed);
+				}
+			} 
+			else if (pos.y >= Screen.height / 2 && pos.x >= Screen.width / 6 * 5)
 			{
-				transform.Rotate (Vector3.up * -90f);
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 180f) 
+				if (this.transform.eulerAngles.y == 0f) 
+				{
+					transform.Rotate (Vector3.up * 90f);
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 90f) 
+				{
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 180f) 
+				{
+					transform.Rotate (Vector3.up * -90f);
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 270f) 
+				{
+					transform.Rotate (Vector3.up * 90f);
+					transform.Rotate (Vector3.up * 90f);
+					MoveFoward(playerSpeed);
+				}
+			} 
+			else if (pos.y <= Screen.height / 2 && pos.x <= Screen.width / 6)
 			{
-				transform.Rotate (Vector3.up * -90f);
-				transform.Rotate (Vector3.up * -90f);
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 270f) 
+				if (this.transform.eulerAngles.y == 0f) 
+				{
+					transform.Rotate (Vector3.up * -90f);
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 90f) 
+				{
+					transform.Rotate (Vector3.up * -90f);
+					transform.Rotate (Vector3.up * -90f);
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 180f) 
+				{
+					transform.Rotate (Vector3.up * 90f);
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 270f) 
+				{
+					MoveFoward(playerSpeed);
+				}
+			} 
+			else if (pos.y <= Screen.height / 2 && pos.x >= Screen.width / 6 * 5)
 			{
-				transform.Rotate (Vector3.up * 90f);
-				MoveFoward(playerSpeed);
-			}
-		} 
-		else if (pos.y >= Screen.height / 2 && pos.x >= Screen.width / 6 * 5)
-		{
-			if (this.transform.eulerAngles.y == 0f) 
-			{
-				transform.Rotate (Vector3.up * 90f);
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 90f) 
-			{
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 180f) 
-			{
-				transform.Rotate (Vector3.up * -90f);
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 270f) 
-			{
-				transform.Rotate (Vector3.up * 90f);
-				transform.Rotate (Vector3.up * 90f);
-				MoveFoward(playerSpeed);
-			}
-		} 
-		else if (pos.y <= Screen.height / 2 && pos.x <= Screen.width / 6)
-		{
-			if (this.transform.eulerAngles.y == 0f) 
-			{
-				transform.Rotate (Vector3.up * -90f);
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 90f) 
-			{
-				transform.Rotate (Vector3.up * -90f);
-				transform.Rotate (Vector3.up * -90f);
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 180f) 
-			{
-				transform.Rotate (Vector3.up * 90f);
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 270f) 
-			{
-				MoveFoward(playerSpeed);
-			}
-		} 
-		else if (pos.y <= Screen.height / 2 && pos.x >= Screen.width / 6 * 5)
-		{
-			if (this.transform.eulerAngles.y == 0f) 
-			{
-				transform.Rotate (Vector3.up * -90f);
-				transform.Rotate (Vector3.up * -90f);
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 90f) 
-			{
-				transform.Rotate (Vector3.up * +90f);
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 180f) 
-			{
-				MoveFoward(playerSpeed);
-			}
-			else if (this.transform.eulerAngles.y == 270f) 
-			{
-				transform.Rotate (Vector3.up * -90f);
-				MoveFoward(playerSpeed);
-			}
-		} 
+				if (this.transform.eulerAngles.y == 0f) 
+				{
+					transform.Rotate (Vector3.up * -90f);
+					transform.Rotate (Vector3.up * -90f);
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 90f) 
+				{
+					transform.Rotate (Vector3.up * +90f);
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 180f) 
+				{
+					MoveFoward(playerSpeed);
+				}
+				else if (this.transform.eulerAngles.y == 270f) 
+				{
+					transform.Rotate (Vector3.up * -90f);
+					MoveFoward(playerSpeed);
+				}
+			} 
+			
+		}
 
 		return true;
 	}

@@ -61,8 +61,16 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(!songEnded){
+		if (!songEnded) {
 			songLength -= Time.deltaTime;
+		} 
+		else {
+			playerStatsScript.detectionLevel += 35 * Time.deltaTime;
+		}
+
+		if(songLength < 0){
+			songLength = 0;
+			songEnded = true;
 		}
 	}
 

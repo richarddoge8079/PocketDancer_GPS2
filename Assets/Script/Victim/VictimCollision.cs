@@ -2,6 +2,10 @@
 using System.Collections;
 
 public class VictimCollision : MonoBehaviour {
+	//VFX
+	public GameObject rob;
+	//End if VFX
+
 	public float pickpocketRange;
 	public bool playerInRange = false;
 	public bool picked = false;
@@ -38,6 +42,7 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
+					Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
 //					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minMoney, maxMoney);
 
