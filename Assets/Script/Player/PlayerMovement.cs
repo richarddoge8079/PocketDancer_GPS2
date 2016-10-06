@@ -178,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void CheckBeat(){
 		if(BeatsManager.Instance.onBeat){
-			UIManager.Instance.onBeatFX_Color.a += 0.25f;
+			UIManager.Instance.onBeatFX_Color.a += 0.425f;
 			UIManager.Instance.beatImageFX_Color.a += 0.8f;
 		}
 	}
