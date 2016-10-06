@@ -10,10 +10,8 @@ public class VictimCollision : MonoBehaviour {
 	public int money;
 	public float defaultTime;
 	public float detectionLevel;
-	public GameObject rob;
 	RaycastHit isPickpocketed;
 	// Use this for initialization
-
 	// Update is called once per frame
 	void Update ()
 	{
@@ -23,16 +21,13 @@ public class VictimCollision : MonoBehaviour {
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
 				playerInRange = true;
-				//Debug.Log ("Target In Range");
+//				Debug.Log ("Target In Range");
 			} 
 		} 
 		else 
 		{
 			StartCoroutine (Timer (defaultTime));
 		}
-
-
-
 		Debug.DrawRay (transform.localPosition, -transform.forward * pickpocketRange, Color.green);
 	}
 	void OnTriggerEnter (Collider coll)
@@ -45,9 +40,19 @@ public class VictimCollision : MonoBehaviour {
 				{
 //					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minMoney, maxMoney);
-					GameManager.Instance.playerStatsScript.moneyCount += money;
-					Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
-					picked = true;
+
+					if (UIManager.Instance.updateTotalMoney) 
+					{
+						UIManager.Instance.UiVictimMoney += money;
+						picked = true;
+						GameManager.Instance.pickPocket += 1;
+					}
+					else
+					{
+						UIManager.Instance.UiVictimMoney += money;
+						UIManager.Instance.UpdateMoney ();
+						picked = true;
+					}
 				} 
 				else 
 				{

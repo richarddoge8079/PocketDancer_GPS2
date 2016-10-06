@@ -40,6 +40,10 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject beatCreator;
 
+	//Just for POC
+	public int pickPocket;
+	//End of POC
+
 	public bool inSight;
 
 	// Use this for initialization

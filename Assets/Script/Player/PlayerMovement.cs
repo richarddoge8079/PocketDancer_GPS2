@@ -195,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void CheckDetection(){
 		if(!BeatsManager.Instance.onBeat && GameManager.Instance.inSight){
-			GameManager.Instance.playerStatsScript.detectionLevel += 35.0f;
+			GameManager.Instance.playerStatsScript.detectionLevel += 28.0f;
 		}
 	}
 }

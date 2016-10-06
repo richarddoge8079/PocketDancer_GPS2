@@ -44,6 +44,12 @@ public class UIManager : MonoBehaviour {
 
 	public Slider DetectionBar;
 
+	//Money Score
+	public Text moneyText;
+//	public Text detectionText;
+	public bool updateTotalMoney = false;
+	public int UiVictimMoney; 
+
 	// Use this for initialization
 	void Awake () {
 	}
@@ -97,6 +103,31 @@ public class UIManager : MonoBehaviour {
 
 		beatImageFX.color = beatImageFX_Color;
 		onBeatFX_Image.color = onBeatFX_Color;
+
+		//Money UI
+		if (!updateTotalMoney) 
+		{
+//			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
+			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount + "(" + UiVictimMoney + ")";
+		} 
+		else 
+		{
+			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount + "(" + UiVictimMoney + ")";
+			if (UiVictimMoney <= 0) {
+				updateTotalMoney = false;
+			} 
+			else {
+				GameManager.Instance.playerStatsScript.moneyCount += 1;
+				UiVictimMoney -= 1;
+			}
+//			StopCoroutine ("");
+		} 
+	}
+
+	public void UpdateMoney(){
+		updateTotalMoney = false;
+		StopCoroutine ("UpdateTotalMoney");
+		StartCoroutine("UpdateTotalMoney", 1.0f);
 	}
 
 	public void OnBeat(){
@@ -126,6 +157,12 @@ public class UIManager : MonoBehaviour {
 		tutorialImage.enabled = temp;
 	}
 
-
+	IEnumerator UpdateTotalMoney(float t)
+	{
+		yield return new WaitForSeconds (t);
+//			GameManager.Instance.playerStatsScript.moneyCount += 1;
+//			UiVictimMoney -= 1;
+		updateTotalMoney = true;
+	}
 
 }
