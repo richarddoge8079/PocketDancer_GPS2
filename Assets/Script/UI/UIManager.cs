@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour {
 		if (onBeatFX_Color.a > 0) {
 			onBeatFX_Color.a -= onBeatFX_FadeSpeed * Time.deltaTime;
 
-			if(onBeatFX_Color.a > 1.5f){
+			if(onBeatFX_Color.a > 1.0f){
 				onBeatFX_Color.a = 1.0f;
 			}
 		} 
@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour {
 		if (beatImageFX_Color.a > 0) {
 			beatImageFX_Color.a -= beatImageFX_FadeSpeed * Time.deltaTime;
 
-			if (beatImageFX_Color.a > 1.5f) {
+			if (beatImageFX_Color.a > 1.4f) {
 				beatImageFX_Color.a = 1.0f;
 			}
 		} 
