@@ -43,7 +43,7 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
-					Debug.Log ("I've just been robbed!?");
+//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minMoney, maxMoney);
 					GameManager.Instance.playerStatsScript.moneyCount += money;
 					Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
@@ -51,13 +51,13 @@ public class VictimCollision : MonoBehaviour {
 				} 
 				else 
 				{
-					Debug.Log ("Why did someone touch my butt?!");
+//					Debug.Log ("Why did someone touch my butt?!");
 					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 				}
 			} 
 			else 
 			{
-				Debug.Log ("Watch Where You're Going!?");
+//				Debug.Log ("Watch Where You're Going!?");
 				GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 			}
 		}
