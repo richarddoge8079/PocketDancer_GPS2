@@ -6,6 +6,8 @@ public class VictimCollision : MonoBehaviour {
 	public GameObject rob;
 	//End if VFX
 
+	public GameObject victimBackFX;
+
 	public float pickpocketRange;
 	public bool playerInRange = false;
 	public bool picked = false;
@@ -45,6 +47,8 @@ public class VictimCollision : MonoBehaviour {
 					Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
 //					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minMoney, maxMoney);
+
+					victimBackFX.SetActive (false);
 
 					if (UIManager.Instance.updateTotalMoney) 
 					{
