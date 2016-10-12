@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 		// move to rayposition on the offset
 		//targetPosition = GetRayPosition (pos) + offset;
 		if(fingerID == 0){
-			if (pos.y >= Screen.height / 2 && pos.x <= Screen.width / 6)
+			if (pos.y >= Screen.height / 2 && pos.x <= Screen.width / 2)
 			{
 				if (this.transform.eulerAngles.y == 0f) 
 				{
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 					MoveFoward(playerSpeed);
 				}
 			} 
-			else if (pos.y >= Screen.height / 2 && pos.x >= Screen.width / 6 * 5)
+			else if (pos.y >= Screen.height / 2 && pos.x >= Screen.width / 2)
 			{
 				if (this.transform.eulerAngles.y == 0f) 
 				{
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
 					MoveFoward(playerSpeed);
 				}
 			} 
-			else if (pos.y <= Screen.height / 2 && pos.x <= Screen.width / 6)
+			else if (pos.y <= Screen.height / 2 && pos.x <= Screen.width / 2)
 			{
 				if (this.transform.eulerAngles.y == 0f) 
 				{
@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 					MoveFoward(playerSpeed);
 				}
 			} 
-			else if (pos.y <= Screen.height / 2 && pos.x >= Screen.width / 6 * 5)
+			else if (pos.y <= Screen.height / 2 && pos.x >= Screen.width / 2)
 			{
 				if (this.transform.eulerAngles.y == 0f) 
 				{
