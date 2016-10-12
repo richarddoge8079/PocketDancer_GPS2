@@ -48,8 +48,13 @@ public class PlayerMovement : MonoBehaviour
 
 		// move to rayposition on the offset
 		//targetPosition = GetRayPosition (pos) + offset;
+<<<<<<< HEAD
 		if(fingerID == 0 && canMove){
 			if (pos.y >= Screen.height / 2 && pos.x <= Screen.width / 6)
+=======
+		if(fingerID == 0){
+			if (pos.y >= Screen.height / 2 && pos.x <= Screen.width / 2)
+>>>>>>> cc65acf7226a4455d3bc6935a0c125baa445d2a8
 			{
 				if (this.transform.eulerAngles.y == 0f) 
 				{
@@ -73,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 					MoveFoward(playerSpeed);
 				}
 			} 
-			else if (pos.y >= Screen.height / 2 && pos.x >= Screen.width / 6 * 5)
+			else if (pos.y >= Screen.height / 2 && pos.x >= Screen.width / 2)
 			{
 				if (this.transform.eulerAngles.y == 0f) 
 				{
@@ -96,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 					MoveFoward(playerSpeed);
 				}
 			} 
-			else if (pos.y <= Screen.height / 2 && pos.x <= Screen.width / 6)
+			else if (pos.y <= Screen.height / 2 && pos.x <= Screen.width / 2)
 			{
 				if (this.transform.eulerAngles.y == 0f) 
 				{
@@ -119,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
 					MoveFoward(playerSpeed);
 				}
 			} 
-			else if (pos.y <= Screen.height / 2 && pos.x >= Screen.width / 6 * 5)
+			else if (pos.y <= Screen.height / 2 && pos.x >= Screen.width / 2)
 			{
 				if (this.transform.eulerAngles.y == 0f) 
 				{
@@ -188,9 +193,13 @@ public class PlayerMovement : MonoBehaviour
 			GameManager.Instance.playerStatsScript.detectionLevel += 28.0f;
 		}
 	}
+<<<<<<< HEAD
 
 	IEnumerator MoveCooldownTimer(float t){
 		yield return new WaitForSeconds (t);
 		canMove = true;
 	}
 }
+=======
+}
+>>>>>>> cc65acf7226a4455d3bc6935a0c125baa445d2a8
