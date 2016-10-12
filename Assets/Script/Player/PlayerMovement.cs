@@ -4,7 +4,8 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
 	public float playerSpeed;
-	float timer;
+	public bool canMove;
+	public float canMoveTimer;
 
 	public Vector3 previousPos;
 
@@ -47,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
 		// move to rayposition on the offset
 		//targetPosition = GetRayPosition (pos) + offset;
-		if(fingerID == 0){
+		if(fingerID == 0 && canMove){
 			if (pos.y >= Screen.height / 2 && pos.x <= Screen.width / 6)
 			{
 				if (this.transform.eulerAngles.y == 0f) 
@@ -178,11 +179,18 @@ public class PlayerMovement : MonoBehaviour
 //		GameManager.Instance.playerCollisionScript.SetPreviousPosition(previousPos);
 		CheckDetection ();
 		CheckBeat ();
+		canMove = false;
+		StartCoroutine ("MoveCooldownTimer", canMoveTimer);
 	}
 
 	void CheckDetection(){
 		if(!BeatsManager.Instance.onBeat && GameManager.Instance.inSight){
 			GameManager.Instance.playerStatsScript.detectionLevel += 28.0f;
 		}
+	}
+
+	IEnumerator MoveCooldownTimer(float t){
+		yield return new WaitForSeconds (t);
+		canMove = true;
 	}
 }
