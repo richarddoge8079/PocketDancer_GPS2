@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Camera\CameraFollow.cs" />
+     <Compile Include="Assets\Script\DisableObjectTimer.cs" />
      <Compile Include="Assets\Script\Environment\SemiInvisibleWall.cs" />
      <Compile Include="Assets\Script\Global\ExitLevel.cs" />
      <Compile Include="Assets\Script\Manager\BeatsManager\BeatFinder.cs" />
