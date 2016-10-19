@@ -1,5 +1,5 @@
 Library/
 obj/
 .vs/
-.gitignore
 Assembly-CSharp.csproj
+Temp/
