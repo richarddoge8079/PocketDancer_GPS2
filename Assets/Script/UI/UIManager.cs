@@ -42,11 +42,13 @@ public class UIManager : MonoBehaviour {
 	public Color onBeatFX_Color;
 	public float onBeatFX_FadeSpeed;
 
-	public Image offBeatFX_Image;
-	public Color offBeatFX_Color;
-	public float offBeatFX_FadeSpeed;
-
 	public Slider DetectionBar;
+
+	//Money Score
+	public Text moneyText;
+//	public Text detectionText;
+	public bool updateTotalMoney = false;
+	public int UiVictimMoney; 
 
 	// Use this for initialization
 	void Awake () {
@@ -68,10 +70,6 @@ public class UIManager : MonoBehaviour {
 		onBeatFX_Color = onBeatFX_Image.color;
 		onBeatFX_Color.a = 0.0f;
 		onBeatFX_Image.color = onBeatFX_Color;
-
-		offBeatFX_Color = offBeatFX_Image.color;
-		offBeatFX_Color.a = 0.0f;
-		offBeatFX_Image.color = offBeatFX_Color;
 	}
 
 	// Update is called once per frame
@@ -79,7 +77,7 @@ public class UIManager : MonoBehaviour {
 		DetectionBar.value = GameManager.Instance.playerStatsScript.detectionLevel;
 
 
-		//OnBeat Screen FX
+		//Screen FX
 		if (onBeatFX_Color.a > 0) {
 			onBeatFX_Color.a -= onBeatFX_FadeSpeed * Time.deltaTime;
 
@@ -91,23 +89,11 @@ public class UIManager : MonoBehaviour {
 			onBeatFX_Color.a = 0.0f;
 		}
 
-		//OffBeat Screen FX
-		if (offBeatFX_Color.a > 0) {
-			offBeatFX_Color.a -= offBeatFX_FadeSpeed * Time.deltaTime;
-
-			if(offBeatFX_Color.a > 1.0f){
-				offBeatFX_Color.a = 1.0f;
-			}
-		} 
-		else {
-			offBeatFX_Color.a = 0.0f;
-		}
-
 		//BeatUI FX
 		if (beatImageFX_Color.a > 0) {
 			beatImageFX_Color.a -= beatImageFX_FadeSpeed * Time.deltaTime;
 
-			if (beatImageFX_Color.a > 1.0f) {
+			if (beatImageFX_Color.a > 1.4f) {
 				beatImageFX_Color.a = 1.0f;
 			}
 		} 
@@ -117,18 +103,34 @@ public class UIManager : MonoBehaviour {
 
 		beatImageFX.color = beatImageFX_Color;
 		onBeatFX_Image.color = onBeatFX_Color;
-		offBeatFX_Image.color = offBeatFX_Color;
+
+		//Money UI
+		if (!updateTotalMoney) 
+		{
+//			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
+			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
+		} 
+		else 
+		{
+			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount + "(" + UiVictimMoney + ")";
+			if (UiVictimMoney <= 0) {
+				updateTotalMoney = false;
+			} 
+			else {
+				GameManager.Instance.playerStatsScript.moneyCount += 1;
+				UiVictimMoney -= 1;
+			}
+//			StopCoroutine ("");
+		} 
+	}
+
+	public void UpdateMoney(){
+		updateTotalMoney = false;
+		StopCoroutine ("UpdateTotalMoney");
+		StartCoroutine("UpdateTotalMoney", 1.0f);
 	}
 
 	public void OnBeat(){
-		beatImage.rectTransform.localScale = new Vector3 (1.4f, 1.4f, 1.4f);
-		StopCoroutine ("ResetBeatSizeTimer");
-		StartCoroutine ("ResetBeatSizeTimer", 0.2f);
-		color.a = 1.0f;
-		beatImage.color = color;
-	}
-
-	public void OffBeat(){
 		beatImage.rectTransform.localScale = new Vector3 (1.4f, 1.4f, 1.4f);
 		StopCoroutine ("ResetBeatSizeTimer");
 		StartCoroutine ("ResetBeatSizeTimer", 0.2f);
@@ -155,6 +157,12 @@ public class UIManager : MonoBehaviour {
 		tutorialImage.enabled = temp;
 	}
 
-
+	IEnumerator UpdateTotalMoney(float t)
+	{
+		yield return new WaitForSeconds (t);
+//			GameManager.Instance.playerStatsScript.moneyCount += 1;
+//			UiVictimMoney -= 1;
+		updateTotalMoney = true;
+	}
 
 }
