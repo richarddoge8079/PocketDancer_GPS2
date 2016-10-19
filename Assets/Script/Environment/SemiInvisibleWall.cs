@@ -22,7 +22,7 @@ public class SemiInvisibleWall : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		material = GetComponent<MeshRenderer> ().material;
-		color = GetComponent<MeshRenderer> ().material.color;
+//		color = GetComponent<MeshRenderer> ().material.color;
 //		color.r = 255;
 //		color.g = 255;
 //		color.b = 255;

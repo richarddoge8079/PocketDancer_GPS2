@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class TutorialImage : MonoBehaviour {
 
+	public GameObject self;
+	public GameObject other;
 	public float tutorialRange;
 	RaycastHit isTutorial;
+	public float timer;
 	public Image tutImage;
 
 	// Use this for initialization
@@ -15,23 +18,27 @@ public class TutorialImage : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Ray tutorialRay = new Ray (transform.localPosition, transform.right);
+		Ray tutorialRay = new Ray (transform.position, transform.right);
 		if (Physics.Raycast (tutorialRay, out isTutorial, tutorialRange)) {
 			checkPlayer ();
-		} else {
-//			Debug.Log ("kdone");
-
-		}
-		Debug.DrawRay (transform.localPosition, transform.right * tutorialRange, Color.red);
+		} 
+		//Debug.DrawRay (transform.position, transform.right * tutorialRange, Color.red);
 	}
 
 	void checkPlayer()
 	{
 		if (isTutorial.collider.CompareTag ("Player")) {
-			UIManager.Instance.EnableTutorial (true);	
 			UIManager.Instance.tutorialImage.sprite = tutImage.sprite;
-		} else {
-			UIManager.Instance.EnableTutorial (false);
-		}
+			UIManager.Instance.EnableTutorial (true);	
+			StartCoroutine (Timer (timer));
+		} 
+	}
+
+	IEnumerator Timer(float timer)
+	{
+		yield return new WaitForSeconds (timer);
+		UIManager.Instance.EnableTutorial (false);	
+		self.SetActive (false);
+		other.SetActive (false);
 	}
 }

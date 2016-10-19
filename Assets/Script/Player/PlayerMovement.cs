@@ -165,26 +165,8 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	void CheckBeat(){
-		if (BeatsManager.Instance.onBeat) {
-			//Screen VFX
+		if(BeatsManager.Instance.onBeat){
 			UIManager.Instance.onBeatFX_Color.a += 0.8f;
-			UIManager.Instance.onBeatFX_Color.r += 1.0f;
-			UIManager.Instance.onBeatFX_Color.g += 1.0f;
-			UIManager.Instance.onBeatFX_Color.b += 1.0f;
-
-
-			//Icon VFX
-			UIManager.Instance.beatImageFX_Color.a += 0.8f;
-		} 
-		else {
-			//Screen VFX
-			UIManager.Instance.onBeatFX_Color.a += 0.8f;
-			UIManager.Instance.onBeatFX_Color.r += 1.0f;
-			UIManager.Instance.onBeatFX_Color.g += 0.0f;
-			UIManager.Instance.onBeatFX_Color.b += 0.0f;
-
-
-			//Icon VFX
 			UIManager.Instance.beatImageFX_Color.a += 0.8f;
 		}
 	}
