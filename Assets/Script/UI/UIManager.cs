@@ -64,7 +64,9 @@ public class UIManager : MonoBehaviour {
 //		tutorialImageColor = tutorialImage.color;
 //		tutorialImageColor.a = 0.0f;
 //		tutorialImage.color = tutorialImageColor;
-		tutorialImage.enabled = false;
+		if(tutorialImage != null){
+			tutorialImage.enabled = false;
+		}
 
 		//Initialize FX color
 		onBeatFX_Color = onBeatFX_Image.color;
@@ -74,7 +76,9 @@ public class UIManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		DetectionBar.value = GameManager.Instance.playerStatsScript.detectionLevel;
+		if(DetectionBar != null){
+			DetectionBar.value = GameManager.Instance.playerStatsScript.detectionLevel;
+		}
 
 
 		//Screen FX
@@ -89,39 +93,43 @@ public class UIManager : MonoBehaviour {
 			onBeatFX_Color.a = 0.0f;
 		}
 
-		//BeatUI FX
-		if (beatImageFX_Color.a > 0) {
-			beatImageFX_Color.a -= beatImageFX_FadeSpeed * Time.deltaTime;
+		if(beatImageFX != null){
+			//BeatUI FX
+			if (beatImageFX_Color.a > 0) {
+				beatImageFX_Color.a -= beatImageFX_FadeSpeed * Time.deltaTime;
 
-			if (beatImageFX_Color.a > 1.4f) {
-				beatImageFX_Color.a = 1.0f;
-			}
-		} 
-		else {
-			beatImageFX_Color.a = 0.0f;
-		}
-
-		beatImageFX.color = beatImageFX_Color;
-		onBeatFX_Image.color = onBeatFX_Color;
-
-		//Money UI
-		if (!updateTotalMoney) 
-		{
-//			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
-			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
-		} 
-		else 
-		{
-			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount + "(" + UiVictimMoney + ")";
-			if (UiVictimMoney <= 0) {
-				updateTotalMoney = false;
+				if (beatImageFX_Color.a > 1.4f) {
+					beatImageFX_Color.a = 1.0f;
+				}
 			} 
 			else {
-				GameManager.Instance.playerStatsScript.moneyCount += 1;
-				UiVictimMoney -= 1;
+				beatImageFX_Color.a = 0.0f;
 			}
-//			StopCoroutine ("");
-		} 
+
+			beatImageFX.color = beatImageFX_Color;
+			onBeatFX_Image.color = onBeatFX_Color;
+		}
+
+		if(moneyText != null){
+			//Money UI
+			if (!updateTotalMoney) 
+			{
+				//			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
+				moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
+			} 
+			else 
+			{
+				moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount + "(" + UiVictimMoney + ")";
+				if (UiVictimMoney <= 0) {
+					updateTotalMoney = false;
+				} 
+				else {
+					GameManager.Instance.playerStatsScript.moneyCount += 1;
+					UiVictimMoney -= 1;
+				}
+				//			StopCoroutine ("");
+			} 
+		}
 	}
 
 	public void UpdateMoney(){
@@ -157,6 +165,18 @@ public class UIManager : MonoBehaviour {
 		tutorialImage.enabled = temp;
 	}
 
+	public void StartNewGame(){
+//		DataManager.Instance.ResetData ();
+	}
+
+	public void SaveGame(){
+		DataManager.Instance.Save ();
+	}
+
+	public void LoadGame(){
+		DataManager.Instance.Load();
+	}
+
 	IEnumerator UpdateTotalMoney(float t)
 	{
 		yield return new WaitForSeconds (t);
@@ -164,5 +184,5 @@ public class UIManager : MonoBehaviour {
 //			UiVictimMoney -= 1;
 		updateTotalMoney = true;
 	}
-
+		
 }
