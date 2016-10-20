@@ -48,10 +48,8 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		playerObject = GameObject.FindGameObjectWithTag ("Player");
-		playerMovementScript = playerObject.GetComponent<PlayerMovement> ();
-		playerStatsScript = playerObject.GetComponent<PlayerStats> ();
-		playerCollisionScript = playerObject.GetComponent<PlayerCollsion> ();
+		if(playerObject != null){
+		}
 	}
 
 	void Start(){
@@ -82,5 +80,12 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds (t);
 		SoundManagerScript.Instance.PlayBGM (AudioClipID.BGM_BATTLE);
 		startBeat = true;
+	}
+
+	public void InitializeGame(){
+		playerObject = GameObject.FindGameObjectWithTag ("Player");
+		playerMovementScript = playerObject.GetComponent<PlayerMovement> ();
+		playerStatsScript = playerObject.GetComponent<PlayerStats> ();
+		playerCollisionScript = playerObject.GetComponent<PlayerCollsion> ();
 	}
 }

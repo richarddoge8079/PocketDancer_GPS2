@@ -15,7 +15,9 @@ public class ExitLevel : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
 		if(coll.CompareTag("Player")){
-//			GameManager.Instance.RestartLevel ();
+			//			GameManager.Instance.RestartLevel ();
+			DataManager.Instance.moneyCount = GameManager.Instance.playerStatsScript.moneyCount;
+			DataManager.Instance.Save ();
 			if (GameManager.Instance.pickPocket > 11) {
 				UIManager.Instance.GotoScene ("WinScene");
 			} 

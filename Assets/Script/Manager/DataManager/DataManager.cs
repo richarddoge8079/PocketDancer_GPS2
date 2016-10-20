@@ -28,15 +28,19 @@ public class DataManager : MonoBehaviour {
 	}
 
 	//Variable
-	public int DayCount;
+	public int dayCount;
+	public float moneyCount;
 
 	public void Save(){
 		if (File.Exists (Application.persistentDataPath + "/playerInfo.dat")) {
 			BinaryFormatter bf = new BinaryFormatter ();
+//			File.Delete (Application.persistentDataPath + "/playerInfo.dat");
+//			FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
 			FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
 
 			PlayerData data = new PlayerData ();
-			data.DayCount = DayCount;
+			data.dayCount = dayCount;
+			data.moneyCount = moneyCount;
 
 			bf.Serialize (file, data);
 			file.Close ();
@@ -46,7 +50,8 @@ public class DataManager : MonoBehaviour {
 			FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
 
 			PlayerData data = new PlayerData ();
-			data.DayCount = DayCount;
+//			data.dayCount = dayCount;
+			data.moneyCount = moneyCount;
 
 			bf.Serialize (file, data);
 			file.Close ();
@@ -59,21 +64,24 @@ public class DataManager : MonoBehaviour {
 			FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
 
 			PlayerData data = (PlayerData)bf.Deserialize (file);
-			file.Close ();
 
 			//Setup loaded Data
-			DayCount = data.DayCount;
+//			dayCount = data.dayCount;
+			moneyCount = data.moneyCount;
+			file.Close ();
 		}
 	}
 
 	//Saving CLass
 	[Serializable]
 	class PlayerData{
-		public int DayCount;
+		public int dayCount;
+		public float moneyCount;
 	}
 
 	public void ResetData(){
-		DayCount = 3;
+		dayCount = 3;
+		moneyCount = 340;
 	}
 
 	// Use this for initialization

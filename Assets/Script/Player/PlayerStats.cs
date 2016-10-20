@@ -6,9 +6,14 @@ public class PlayerStats : MonoBehaviour {
 	public float detectionLevel;
 	public int moneyCount;
 
+	void Awake(){
+		GameManager.Instance.InitializeGame ();
+	}
+
 	// Use this for initialization
 	void Start () {
-	
+//		DataManager.Instance.Load ();
+		moneyCount = (int)DataManager.Instance.moneyCount;
 	}
 	
 	// Update is called once per frame
