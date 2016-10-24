@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class VictimCollision : MonoBehaviour {
 	//VFX
@@ -26,6 +27,12 @@ public class VictimCollision : MonoBehaviour {
 	RaycastHit isPickpocketed;
 	// Use this for initialization
 	// Update is called once per frame
+
+	void Start()
+	{
+		ObjectPoolingScript.Instance.CreatePool (rob, 5, 10);
+	}
+
 	void Update ()
 	{
 		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
@@ -69,7 +76,23 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
+<<<<<<< HEAD
 					//					Debug.Log ("I've just been robbed!?");
+=======
+					//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+
+					GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
+
+					if (go != null) 
+					{
+						//! Reseting the bullet attributes
+						go.transform.position = transform.position;
+					}
+
+					picked = true;
+
+//					Debug.Log ("I've just been robbed!?");
+>>>>>>> 1beb415f8f6159354db04423b40e3ae38353bbcd
 					money = Random.Range (minBackMoney, maxBackMoney);
 					if (UIManager.Instance.updateTotalMoney) 
 					{
@@ -112,6 +135,21 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
+<<<<<<< HEAD
+=======
+					//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+
+					GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
+
+					if (go != null) 
+					{
+						//! Reseting the bullet attributes
+						go.transform.position = transform.position;
+					}
+
+					picked = true;
+
+>>>>>>> 1beb415f8f6159354db04423b40e3ae38353bbcd
 					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minRightMoney, maxRightMoney);
 
@@ -146,7 +184,23 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
+<<<<<<< HEAD
 					//Debug.Log ("I've just been robbed!?");
+=======
+					//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+
+					GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
+
+					if (go != null) 
+					{
+						//! Reseting the bullet attributes
+						go.transform.position = transform.position;
+					}
+
+					picked = true;
+
+					//					Debug.Log ("I've just been robbed!?");
+>>>>>>> 1beb415f8f6159354db04423b40e3ae38353bbcd
 					money = Random.Range (minLeftMoney, maxLeftMoney);
 
 					victimBackFX.SetActive (false);
@@ -199,4 +253,6 @@ public class VictimCollision : MonoBehaviour {
 		playerInRangeLeft = false;
 	}
 }
+
+
 

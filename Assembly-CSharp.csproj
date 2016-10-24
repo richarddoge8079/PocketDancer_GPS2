@@ -50,6 +50,7 @@
      <Compile Include="Assets\Script\Environment\SemiInvisibleWall.cs" />
      <Compile Include="Assets\Script\Global\DontDestroyOnLoadScript.cs" />
      <Compile Include="Assets\Script\Global\ExitLevel.cs" />
+     <Compile Include="Assets\Script\LoadingScreen.cs" />
      <Compile Include="Assets\Script\Manager\BeatsManager\BeatFinder.cs" />
      <Compile Include="Assets\Script\Manager\BeatsManager\BeatsCreater.cs" />
      <Compile Include="Assets\Script\Manager\BeatsManager\BeatsManager.cs" />
