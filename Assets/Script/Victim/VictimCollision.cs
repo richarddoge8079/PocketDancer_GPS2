@@ -4,8 +4,9 @@ using System.Collections;
 public class VictimCollision : MonoBehaviour {
 	//VFX
 	public GameObject rob;
+	public GameObject questionMark;
+	public GameObject exclamationMark;
 	//End if VFX
-
 	public GameObject victimBackFX;
 
 	public float pickpocketRange;
@@ -35,7 +36,7 @@ public class VictimCollision : MonoBehaviour {
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
 				playerInRangeBack = true;
-//				Debug.Log ("Target In Range");
+				//				Debug.Log ("Target In Range");
 			} 
 		} 
 		else if (Physics.Raycast (pickpocketRayRight, out isPickpocketed, pickpocketRange)) 
@@ -43,7 +44,7 @@ public class VictimCollision : MonoBehaviour {
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
 				playerInRangeRight = true;
-				//				Debug.Log ("Target In Range");
+				//Debug.Log ("Target In Range");
 			} 
 		} 
 		else if (Physics.Raycast (pickpocketRayLeft, out isPickpocketed, pickpocketRange)) 
@@ -51,7 +52,7 @@ public class VictimCollision : MonoBehaviour {
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
 				playerInRangeLeft = true;
-				//				Debug.Log ("Target In Range");
+				//Debug.Log ("Target In Range");
 			} 
 		} 
 		else 
@@ -68,36 +69,49 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
-					Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
-//					Debug.Log ("I've just been robbed!?");
+					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minBackMoney, maxBackMoney);
-
-					victimBackFX.SetActive (false);
-
 					if (UIManager.Instance.updateTotalMoney) 
 					{
 						UIManager.Instance.UiVictimMoney += money;
+
+						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
+
+						if (obj == null)return;
+
+						obj.transform.position = transform.position;
+						obj.SetActive (true);
+
 						picked = true;
-						GameManager.Instance.pickPocket += 1;
 					}
 					else
 					{
 						UIManager.Instance.UiVictimMoney += money;
 						UIManager.Instance.UpdateMoney ();
+						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
+
+						if (obj == null)return;
+
+						obj.transform.position = transform.position;
+						obj.SetActive (true);
+
 						picked = true;
 					}
 				} 
 				else 
 				{
-//					Debug.Log ("Why did someone touch my butt?!");
+					//					Debug.Log ("Why did someone touch my butt?!");
 					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
+					if (GameManager.Instance.playerStatsScript.detectionLevel >= 50) 
+					{
+						//						Instantiate(questionMark, transform.localPosition + new Vector3(0f, 1.5f, 0f), )
+					}
 				}
 			} 
 			if (playerInRangeRight)  
 			{
 				if (!picked)
 				{
-					Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
 					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minRightMoney, maxRightMoney);
 
@@ -106,8 +120,14 @@ public class VictimCollision : MonoBehaviour {
 					if (UIManager.Instance.updateTotalMoney) 
 					{
 						UIManager.Instance.UiVictimMoney += money;
+						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
+
+						if (obj == null)return;
+
+						obj.transform.position = transform.position;
+						obj.SetActive (true);
+
 						picked = true;
-						GameManager.Instance.pickPocket += 1;
 					}
 					else
 					{
@@ -118,7 +138,7 @@ public class VictimCollision : MonoBehaviour {
 				} 
 				else 
 				{
-					//					Debug.Log ("Why did someone touch my butt?!");
+					//Debug.Log ("Why did someone touch my butt?!");
 					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 				}
 			} 
@@ -126,8 +146,7 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
-					Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
-					//					Debug.Log ("I've just been robbed!?");
+					//Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minLeftMoney, maxLeftMoney);
 
 					victimBackFX.SetActive (false);
@@ -135,25 +154,38 @@ public class VictimCollision : MonoBehaviour {
 					if (UIManager.Instance.updateTotalMoney) 
 					{
 						UIManager.Instance.UiVictimMoney += money;
+						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
+
+						if (obj == null)return;
+
+						obj.transform.position = transform.position;
+						obj.SetActive (true);
+
 						picked = true;
-						GameManager.Instance.pickPocket += 1;
 					}
 					else
 					{
 						UIManager.Instance.UiVictimMoney += money;
 						UIManager.Instance.UpdateMoney ();
+						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
+
+						if (obj == null)return;
+
+						obj.transform.position = transform.position;
+						obj.SetActive (true);
+
 						picked = true;
 					}
 				} 
 				else 
 				{
-					//					Debug.Log ("Why did someone touch my butt?!");
+					//Debug.Log ("Why did someone touch my butt?!");
 					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 				}
 			} 
 			else 
 			{
-//				Debug.Log ("Watch Where You're Going!?");
+				//				Debug.Log ("Watch Where You're Going!?");
 				GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 			}
 		}
