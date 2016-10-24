@@ -1,24 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Manager\ObjectPoolingScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Manager\ObjectPoolingScript\ObjectPoolingScript.cs">
     <Files>
-      <File FileName="Assets\Script\Manager\ObjectPoolingScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Victim\VictimCollision.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\UI\UIManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\UI\TutorialImage.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Player\PlayerUpgrade.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Player\PlayerStats.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Global\ExitLevel.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Manager\DataManager\DataManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Manager\GameManager\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Environment\SemiInvisibleWall.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Player\PlayerMovement.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\LoadingScreen.cs">
-    <Files>
-      <File FileName="Assets\LoadingScreen.cs" Line="84" Column="49" />
->>>>>>> 1beb415f8f6159354db04423b40e3ae38353bbcd
+      <File FileName="Assets\Script\Manager\ObjectPoolingScript\ObjectPoolingScript.cs" Line="93" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
