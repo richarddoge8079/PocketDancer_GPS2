@@ -5,8 +5,7 @@ using System.Collections.Generic;
 public class VictimCollision : MonoBehaviour {
 	//VFX
 	public GameObject rob;
-	public GameObject questionMark;
-	public GameObject exclamationMark;
+
 	//End if VFX
 	public GameObject victimBackFX;
 
@@ -76,9 +75,7 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
-<<<<<<< HEAD
 					//					Debug.Log ("I've just been robbed!?");
-=======
 					//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
 
 					GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
@@ -91,19 +88,12 @@ public class VictimCollision : MonoBehaviour {
 
 					picked = true;
 
-//					Debug.Log ("I've just been robbed!?");
->>>>>>> 1beb415f8f6159354db04423b40e3ae38353bbcd
+					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minBackMoney, maxBackMoney);
 					if (UIManager.Instance.updateTotalMoney) 
 					{
 						UIManager.Instance.UiVictimMoney += money;
-
-						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
-
-						if (obj == null)return;
-
-						obj.transform.position = transform.position;
-						obj.SetActive (true);
+						GameManager.Instance.pickPocket += 1;
 
 						picked = true;
 					}
@@ -111,12 +101,6 @@ public class VictimCollision : MonoBehaviour {
 					{
 						UIManager.Instance.UiVictimMoney += money;
 						UIManager.Instance.UpdateMoney ();
-						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
-
-						if (obj == null)return;
-
-						obj.transform.position = transform.position;
-						obj.SetActive (true);
 
 						picked = true;
 					}
@@ -135,8 +119,6 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
-<<<<<<< HEAD
-=======
 					//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
 
 					GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
@@ -149,7 +131,6 @@ public class VictimCollision : MonoBehaviour {
 
 					picked = true;
 
->>>>>>> 1beb415f8f6159354db04423b40e3ae38353bbcd
 					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minRightMoney, maxRightMoney);
 
@@ -158,12 +139,7 @@ public class VictimCollision : MonoBehaviour {
 					if (UIManager.Instance.updateTotalMoney) 
 					{
 						UIManager.Instance.UiVictimMoney += money;
-						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
-
-						if (obj == null)return;
-
-						obj.transform.position = transform.position;
-						obj.SetActive (true);
+						GameManager.Instance.pickPocket += 1;
 
 						picked = true;
 					}
@@ -184,9 +160,7 @@ public class VictimCollision : MonoBehaviour {
 			{
 				if (!picked)
 				{
-<<<<<<< HEAD
 					//Debug.Log ("I've just been robbed!?");
-=======
 					//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
 
 					GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
@@ -200,7 +174,7 @@ public class VictimCollision : MonoBehaviour {
 					picked = true;
 
 					//					Debug.Log ("I've just been robbed!?");
->>>>>>> 1beb415f8f6159354db04423b40e3ae38353bbcd
+
 					money = Random.Range (minLeftMoney, maxLeftMoney);
 
 					victimBackFX.SetActive (false);
@@ -208,12 +182,7 @@ public class VictimCollision : MonoBehaviour {
 					if (UIManager.Instance.updateTotalMoney) 
 					{
 						UIManager.Instance.UiVictimMoney += money;
-						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
-
-						if (obj == null)return;
-
-						obj.transform.position = transform.position;
-						obj.SetActive (true);
+						GameManager.Instance.pickPocket += 1;
 
 						picked = true;
 					}
@@ -221,12 +190,7 @@ public class VictimCollision : MonoBehaviour {
 					{
 						UIManager.Instance.UiVictimMoney += money;
 						UIManager.Instance.UpdateMoney ();
-						GameObject obj = ObjectPoolingScript.Current.GetPooledObject ();
 
-						if (obj == null)return;
-
-						obj.transform.position = transform.position;
-						obj.SetActive (true);
 
 						picked = true;
 					}
@@ -253,6 +217,3 @@ public class VictimCollision : MonoBehaviour {
 		playerInRangeLeft = false;
 	}
 }
-
-
-
