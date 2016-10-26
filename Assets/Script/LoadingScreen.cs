@@ -14,12 +14,25 @@ public class LoadingScreen : MonoBehaviour {
 	public GameObject cameraObject;
 	public GameObject plane;
 	public GameObject door;
-	public GameObject button;
 
 	private Vector3 tempPosition;
 	private AsyncOperation async;
 	public string sceneName;
+	private bool canLoad = false;
 	private bool gotRoutine = false;
+
+	void OnEnable () 
+	{
+		// Subscribe to events
+		InputManagerScript.Instance.EvtOnTouchDown 	+= OnTouchDown;		
+		InputManagerScript.Instance.EvtOnTouchUp 	+= OnTouchUp;
+	}
+
+	void OnDisable() {
+		// Unsubscribe to events
+		InputManagerScript.Instance.EvtOnTouchDown 	-= OnTouchDown;		
+		InputManagerScript.Instance.EvtOnTouchUp 	-= OnTouchUp;
+	}
 
 	void Start () 
 	{
@@ -40,18 +53,13 @@ public class LoadingScreen : MonoBehaviour {
 		yield return async;
 	}
 
-	private bool transitioning = false;
 
 	void Update()
 	{
 		if (async != null && async.progress<0.9f)
 		{
-			if (!transitioning)
-			{
-				Debug.Log("done loading");
-				transitioning = true;
-				StartCoroutine ("StopDoor", 3f);
-			}
+			Debug.Log("done loading");
+			StartCoroutine ("StopDoor", 3f);
 		}
 	}
 
@@ -64,23 +72,20 @@ public class LoadingScreen : MonoBehaviour {
 	public void SwitchScene()
 	{
 		Debug.Log("switching");
-
-		if (!gotRoutine)
+		if (gotRoutine) {
 			StartCoroutine ("OpenDoor");
+		}
 	}
 
 	IEnumerator StopDoor(float time)
 	{
-		gotRoutine = true;
 		yield return new WaitForSeconds (time);
 		verticalSpeed = 0;
-		button.SetActive(true);	
-		gotRoutine = false;
+		canLoad = true;
 	}
 
 	IEnumerator OpenDoor()
 	{
-		button.SetActive(false);	
 		door.GetComponent<SpriteRenderer> ().sprite = openDoor;
 		yield return new WaitForSeconds (1f);
 		cameraObject.GetComponent<Animator> ().Play ("CameraMovement");
@@ -88,5 +93,24 @@ public class LoadingScreen : MonoBehaviour {
 		mat.color = Color.white;		
 		yield return new WaitForSeconds (1f);
 		async.allowSceneActivation = true;
+	}
+
+	bool OnTouchDown(int fingerID, Vector2 pos)
+	{
+		// move to rayposition on the offset
+		//targetPosition = GetRayPosition (pos) + offset;
+		if(fingerID == 0 && canLoad){
+			if (pos.y >= 0 && pos.x >= 0)
+			{
+				gotRoutine = true;
+				SwitchScene ();
+			} 
+		}
+		return true;
+	}
+
+	bool OnTouchUp(int fingerID, Vector2 pos)
+	{
+		return true;
 	}
 }
