@@ -59,7 +59,6 @@
      <Compile Include="Assets\Script\Manager\DataManager\DataManager.cs" />
      <Compile Include="Assets\Script\Manager\GameManager\GameManager.cs" />
      <Compile Include="Assets\Script\Manager\InputManagerScript.cs" />
-     <Compile Include="Assets\Script\Manager\ObjectPoolingScript.cs" />
      <Compile Include="Assets\Script\Manager\ObjectPoolingScript\ObjectPool.cs" />
      <Compile Include="Assets\Script\Manager\ObjectPoolingScript\ObjectPoolingScript.cs" />
      <Compile Include="Assets\Script\Manager\SoundManager\PlayMusic.cs" />
@@ -76,6 +75,7 @@
      <Compile Include="Assets\Script\UI\TutorialImage.cs" />
      <Compile Include="Assets\Script\UI\UIManager.cs" />
      <Compile Include="Assets\Script\Victim\VictimBehaviour.cs" />
+     <Compile Include="Assets\Script\Victim\VictimChase.cs" />
      <Compile Include="Assets\Script\Victim\VictimCollision.cs" />
      <Compile Include="Assets\Script\Victim\VictimFollow.cs" />
      <Compile Include="Assets\Script\Victim\VictimFollowerSpawner.cs" />
