@@ -38,22 +38,30 @@ public class PlayerUpgrade : MonoBehaviour {
 	//! something something for rotation of upgrades replacing activated ones
 	}
 
-	void activateUpgrade()
+	public void onUpgrade1Press()
 	{
-		/*if (upgrade1.) {
-			if(Money >= 1000)
-			{
-				Money -= 1000;
-				upgrade1Active = true;
-			}
+		if(Money >= 1000)
+		{
+			Money -= 1000;
+			upgrade1Active = true;
 		}
-		if (upgrade2.) {
+	}
+
+	public void onUpgrade2Press()
+	{
+		if(Money >= 1000)
+		{
 			Money -= 4000;
 			upgrade2Active = true;
 		}
-		if (upgrade2.) {
+	}
+
+	public void onUpgrade3Press()
+	{
+		if(Money >= 1000)
+		{
 			Money -= 500;
 			upgrade3Active = true;
-		}*/
+		}
 	}
 }
