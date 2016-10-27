@@ -3,13 +3,29 @@ using System.Collections;
 
 public class VictimChase : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	public float moveTimer;
+
+	public bool canChase;
+
+	void Start(){
+		StartCoroutine ("ChasePlayerTimer",moveTimer);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	IEnumerator ChasePlayerTimer(float t){
+		yield return new WaitForSeconds (t);
+		if (canChase) {
+			if (GameManager.Instance.playerObject.transform.position.x > transform.position.x) {
+				transform.Translate (Vector3.right * 2);
+			} else if (GameManager.Instance.playerObject.transform.position.x < transform.position.x) {
+				transform.Translate (-Vector3.right * 2);
+			}
+
+			if (GameManager.Instance.playerObject.transform.position.z > transform.position.z) {
+				transform.Translate (Vector3.forward * 2);
+			} else if (GameManager.Instance.playerObject.transform.position.z < transform.position.z) {
+				transform.Translate (-Vector3.forward * 2);
+			}
+			StartCoroutine ("ChasePlayerTimer", moveTimer);
+		}
 	}
 }
