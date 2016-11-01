@@ -27,6 +27,11 @@ public class VictimBehaviour : MonoBehaviour {
 
 	public List<PatternInfo> patternInfoList = new List<PatternInfo>();
 
+	//Chase Player
+	public bool isChasingPlayer;
+	public GameObject NavMeshChaserObject;
+	//End of Chase Player
+
 	// Use this for initialization
 	void Start () {
 //		if (isIdle) {
@@ -65,15 +70,29 @@ public class VictimBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (isPatternCompleted == true) {
-			currentPatternIndex++;
-			if (currentPatternIndex >= patternInfoList.Count) {
-				currentPatternIndex = 0; 
+		if (!isChasingPlayer) {
+			if (isPatternCompleted == true) {
+				currentPatternIndex++;
+				if (currentPatternIndex >= patternInfoList.Count) {
+					currentPatternIndex = 0; 
+				}
+				StartCoroutine (patternInfoList [currentPatternIndex].functionName, patternInfoList [currentPatternIndex].yieldDelay);
+				isPatternCompleted = false;
 			}
-			StartCoroutine (patternInfoList[currentPatternIndex].functionName, patternInfoList[currentPatternIndex].yieldDelay);
-			isPatternCompleted = false;
+		} 
+		else {
+			StartCoroutine ("ChaseBlink", 0.3f);
 		}
 	}
+
+	//Chase Timer
+	IEnumerator ChaseBlink(float t){
+		yield return new WaitForSeconds (t);
+		transform.position = NavMeshChaserObject.transform.position;
+		transform.rotation = NavMeshChaserObject.transform.rotation;
+		StartCoroutine ("ChaseBlink", 0.3f);
+	}
+	//End of Chase Timer
 
 	IEnumerator PatrolLeft (float c)
 	{
