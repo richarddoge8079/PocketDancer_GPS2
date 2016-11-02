@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerStats : MonoBehaviour {
 
 	public float detectionLevel;
+	public bool isDetected;
+
 	public int moneyCount;
 
 	void Awake(){
@@ -26,9 +28,9 @@ public class PlayerStats : MonoBehaviour {
 				detectionLevel = 0.0f;
 			}
 
-			if (detectionLevel >= 100.0f) {
-				GameManager.Instance.RestartLevel ();
-			}
+//			if (detectionLevel >= 100.0f) {
+//				GameManager.Instance.RestartLevel ();
+//			}
 		} 
 		else {
 			if (detectionLevel <= 99.0f) {
@@ -37,6 +39,9 @@ public class PlayerStats : MonoBehaviour {
 			else {
 				detectionLevel = 100.0f;
 			}
+		}
+		if(detectionLevel >= 100.0f){
+			isDetected = true;
 		}
 	}
 }

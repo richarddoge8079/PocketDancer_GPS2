@@ -25,11 +25,13 @@ public class VictimBehaviour : MonoBehaviour {
 	public float moveCounter;
 	public bool isIdle;
 
+	public bool startChase;
+
 	public List<PatternInfo> patternInfoList = new List<PatternInfo>();
 
 	//Chase Player
 	public bool isChasingPlayer;
-	public GameObject NavMeshChaserObject;
+	public NavMeshAgent navMeshChaserObject;
 	//End of Chase Player
 
 	// Use this for initialization
@@ -70,6 +72,10 @@ public class VictimBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(GameManager.Instance.playerStatsScript.isDetected){
+			isChasingPlayer = true;
+		}
+
 		if (!isChasingPlayer) {
 			if (isPatternCompleted == true) {
 				currentPatternIndex++;
@@ -81,15 +87,19 @@ public class VictimBehaviour : MonoBehaviour {
 			}
 		} 
 		else {
-			StartCoroutine ("ChaseBlink", 0.3f);
+			if(!startChase){
+				StartCoroutine ("ChaseBlink", 0.3f);
+				startChase = true;
+			}
 		}
 	}
 
 	//Chase Timer
 	IEnumerator ChaseBlink(float t){
 		yield return new WaitForSeconds (t);
-		transform.position = NavMeshChaserObject.transform.position;
-		transform.rotation = NavMeshChaserObject.transform.rotation;
+		transform.position = navMeshChaserObject.transform.position;
+		transform.rotation = navMeshChaserObject.transform.rotation;
+		navMeshChaserObject.SetDestination (GameManager.Instance.playerObject.transform.position);
 		StartCoroutine ("ChaseBlink", 0.3f);
 	}
 	//End of Chase Timer
