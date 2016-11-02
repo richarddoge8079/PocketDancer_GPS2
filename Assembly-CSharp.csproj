@@ -75,6 +75,7 @@
      <Compile Include="Assets\Script\UI\TutorialImage.cs" />
      <Compile Include="Assets\Script\UI\UIManager.cs" />
      <Compile Include="Assets\Script\Victim\VictimBehaviour.cs" />
+     <Compile Include="Assets\Script\Victim\VictimCautionIcon.cs" />
      <Compile Include="Assets\Script\Victim\VictimChase.cs" />
      <Compile Include="Assets\Script\Victim\VictimCollision.cs" />
      <Compile Include="Assets\Script\Victim\VictimFollow.cs" />
