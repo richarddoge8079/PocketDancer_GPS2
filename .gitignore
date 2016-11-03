@@ -1,7 +1,15 @@
 Library/
 obj/
 .vs/
-Assembly-CSharp.csproj
 Temp/
+ProjectSettings/
+Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj
+Assembly-UnityScript.unityproj
+MObileGame.userprefs
+PocketDancer.CSharp.csproj
+PocketDancer.userprefs
+PocketDancer_GPS2.sln
 PocketDancer_GPS2.userprefs
+PocketDancer2.userprefs
+Version Control.userprefs
