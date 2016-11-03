@@ -22,6 +22,7 @@ public class FieldOfView : MonoBehaviour {
 	Mesh viewMesh;
 
 	bool checkPlayer;
+	public VictimBehaviour victimBehaviorScript;
 
 	void Start()
 	{
@@ -68,12 +69,15 @@ public class FieldOfView : MonoBehaviour {
 			if (visibleTargets [i].CompareTag ("Player")) {
 				GameManager.Instance.inSight = true;
 				checkPlayer = true;
+				victimBehaviorScript.playerInSight = true;
+				victimBehaviorScript.canChase = true;
 				return;
 			}
 		}
 		if(checkPlayer){
 			checkPlayer = false;
 			GameManager.Instance.inSight = false;
+			victimBehaviorScript.playerInSight = false;
 		}
 	}
 

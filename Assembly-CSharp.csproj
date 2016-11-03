@@ -38,18 +38,20 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Script\DisableObjectTimer.cs" />
      <Compile Include="Assets\Script\Environment\SemiInvisibleWall.cs" />
+     <Compile Include="Assets\Script\ExclamationDisable.cs" />
      <Compile Include="Assets\Script\Global\DontDestroyOnLoadScript.cs" />
      <Compile Include="Assets\Script\Global\ExitLevel.cs" />
+     <Compile Include="Assets\Script\HideoutCameraMovingScript.cs" />
      <Compile Include="Assets\Script\LoadingScreen.cs" />
      <Compile Include="Assets\Script\Manager\BeatsManager\BeatFinder.cs" />
      <Compile Include="Assets\Script\Manager\BeatsManager\BeatsCreater.cs" />
@@ -68,6 +70,7 @@
      <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Script\Player\PlayerStats.cs" />
      <Compile Include="Assets\Script\Player\PlayerUpgrade.cs" />
+     <Compile Include="Assets\Script\QuestionDisable.cs" />
      <Compile Include="Assets\Script\Test\Move.cs" />
      <Compile Include="Assets\Script\UI\DestroyParticle.cs" />
      <Compile Include="Assets\Script\UI\TestBeat.cs" />
@@ -83,10 +86,10 @@
      <Compile Include="Assets\Script\Victim\Vision\FieldOfView.cs" />
      <Compile Include="Assets\Soldier\Script\Movement.cs" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

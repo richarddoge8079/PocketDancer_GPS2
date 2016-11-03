@@ -26,6 +26,8 @@ public class VictimBehaviour : MonoBehaviour {
 	public bool isIdle;
 
 	public bool startChase;
+	public bool canChase;
+	public bool playerInSight;
 
 	public List<PatternInfo> patternInfoList = new List<PatternInfo>();
 
@@ -97,11 +99,28 @@ public class VictimBehaviour : MonoBehaviour {
 	//Chase Timer
 	IEnumerator ChaseBlink(float t){
 		yield return new WaitForSeconds (t);
+		if (playerInSight) {
+			if (canChase) {
+				navMeshChaserObject.SetDestination (GameManager.Instance.playerObject.transform.position);
+				StopCoroutine ("ResetChase");
+			}
+		} 
+		else {
+			if(canChase){
+				StartCoroutine ("ResetChase",1.0f);
+			}
+		}
+
 		transform.position = navMeshChaserObject.transform.position;
 		transform.rotation = navMeshChaserObject.transform.rotation;
-		navMeshChaserObject.SetDestination (GameManager.Instance.playerObject.transform.position);
 		StartCoroutine ("ChaseBlink", 0.3f);
 	}
+
+	IEnumerator ResetChase(float t){
+		yield return new WaitForSeconds (t);
+		canChase = false;
+	}
+
 	//End of Chase Timer
 
 	IEnumerator PatrolLeft (float c)

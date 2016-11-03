@@ -7,6 +7,7 @@ public class VictimFollowerSpawner : MonoBehaviour {
 	public GameObject ga;
 
 	public GameObject navMeshObject;
+	public GameObject navMeshFollow;
 	public VictimBehaviour victimBehaviorScript;
 
 	// Use this for initialization
@@ -15,7 +16,7 @@ public class VictimFollowerSpawner : MonoBehaviour {
 		ga = Instantiate (victimFollower);
 		ga.SendMessage ("SetFollow", this.gameObject);
 
-		GameObject navMeshFollow = Instantiate (navMeshObject);
+		navMeshFollow = Instantiate (navMeshObject);
 		navMeshFollow.transform.position = transform.position;
 
 		victimBehaviorScript.navMeshChaserObject = navMeshFollow.GetComponent<NavMeshAgent>();
