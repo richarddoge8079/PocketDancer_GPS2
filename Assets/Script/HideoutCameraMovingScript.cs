@@ -7,9 +7,9 @@ public class HideoutCameraMovingScript : MonoBehaviour
 {
 	public Image FadeImg;
 	public float fadeSpeed = 2.0f;
-	public bool sceneStarting = true;
+	bool SwitchColour = true;
 
-	public Canvas UpgSysUI;
+	public GameObject UpgSysUI;
 
 	private Animator anim;
 
@@ -33,14 +33,13 @@ public class HideoutCameraMovingScript : MonoBehaviour
 		// If the scene is starting...
 		if (timer >= 4.0f)
 		{
+			SwitchColour = false;
 			StartBlackscreen ();
 		} 
 
-		if (timer >= 8.0f)
+		if (timer >= 6.0f)
 		{
-			StartScene();
-			Debug.Log ("End");
-			UpgSysUI.enabled = true;
+			UpgSysUI.SetActive(true);
 		}
 			// ... call the StartScene function.	
 	}
@@ -60,28 +59,33 @@ public class HideoutCameraMovingScript : MonoBehaviour
 
 	void StartScene()
 	{
-		// Fade the texture to clear.
-		FadeToClear();
-
-		// If the texture is almost clear...
-		if (FadeImg.color.a <= 0.0f)
+		if (SwitchColour == true)
 		{
-			// ... set the colour to clear and disable the RawImage.
-			FadeImg.color = Color.clear;
-			FadeImg.enabled = false;
+			FadeToClear ();
+
+			// If the texture is almost clear...
+			if (FadeImg.color.a <= 0.0f)
+			{
+				// ... set the colour to clear and disable the RawImage.
+				FadeImg.color = Color.clear;
+				FadeImg.enabled = false;
+			}
 		}
 	}
 
 	void StartBlackscreen()
 	{
-		FadeToBlack();
-
-		// If the texture is almost clear...
-		if (FadeImg.color.a >= 255.0f)
+		if (SwitchColour == false) 
 		{
-			// ... set the colour to clear and disable the RawImage.
-			FadeImg.color = Color.black;
-			FadeImg.enabled = true;
+			FadeToBlack();
+
+			// If the texture is almost clear...
+			if (FadeImg.color.a >= 255.0f)
+			{
+				// ... set the colour to clear and disable the RawImage.
+				FadeImg.color = Color.black;
+				FadeImg.enabled = true;
+			}
 		}
 	}
 }
