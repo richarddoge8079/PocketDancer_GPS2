@@ -27,7 +27,7 @@ public class ExitLevel : MonoBehaviour {
 //				UIManager.Instance.GotoScene("LoseScene");
 //			}
 
-			UIManager.Instance.GotoScene("Hideout");
+			UIManager.Instance.GotoScene(sceneName);
 //			SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
 		}
 	}

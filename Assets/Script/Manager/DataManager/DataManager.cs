@@ -50,7 +50,7 @@ public class DataManager : MonoBehaviour {
 			FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
 
 			PlayerData data = new PlayerData ();
-//			data.dayCount = dayCount;
+			data.dayCount = dayCount;
 			data.moneyCount = moneyCount;
 
 			bf.Serialize (file, data);
@@ -66,7 +66,7 @@ public class DataManager : MonoBehaviour {
 			PlayerData data = (PlayerData)bf.Deserialize (file);
 
 			//Setup loaded Data
-//			dayCount = data.dayCount;
+			dayCount = data.dayCount;
 			moneyCount = data.moneyCount;
 			file.Close ();
 		}
