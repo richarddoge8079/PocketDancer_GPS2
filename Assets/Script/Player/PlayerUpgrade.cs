@@ -107,10 +107,11 @@ public class PlayerUpgrade : MonoBehaviour {
 
 	public void upgrade1Press()
 	{
-		for (int i = 0; i < upgradeList.Length; i++) {
-			if (currentMoney >= upgradeList [i].upgradePrice) {
-				currentMoney -= upgradePrice;
-			}
-		}
+//		for (int i = 0; i < upgradeList.Length; i++) {
+//			if (currentMoney >= upgradeList [i].upgradePrice) {
+//				currentMoney -= upgradePrice;
+//			}
+//		}
 	}
 }
+

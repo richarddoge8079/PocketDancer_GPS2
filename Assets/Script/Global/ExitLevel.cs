@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ExitLevel : MonoBehaviour {
 
+	public string sceneName;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -16,14 +18,17 @@ public class ExitLevel : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		if(coll.CompareTag("Player")){
 			//			GameManager.Instance.RestartLevel ();
-			DataManager.Instance.moneyCount = GameManager.Instance.playerStatsScript.moneyCount;
-			DataManager.Instance.Save ();
-			if (GameManager.Instance.pickPocket > 11) {
-				UIManager.Instance.GotoScene ("WinScene");
-			} 
-			else {
-				UIManager.Instance.GotoScene("LoseScene");
-			}
+//			DataManager.Instance.moneyCount = GameManager.Instance.playerStatsScript.moneyCount;
+//			DataManager.Instance.Save ();
+//			if (GameManager.Instance.pickPocket > 11) {
+//				UIManager.Instance.GotoScene ("WinScene");
+//			} 
+//			else {
+//				UIManager.Instance.GotoScene("LoseScene");
+//			}
+
+			UIManager.Instance.GotoScene("Hideout");
+//			SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
 		}
 	}
 }
