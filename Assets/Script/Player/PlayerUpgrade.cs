@@ -60,6 +60,8 @@ public class PlayerUpgrade : MonoBehaviour {
 		upgradePrice [6] = 650;
 		upgradePrice [7] = 800;
 
+		DataManager.Instance.playerUpgradeScript = this.gameObject.GetComponent<PlayerUpgrade> ();
+
 		upgrade1Active = DataManager.Instance.upgrade1Active;
 		upgrade2Active = DataManager.Instance.upgrade2Active;
 		upgrade3Active = DataManager.Instance.upgrade3Active;
