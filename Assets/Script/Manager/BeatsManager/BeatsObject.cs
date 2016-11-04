@@ -39,7 +39,9 @@ public class BeatsObject : MonoBehaviour {
 			UIManager.Instance.OnBeat ();
 			UIManager.Instance.beatImage_Animator.Play ("BeatUI_On");
 			this.gameObject.SetActive(false);
-			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_EXPLOSION);
+
+			//Sound Check
+//			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_EXPLOSION);
 		}
 
 		if(transform.position.x >= resetBeatPosition.position.x-0.5f){

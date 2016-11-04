@@ -59,6 +59,17 @@ public class PlayerUpgrade : MonoBehaviour {
 		upgradePrice [5] = 500;
 		upgradePrice [6] = 650;
 		upgradePrice [7] = 800;
+
+		DataManager.Instance.playerUpgradeScript = this.gameObject.GetComponent<PlayerUpgrade> ();
+
+		upgrade1Active = DataManager.Instance.upgrade1Active;
+		upgrade2Active = DataManager.Instance.upgrade2Active;
+		upgrade3Active = DataManager.Instance.upgrade3Active;
+		upgrade4Active = DataManager.Instance.upgrade4Active;
+		upgrade5Active = DataManager.Instance.upgrade5Active;
+		upgrade6Active = DataManager.Instance.upgrade6Active;
+		upgrade7Active = DataManager.Instance.upgrade7Active;
+		upgrade8Active = DataManager.Instance.upgrade8Active;
 	}
 
 	// Update is called once per frame
@@ -302,7 +313,20 @@ public class PlayerUpgrade : MonoBehaviour {
 			}
 		}
 	}
+
+	public void UpdateDataManager(){
+		DataManager.Instance.upgrade1Active = upgrade1Active;
+		DataManager.Instance.upgrade2Active = upgrade2Active;
+		DataManager.Instance.upgrade3Active = upgrade3Active;
+		DataManager.Instance.upgrade4Active = upgrade4Active;
+		DataManager.Instance.upgrade5Active = upgrade5Active;
+		DataManager.Instance.upgrade6Active = upgrade6Active;
+		DataManager.Instance.upgrade7Active = upgrade7Active;
+		DataManager.Instance.upgrade8Active = upgrade8Active;
+	}
 }
+
+
 
 				// For upgrade reference sake
 				/*case 0:
