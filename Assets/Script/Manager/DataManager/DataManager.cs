@@ -31,6 +31,19 @@ public class DataManager : MonoBehaviour {
 	public int dayCount;
 	public float moneyCount;
 
+	//Upgrades
+	public PlayerUpgrade playerUpgradeScript;
+
+	public bool upgrade1Active;
+	public bool upgrade2Active;
+	public bool upgrade3Active;
+	public bool upgrade4Active;
+	public bool upgrade5Active;
+	public bool upgrade6Active;
+	public bool upgrade7Active;
+	public bool upgrade8Active;
+	public bool upgrade9Active;
+
 	public void Save(){
 		if (File.Exists (Application.persistentDataPath + "/playerInfo.dat")) {
 			BinaryFormatter bf = new BinaryFormatter ();
@@ -42,6 +55,15 @@ public class DataManager : MonoBehaviour {
 			data.dayCount = dayCount;
 			data.moneyCount = moneyCount;
 
+			data.upgrade1Active = upgrade1Active;
+			data.upgrade2Active = upgrade2Active;
+			data.upgrade3Active = upgrade3Active;
+			data.upgrade4Active = upgrade4Active;
+			data.upgrade5Active = upgrade5Active;
+			data.upgrade6Active = upgrade6Active;
+			data.upgrade7Active = upgrade7Active;
+			data.upgrade8Active = upgrade8Active;
+
 			bf.Serialize (file, data);
 			file.Close ();
 		} 
@@ -52,6 +74,15 @@ public class DataManager : MonoBehaviour {
 			PlayerData data = new PlayerData ();
 			data.dayCount = dayCount;
 			data.moneyCount = moneyCount;
+
+			data.upgrade1Active = upgrade1Active;
+			data.upgrade2Active = upgrade2Active;
+			data.upgrade3Active = upgrade3Active;
+			data.upgrade4Active = upgrade4Active;
+			data.upgrade5Active = upgrade5Active;
+			data.upgrade6Active = upgrade6Active;
+			data.upgrade7Active = upgrade7Active;
+			data.upgrade8Active = upgrade8Active;
 
 			bf.Serialize (file, data);
 			file.Close ();
@@ -68,6 +99,16 @@ public class DataManager : MonoBehaviour {
 			//Setup loaded Data
 			dayCount = data.dayCount;
 			moneyCount = data.moneyCount;
+
+			upgrade1Active = data.upgrade1Active;
+			upgrade2Active = data.upgrade2Active;
+			upgrade3Active = data.upgrade3Active;
+			upgrade4Active = data.upgrade4Active;
+			upgrade5Active = data.upgrade5Active;
+			upgrade6Active = data.upgrade6Active;
+			upgrade7Active = data.upgrade7Active;
+			upgrade8Active = data.upgrade8Active;
+
 			file.Close ();
 		}
 	}
@@ -77,6 +118,16 @@ public class DataManager : MonoBehaviour {
 	class PlayerData{
 		public int dayCount;
 		public float moneyCount;
+
+		public bool upgrade1Active;
+		public bool upgrade2Active;
+		public bool upgrade3Active;
+		public bool upgrade4Active;
+		public bool upgrade5Active;
+		public bool upgrade6Active;
+		public bool upgrade7Active;
+		public bool upgrade8Active;
+		public bool upgrade9Active;
 	}
 
 	public void ResetData(){
