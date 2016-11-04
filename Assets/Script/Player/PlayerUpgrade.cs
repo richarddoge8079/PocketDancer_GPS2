@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class PlayerUpgrade : MonoBehaviour {
 
 	int currentMoney;
-	int upgradePrice;
+	public int[] upgradeOnList = new int[3];
+	int selectedUpgrades;
 
-	/*public bool upgrade1Active;
+	public bool upgrade1Active;
 	public bool upgrade2Active;
 	public bool upgrade3Active;
 	public bool upgrade4Active;
@@ -15,35 +17,62 @@ public class PlayerUpgrade : MonoBehaviour {
 	public bool upgrade6Active;
 	public bool upgrade7Active;
 	public bool upgrade8Active;
-	public bool upgrade9Active;*/
-
-	//public bool[] upgradeActiveList;
+	public bool upgrade9Active;
 
 	public Button upgrade1;
 	public Button upgrade2;
 	public Button upgrade3;
 
-	int[] upgradeList;
+	static T GetRandomEnum<T>()
+	{
+		System.Array A = System.Enum.GetValues(typeof(T));
+		T V = (T)A.GetValue(UnityEngine.Random.Range(0,A.Length));
+		return V;
+	}
 
+	public bool[] upgradeActive = new bool[8];
+	public int[] upgradePrice = new int[8];
+	public enum upgradeList
+	{
+		Upgrade1,
+		Upgrade2,
+		Upgrade3,
+		Upgrade4,
+		Upgrade5,
+		Upgrade6,
+		Upgrade7,
+		Upgrade8
+	};
 
 	// Use this for initialization
 	void Start () {
 		currentMoney = gameObject.GetComponent<PlayerStats> ().moneyCount;
-		upgradeList = new int[3];
-		//upgradeActiveList = new bool[8];
 		upgrade1 = gameObject.GetComponent<Button> ();
 		upgrade2 = gameObject.GetComponent<Button> ();
 		upgrade3 = gameObject.GetComponent<Button> ();
+		for (int i = 0; i < upgradeActive.Length; i++) {
+			upgradeActive [i] = false;
+		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		//! something something for rotation of upgrades replacing activated ones
-		for (int i = 0; i < upgradeList.Length; i++) {
+		selectedUpgrades = (int)GetRandomEnum<upgradeList>();
+		for (int i = 0; i < upgradeOnList.Length; i++) {
 			if (currentMoney != 0) {
-				int selectedUpgrade;
-				selectedUpgrade = Random.Range (0, 7);
-				switch (selectedUpgrade) {
+				upgradeOnList [i] = selectedUpgrades;
+				if (upgradeOnList [1] == upgradeOnList [0] && upgradeOnList [1]) {
+				}
+			}
+		}
+	}
+}
+
+/*for (int i = 0; i < upgradeList.Length; i++) {
+			if (currentMoney != 0) {
+				upgradeList[i] = Random.Range(0,7);
+
+				switch (upgradeList) {
 				case 0:
 					// Suit & Tie (Enter VIP section without being insta-detect)
 					upgradePrice = 1000;
@@ -100,17 +129,6 @@ public class PlayerUpgrade : MonoBehaviour {
 					//upgrade8Active = true;
 					break;
 				}
-				upgradeList [i] = selectedUpgrade;
-			}
-		}
-	}
 
-	public void upgrade1Press()
-	{
-		for (int i = 0; i < upgradeList.Length; i++) {
-			if (currentMoney >= upgradeList [i].upgradePrice) {
-				currentMoney -= upgradePrice;
 			}
-		}
-	}
-}
+		}*/
