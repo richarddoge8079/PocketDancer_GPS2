@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
-using System;
+//using System;
 
 public class PlayerUpgrade : MonoBehaviour {
-
-	int currentMoney;
-	public int[] upgradeOnList = new int[3];
-	int selectedUpgrades;
 
 	public bool upgrade1Active;
 	public bool upgrade2Active;
@@ -17,21 +14,20 @@ public class PlayerUpgrade : MonoBehaviour {
 	public bool upgrade6Active;
 	public bool upgrade7Active;
 	public bool upgrade8Active;
-	public bool upgrade9Active;
+
+	int currentMoney;
+	//public string[] upgradeOnList = new string[3];
+	//public string[] selectedUpgrade = new string[3];
+
+	public List<string> selectedUpgrade = new List<string>();
+	public List<string> upgradeOnList = new List<string>();
 
 	public Button upgrade1;
 	public Button upgrade2;
 	public Button upgrade3;
 
-	static T GetRandomEnum<T>()
-	{
-		System.Array A = System.Enum.GetValues(typeof(T));
-		T V = (T)A.GetValue(UnityEngine.Random.Range(0,A.Length));
-		return V;
-	}
-
-	public int[] upgradePrice = new int[8];
-	public enum upgradeList
+	public int[] upgradePrice = new int[8] {1000, 4000, 500, 5000, 850, 500, 650, 800};
+	/*public enum upgradeList
 	{
 		Upgrade1 = 0,
 		Upgrade2,
@@ -41,9 +37,20 @@ public class PlayerUpgrade : MonoBehaviour {
 		Upgrade6,
 		Upgrade7,
 		Upgrade8
-	};
+	};*/
 
-	upgradeList upList = upgradeList.Upgrade1 | upgradeList.Upgrade2 | upgradeList.Upgrade3 | upgradeList.Upgrade4 | upgradeList.Upgrade5 | upgradeList.Upgrade6 | upgradeList.Upgrade7 | upgradeList.Upgrade8;
+	//public string[] upgradeList = new string[] {"Upgrade1", "Upgrade2", "Upgrade3", "Upgrade4", "Upgrade5", "Upgrade6", "Upgrade7", "Upgrade8"};
+	public List<string> upgradeList = new List<string> {"Upgrade1", "Upgrade2", "Upgrade3", "Upgrade4", "Upgrade5", "Upgrade6", "Upgrade7", "Upgrade8"};
+
+	//upgradeList upList = upgradeList.Upgrade1 | upgradeList.Upgrade2 | upgradeList.Upgrade3 | upgradeList.Upgrade4 | upgradeList.Upgrade5 | upgradeList.Upgrade6 | upgradeList.Upgrade7 | upgradeList.Upgrade8;
+
+	/*static T GetRandomEnum<T>()
+	{
+		System.Array A = System.Enum.GetValues(typeof(T));
+		T V = (T)A.GetValue(UnityEngine.Random.Range(0,A.Length));
+		return V;
+	}*/
+
 
 	// Use this for initialization
 	void Start () {
@@ -51,42 +58,34 @@ public class PlayerUpgrade : MonoBehaviour {
 		upgrade1 = gameObject.GetComponent<Button> ();
 		upgrade2 = gameObject.GetComponent<Button> ();
 		upgrade3 = gameObject.GetComponent<Button> ();
-		upgradePrice [0] = 1000;
-		upgradePrice [1] = 4000;
-		upgradePrice [2] = 500;
-		upgradePrice [3] = 5000;
-		upgradePrice [4] = 850;
-		upgradePrice [5] = 500;
-		upgradePrice [6] = 650;
-		upgradePrice [7] = 800;
-
-		DataManager.Instance.playerUpgradeScript = this.gameObject.GetComponent<PlayerUpgrade> ();
-
-		upgrade1Active = DataManager.Instance.upgrade1Active;
-		upgrade2Active = DataManager.Instance.upgrade2Active;
-		upgrade3Active = DataManager.Instance.upgrade3Active;
-		upgrade4Active = DataManager.Instance.upgrade4Active;
-		upgrade5Active = DataManager.Instance.upgrade5Active;
-		upgrade6Active = DataManager.Instance.upgrade6Active;
-		upgrade7Active = DataManager.Instance.upgrade7Active;
-		upgrade8Active = DataManager.Instance.upgrade8Active;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		selectedUpgrades = (int)GetRandomEnum<upgradeList>();
-		for (int i = 0; i < upgradeOnList.Length; i++) {
-			upgradeOnList [i] = selectedUpgrades;
-			if (upgradeOnList [1] == upgradeOnList [0]) {
-				upgradeOnList [1] = selectedUpgrades;
-			}
-			if (upgradeOnList [2] == upgradeOnList [0] && upgradeOnList [2] == upgradeOnList [1]) {
-				upgradeOnList [2] = selectedUpgrades;
-			}
-		}
+		UpgradeRotation ();
 	}
 
-	public void onUpgrade1Press()
+	List<string> UpgradeRotation()
+	{
+		Debug.Log ("rotation begin");
+		for (int i = 0; i < 3; i++) {
+			selectedUpgrade [i] = upgradeList [Random.Range (0, upgradeList.Count)];
+			upgradeOnList [i] = selectedUpgrade [i];
+			if (selectedUpgrade[0] != selectedUpgrade[1] && selectedUpgrade[0] != selectedUpgrade[2]) {
+				upgradeOnList [0] = selectedUpgrade[0];
+			}
+			if (selectedUpgrade[1] != selectedUpgrade[0] && selectedUpgrade[1] != selectedUpgrade[2]) {
+				upgradeOnList [1] = selectedUpgrade[1];
+			}
+			if (selectedUpgrade[2] != selectedUpgrade[0] && selectedUpgrade[2] != selectedUpgrade[1]) {
+				upgradeOnList [2] = selectedUpgrade[2];
+			}
+		}
+		Debug.Log ("rotation finished");
+		return upgradeOnList;
+	}
+
+	/*public void onUpgrade1Press()
 	{
 		if (upgradeOnList [0] == 0) {
 			// Suit & Tie (Enter VIP section without being insta-detect)
@@ -94,7 +93,8 @@ public class PlayerUpgrade : MonoBehaviour {
 				currentMoney -= upgradePrice [0];
 				upgrade1Active = true;
 				//code for VIP section
-				upList &= ~upgradeList.Upgrade1;
+				//upList &= ~upgradeList.Upgrade1;
+
 			}
 		}
 		if (upgradeOnList [0] == 1) {
@@ -312,24 +312,11 @@ public class PlayerUpgrade : MonoBehaviour {
 				upList &= ~upgradeList.Upgrade8;
 			}
 		}
-	}
-
-	public void UpdateDataManager(){
-		DataManager.Instance.upgrade1Active = upgrade1Active;
-		DataManager.Instance.upgrade2Active = upgrade2Active;
-		DataManager.Instance.upgrade3Active = upgrade3Active;
-		DataManager.Instance.upgrade4Active = upgrade4Active;
-		DataManager.Instance.upgrade5Active = upgrade5Active;
-		DataManager.Instance.upgrade6Active = upgrade6Active;
-		DataManager.Instance.upgrade7Active = upgrade7Active;
-		DataManager.Instance.upgrade8Active = upgrade8Active;
-	}
+	}*/
 }
 
-
-
-				// For upgrade reference sake
-				/*case 0:
+// For upgrade reference sake
+/*case 0:
 					// Suit & Tie (Enter VIP section without being insta-detect)
 					upgradePrice = 1000;
 					//(placeholder)
