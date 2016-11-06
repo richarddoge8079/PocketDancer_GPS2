@@ -127,7 +127,6 @@ public class DataManager : MonoBehaviour {
 		public bool upgrade6Active;
 		public bool upgrade7Active;
 		public bool upgrade8Active;
-		public bool upgrade9Active;
 	}
 
 	public void ResetData(){
