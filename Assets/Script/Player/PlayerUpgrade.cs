@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-//using System;
+using System;
 
 public class PlayerUpgrade : MonoBehaviour {
 
@@ -16,18 +16,148 @@ public class PlayerUpgrade : MonoBehaviour {
 	public bool upgrade8Active;
 
 	int currentMoney;
-	//public string[] upgradeOnList = new string[3];
-	//public string[] selectedUpgrade = new string[3];
-
-	public List<string> selectedUpgrade = new List<string>();
-	public List<string> upgradeOnList = new List<string>();
 
 	public Button upgrade1;
 	public Button upgrade2;
 	public Button upgrade3;
 
+	public int[] Upgrades = new int[8] {1,2,3,4,5,6,7,8};
+	public int[] selectedUpgrades = new int[3];
 	public int[] upgradePrice = new int[8] {1000, 4000, 500, 5000, 850, 500, 650, 800};
-	/*public enum upgradeList
+
+
+	// Use this for initialization
+	void Start () {
+		Debug.Log ("game begin");
+		currentMoney = gameObject.GetComponent<PlayerStats> ().moneyCount;
+		upgrade1 = gameObject.GetComponent<Button> ();
+		upgrade2 = gameObject.GetComponent<Button> ();
+		upgrade3 = gameObject.GetComponent<Button> ();
+
+	}
+
+	void Awake()
+	{
+		Debug.Log ("game loop");
+		reshuffle (Upgrades);
+		for (int i = 0; i < Upgrades.Length; i++) {
+			for (int j = 0; j < selectedUpgrades.Length; j++) {
+				selectedUpgrades [j] = Upgrades [i];
+				i++;
+			}
+		}
+		Debug.Log ("game start");
+	}
+
+	void reshuffle(int[] upgrade)
+	{
+		// Knuth shuffle algorithm :: courtesy of Wikipedia :)
+		for (int i = 0; i < upgrade.Length; i++ )
+		{
+			int tmp = upgrade[i];
+			int r = UnityEngine.Random.Range(i, upgrade.Length);
+			upgrade[i] = upgrade[r];
+			upgrade[r] = tmp;
+		}
+	}
+
+	// Update is called once per frame
+	void Update () {
+	}	
+
+	void removeFromArray(int i)
+	{
+		var list = new List<int> (Upgrades);
+		list.Remove (i);
+		Upgrades = list.ToArray();
+	}
+
+	public void onUpgrade1Press()
+	{
+		if (selectedUpgrades [0] == 1) {
+			// Suit & Tie (Enter VIP section without being insta-detect)
+			if (currentMoney >= upgradePrice [0]) {
+				currentMoney -= upgradePrice [0];
+				upgrade1Active = true;
+				//code for VIP section
+				removeFromArray(1);
+			}
+		}
+		if (selectedUpgrades [0] == 2) {
+			// Slippery Fingers 101: A Guide to Pickpocket (Pickpocket from all sides with 25% penalty from sides and 50% in front)
+			if (currentMoney >= upgradePrice [1]) {
+				currentMoney -= upgradePrice [1];
+				upgrade2Active = true;
+				//code for all direction pickpocket
+			}
+		}
+		if (selectedUpgrades [0] == 3) {
+			// Funky Fresh Outfit (Access Nightclub level)
+			if (currentMoney >= upgradePrice [2]) {
+				currentMoney -= upgradePrice [2];
+				upgrade3Active = true;
+				//code Nightclub level access?
+			}
+		}
+		if (selectedUpgrades [0] == 4) {
+			// A Loan Extension (One time purchase of 2 day extension)
+			if (currentMoney >= upgradePrice [3]) {
+				currentMoney -= upgradePrice [3];
+				upgrade4Active = true;
+				//code for additional days
+			}
+		}
+		if (selectedUpgrades [0] == 5) {
+			// DJ Bribe (Consumable for repeating song in the level)
+			if (currentMoney >= upgradePrice [4]) {
+				currentMoney -= upgradePrice [4];
+				upgrade5Active = true;
+				//code for consumables addition
+			}
+		}
+		if (selectedUpgrades [0] == 6) {
+			// Dazzler Strips (Increase Maximum Detection Meter by 5)
+			if (currentMoney >= upgradePrice [5]) {
+				currentMoney -= upgradePrice [5];
+				upgrade6Active = true;
+				//code for detection meter increase
+			}
+		}
+		if (selectedUpgrades [0] == 7) {
+			// Plastic Finger Extension (Raise minimum cash per pickpocket by 20)
+			if (currentMoney >= upgradePrice [6]) {
+				currentMoney -= upgradePrice [6];
+				upgrade7Active = true;
+				//code for minimum cash increase
+			}
+		}
+		if (selectedUpgrades [0] == 8) {
+			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time)
+			if (currentMoney >= upgradePrice [7]) {
+				currentMoney -= upgradePrice [7];
+				upgrade8Active = true;
+				//code for Detected HP increase
+			}
+		}
+	}
+}
+
+/*	public void UpgradeRotation()
+	{
+		Debug.Log ("rotation begin");
+		for (int i = 0; i < 3; i++) {
+			selectedUpgrades [i] = Random.Range (0, Upgrades.Length);
+		}
+		return;
+		Debug.Log ("rotation finished");
+	}
+	public string[] upgradeOnList = new string[3];
+public string[] selectedUpgrade = new string[3];
+
+public List<string> selectedUpgrade = new List<string>();
+public List<string> upgradeOnList = new List<string>();
+
+public enum upgradeList
 	{
 		Upgrade1 = 0,
 		Upgrade2,
@@ -37,35 +167,21 @@ public class PlayerUpgrade : MonoBehaviour {
 		Upgrade6,
 		Upgrade7,
 		Upgrade8
-	};*/
+	};
 
-	//public string[] upgradeList = new string[] {"Upgrade1", "Upgrade2", "Upgrade3", "Upgrade4", "Upgrade5", "Upgrade6", "Upgrade7", "Upgrade8"};
-	public List<string> upgradeList = new List<string> {"Upgrade1", "Upgrade2", "Upgrade3", "Upgrade4", "Upgrade5", "Upgrade6", "Upgrade7", "Upgrade8"};
+public string[] upgradeList = new string[] {"Upgrade1", "Upgrade2", "Upgrade3", "Upgrade4", "Upgrade5", "Upgrade6", "Upgrade7", "Upgrade8"};
+public List<string> upgradeList = new List<string> {"Upgrade1", "Upgrade2", "Upgrade3", "Upgrade4", "Upgrade5", "Upgrade6", "Upgrade7", "Upgrade8"};
 
-	//upgradeList upList = upgradeList.Upgrade1 | upgradeList.Upgrade2 | upgradeList.Upgrade3 | upgradeList.Upgrade4 | upgradeList.Upgrade5 | upgradeList.Upgrade6 | upgradeList.Upgrade7 | upgradeList.Upgrade8;
+upgradeList upList = upgradeList.Upgrade1 | upgradeList.Upgrade2 | upgradeList.Upgrade3 | upgradeList.Upgrade4 | upgradeList.Upgrade5 | upgradeList.Upgrade6 | upgradeList.Upgrade7 | upgradeList.Upgrade8;
 
-	/*static T GetRandomEnum<T>()
+static T GetRandomEnum<T>()
 	{
 		System.Array A = System.Enum.GetValues(typeof(T));
 		T V = (T)A.GetValue(UnityEngine.Random.Range(0,A.Length));
 		return V;
-	}*/
-
-
-	// Use this for initialization
-	void Start () {
-		currentMoney = gameObject.GetComponent<PlayerStats> ().moneyCount;
-		upgrade1 = gameObject.GetComponent<Button> ();
-		upgrade2 = gameObject.GetComponent<Button> ();
-		upgrade3 = gameObject.GetComponent<Button> ();
 	}
 
-	// Update is called once per frame
-	void Update () {
-		UpgradeRotation ();
-	}
-
-	List<string> UpgradeRotation()
+List<string> UpgradeRotation()
 	{
 		Debug.Log ("rotation begin");
 		for (int i = 0; i < 3; i++) {
@@ -85,238 +201,9 @@ public class PlayerUpgrade : MonoBehaviour {
 		return upgradeOnList;
 	}
 
-	/*public void onUpgrade1Press()
-	{
-		if (upgradeOnList [0] == 0) {
-			// Suit & Tie (Enter VIP section without being insta-detect)
-			if (currentMoney >= upgradePrice [0]) {
-				currentMoney -= upgradePrice [0];
-				upgrade1Active = true;
-				//code for VIP section
-				//upList &= ~upgradeList.Upgrade1;
 
-			}
-		}
-		if (upgradeOnList [0] == 1) {
-			// Slippery Fingers 101: A Guide to Pickpocket (Pickpocket from all sides with 25% penalty from sides and 50% in front)
-			if (currentMoney >= upgradePrice [1]) {
-				currentMoney -= upgradePrice [1];
-				upgrade2Active = true;
-				//code for all direction pickpocket
-				upList &= ~upgradeList.Upgrade2;
-			}
-		}
-		if (upgradeOnList [0] == 2) {
-			// Funky Fresh Outfit (Access Nightclub level)
-			if (currentMoney >= upgradePrice [2]) {
-				currentMoney -= upgradePrice [2];
-				upgrade3Active = true;
-				//code Nightclub level access?
-				upList &= ~upgradeList.Upgrade3;
-			}
-		}
-		if (upgradeOnList [0] == 3) {
-			// A Loan Extension (One time purchase of 2 day extension)
-			if (currentMoney >= upgradePrice [3]) {
-				currentMoney -= upgradePrice [3];
-				upgrade4Active = true;
-				//code for additional days
-				upList &= ~upgradeList.Upgrade4;
-			}
-		}
-		if (upgradeOnList [0] == 4) {
-			// DJ Bribe (Consumable for repeating song in the level)
-			if (currentMoney >= upgradePrice [4]) {
-				currentMoney -= upgradePrice [4];
-				upgrade5Active = true;
-				//code for consumables addition
-				//upList &= ~upgradeList.Upgrade5;
-			}
-		}
-		if (upgradeOnList [0] == 5) {
-			// Dazzler Strips (Increase Maximum Detection Meter by 5)
-			if (currentMoney >= upgradePrice [5]) {
-				currentMoney -= upgradePrice [5];
-				upgrade6Active = true;
-				//code for detection meter increase
-				upList &= ~upgradeList.Upgrade6;
-			}
-		}
-		if (upgradeOnList [0] == 6) {
-			// Plastic Finger Extension (Raise minimum cash per pickpocket by 20)
-			if (currentMoney >= upgradePrice [6]) {
-				currentMoney -= upgradePrice [6];
-				upgrade7Active = true;
-				//code for minimum cash increase
-				upList &= ~upgradeList.Upgrade7;
-			}
-		}
-		if (upgradeOnList [0] == 7) {
-			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time)
-			if (currentMoney >= upgradePrice [7]) {
-				currentMoney -= upgradePrice [7];
-				upgrade8Active = true;
-				//code for Detected HP increase
-				upList &= ~upgradeList.Upgrade8;
-			}
-		}
-	}
-
-	public void onUpgrade2Press()
-	{
-		if (upgradeOnList [1] == 0) {
-			// Suit & Tie (Enter VIP section without being insta-detect)
-			if (currentMoney >= upgradePrice [0]) {
-				currentMoney -= upgradePrice [0];
-				upgrade1Active = true;
-				//code for VIP section
-				upList &= ~upgradeList.Upgrade1;
-			}
-		}
-		if (upgradeOnList [1] == 1) {
-			// Slippery Fingers 101: A Guide to Pickpocket (Pickpocket from all sides with 25% penalty from sides and 50% in front)
-			if (currentMoney >= upgradePrice [1]) {
-				currentMoney -= upgradePrice [1];
-				upgrade2Active = true;
-				//code for all direction pickpocket
-				upList &= ~upgradeList.Upgrade2;
-			}
-		}
-		if (upgradeOnList [1] == 2) {
-			// Funky Fresh Outfit (Access Nightclub level)
-			if (currentMoney >= upgradePrice [2]) {
-				currentMoney -= upgradePrice [2];
-				upgrade3Active = true;
-				//code Nightclub level access?
-				upList &= ~upgradeList.Upgrade3;
-			}
-		}
-		if (upgradeOnList [1] == 3) {
-			// A Loan Extension (One time purchase of 2 day extension)
-			if (currentMoney >= upgradePrice [3]) {
-				currentMoney -= upgradePrice [3];
-				upgrade4Active = true;
-				//code for additional days
-				upList &= ~upgradeList.Upgrade4;
-			}
-		}
-		if (upgradeOnList [1] == 4) {
-			// DJ Bribe (Consumable for repeating song in the level)
-			if (currentMoney >= upgradePrice [4]) {
-				currentMoney -= upgradePrice [4];
-				upgrade5Active = true;
-				//code for consumables addition
-				//upList &= ~upgradeList.Upgrade5;
-			}
-		}
-		if (upgradeOnList [1] == 5) {
-			// Dazzler Strips (Increase Maximum Detection Meter by 5)
-			if (currentMoney >= upgradePrice [5]) {
-				currentMoney -= upgradePrice [5];
-				upgrade6Active = true;
-				//code for detection meter increase
-				upList &= ~upgradeList.Upgrade6;
-			}
-		}
-		if (upgradeOnList [1] == 6) {
-			// Plastic Finger Extension (Raise minimum cash per pickpocket by 20)
-			if (currentMoney >= upgradePrice [6]) {
-				currentMoney -= upgradePrice [6];
-				upgrade7Active = true;
-				//code for minimum cash increase
-				upList &= ~upgradeList.Upgrade7;
-			}
-		}
-		if (upgradeOnList [1] == 7) {
-			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time)
-			if (currentMoney >= upgradePrice [7]) {
-				currentMoney -= upgradePrice [7];
-				upgrade8Active = true;
-				//code for Detected HP increase
-				upList &= ~upgradeList.Upgrade8;
-			}
-		}
-	}
-
-	public void onUpgrade3Press()
-	{
-		if (upgradeOnList [2] == 0) {
-			// Suit & Tie (Enter VIP section without being insta-detect)
-			if (currentMoney >= upgradePrice [0]) {
-				currentMoney -= upgradePrice [0];
-				upgrade1Active = true;
-				//code for VIP section
-				upList &= ~upgradeList.Upgrade1;
-			}
-		}
-		if (upgradeOnList [2] == 1) {
-			// Slippery Fingers 101: A Guide to Pickpocket (Pickpocket from all sides with 25% penalty from sides and 50% in front)
-			if (currentMoney >= upgradePrice [1]) {
-				currentMoney -= upgradePrice [1];
-				upgrade2Active = true;
-				//code for all direction pickpocket
-				upList &= ~upgradeList.Upgrade2;
-			}
-		}
-		if (upgradeOnList [2] == 2) {
-			// Funky Fresh Outfit (Access Nightclub level)
-			if (currentMoney >= upgradePrice [2]) {
-				currentMoney -= upgradePrice [2];
-				upgrade3Active = true;
-				//code Nightclub level access?
-				upList &= ~upgradeList.Upgrade3;
-			}
-		}
-		if (upgradeOnList [2] == 3) {
-			// A Loan Extension (One time purchase of 2 day extension)
-			if (currentMoney >= upgradePrice [3]) {
-				currentMoney -= upgradePrice [3];
-				upgrade4Active = true;
-				//code for additional days
-				upList &= ~upgradeList.Upgrade4;
-			}
-		}
-		if (upgradeOnList [2] == 4) {
-			// DJ Bribe (Consumable for repeating song in the level)
-			if (currentMoney >= upgradePrice [4]) {
-				currentMoney -= upgradePrice [4];
-				upgrade5Active = true;
-				//code for consumables addition
-				//upList &= ~upgradeList.Upgrade5;
-			}
-		}
-		if (upgradeOnList [2] == 5) {
-			// Dazzler Strips (Increase Maximum Detection Meter by 5)
-			if (currentMoney >= upgradePrice [5]) {
-				currentMoney -= upgradePrice [5];
-				upgrade6Active = true;
-				//code for detection meter increase
-				upList &= ~upgradeList.Upgrade6;
-			}
-		}
-		if (upgradeOnList [2] == 6) {
-			// Plastic Finger Extension (Raise minimum cash per pickpocket by 20)
-			if (currentMoney >= upgradePrice [6]) {
-				currentMoney -= upgradePrice [6];
-				upgrade7Active = true;
-				//code for minimum cash increase
-				upList &= ~upgradeList.Upgrade7;
-			}
-		}
-		if (upgradeOnList [2] == 7) {
-			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time)
-			if (currentMoney >= upgradePrice [7]) {
-				currentMoney -= upgradePrice [7];
-				upgrade8Active = true;
-				//code for Detected HP increase
-				upList &= ~upgradeList.Upgrade8;
-			}
-		}
-	}*/
-}
-
-// For upgrade reference sake
-/*case 0:
+					// For upgrade reference sake
+					case 0:
 					// Suit & Tie (Enter VIP section without being insta-detect)
 					upgradePrice = 1000;
 					//(placeholder)
