@@ -174,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
 			UIManager.Instance.onBeatFX_Color.a += 0.8f;
 			UIManager.Instance.beatImageFX_Color.a += 0.8f;
 		}
-		else if(!BeatsManager.Instance.onBeat)
+		else if(victimBehaviorScript.playerInSight == true && !BeatsManager.Instance.onBeat)
 		{
 			UIManager.Instance.onBeatFX_Color.r = 1.0f;
 			UIManager.Instance.onBeatFX_Color.g = 0.0f;
