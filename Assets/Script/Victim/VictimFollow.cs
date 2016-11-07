@@ -18,6 +18,11 @@ public class VictimFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if(transform.position == victimObject.transform.position){
+			Debug.Log ("No Follow");
+			return;
+		}
+
 		float posX = Mathf.SmoothDamp (transform.position.x, victimObject.transform.position.x, ref xSpeed,smoothTimerX);
 		float posY = Mathf.SmoothDamp (transform.position.y, victimObject.transform.position.y, ref ySpeed,smoothTimerY);
 		float posZ = Mathf.SmoothDamp (transform.position.z, victimObject.transform.position.z, ref zSpeed,smoothTimerZ);
