@@ -30,6 +30,7 @@ public class PlayerUpgrade : MonoBehaviour {
 	void Start () {
 		Debug.Log ("game begin");
 		currentMoney = gameObject.GetComponent<PlayerStats> ().moneyCount;
+		//currentMoney = 10000;
 		upgrade1 = gameObject.GetComponent<Button> ();
 		upgrade2 = gameObject.GetComponent<Button> ();
 		upgrade3 = gameObject.GetComponent<Button> ();
@@ -77,6 +78,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [0] == 1) {
 			// Suit & Tie (Enter VIP section without being insta-detect)
 			if (currentMoney >= upgradePrice [0]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [0];
 				upgrade1Active = true;
 				//code for VIP section
@@ -86,6 +88,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [0] == 2) {
 			// Slippery Fingers 101: A Guide to Pickpocket (Pickpocket from all sides with 25% penalty from sides and 50% in front)
 			if (currentMoney >= upgradePrice [1]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [1];
 				upgrade2Active = true;
 				//code for all direction pickpocket
@@ -95,6 +98,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [0] == 3) {
 			// Funky Fresh Outfit (Access Nightclub level)
 			if (currentMoney >= upgradePrice [2]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [2];
 				upgrade3Active = true;
 				//code Nightclub level access?
@@ -104,6 +108,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [0] == 4) {
 			// A Loan Extension (One time purchase of 2 day extension)
 			if (currentMoney >= upgradePrice [3]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [3];
 				upgrade4Active = true;
 				//code for additional days
@@ -113,6 +118,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [0] == 5) {
 			// DJ Bribe (Consumable for repeating song in the level)
 			if (currentMoney >= upgradePrice [4]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [4];
 				upgrade5Active = true;
 				//code for consumables addition
@@ -122,6 +128,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [0] == 6) {
 			// Dazzler Strips (Increase Maximum Detection Meter by 5)
 			if (currentMoney >= upgradePrice [5]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [5];
 				upgrade6Active = true;
 				//code for detection meter increase
@@ -131,6 +138,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [0] == 7) {
 			// Plastic Finger Extension (Raise minimum cash per pickpocket by 20)
 			if (currentMoney >= upgradePrice [6]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [6];
 				upgrade7Active = true;
 				//code for minimum cash increase
@@ -140,11 +148,14 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [0] == 8) {
 			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time)
 			if (currentMoney >= upgradePrice [7]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [7];
 				upgrade8Active = true;
 				//code for Detected HP increase
-				removeFromArray(8);
+				removeFromArray (8);
 			}
+		} else {
+			Debug.Log ("You can't buy this upgrade");
 		}
 	}
 	public void onUpgrade2Press()
@@ -152,6 +163,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [1] == 1) {
 			// Suit & Tie (Enter VIP section without being insta-detect)
 			if (currentMoney >= upgradePrice [0]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [0];
 				upgrade1Active = true;
 				//code for VIP section
@@ -161,6 +173,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [1] == 2) {
 			// Slippery Fingers 101: A Guide to Pickpocket (Pickpocket from all sides with 25% penalty from sides and 50% in front)
 			if (currentMoney >= upgradePrice [1]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [1];
 				upgrade2Active = true;
 				//code for all direction pickpocket
@@ -170,6 +183,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [1] == 3) {
 			// Funky Fresh Outfit (Access Nightclub level)
 			if (currentMoney >= upgradePrice [2]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [2];
 				upgrade3Active = true;
 				//code Nightclub level access?
@@ -179,6 +193,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [1] == 4) {
 			// A Loan Extension (One time purchase of 2 day extension)
 			if (currentMoney >= upgradePrice [3]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [3];
 				upgrade4Active = true;
 				//code for additional days
@@ -188,6 +203,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [1] == 5) {
 			// DJ Bribe (Consumable for repeating song in the level)
 			if (currentMoney >= upgradePrice [4]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [4];
 				upgrade5Active = true;
 				//code for consumables addition
@@ -197,6 +213,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [1] == 6) {
 			// Dazzler Strips (Increase Maximum Detection Meter by 5)
 			if (currentMoney >= upgradePrice [5]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [5];
 				upgrade6Active = true;
 				//code for detection meter increase
@@ -206,6 +223,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [1] == 7) {
 			// Plastic Finger Extension (Raise minimum cash per pickpocket by 20)
 			if (currentMoney >= upgradePrice [6]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [6];
 				upgrade7Active = true;
 				//code for minimum cash increase
@@ -215,11 +233,14 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [1] == 8) {
 			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time)
 			if (currentMoney >= upgradePrice [7]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [7];
 				upgrade8Active = true;
 				//code for Detected HP increase
 				removeFromArray(8);
 			}
+		} else {
+			Debug.Log ("You can't buy this upgrade");
 		}
 	}
 	public void onUpgrade3Press()
@@ -227,6 +248,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [2] == 1) {
 			// Suit & Tie (Enter VIP section without being insta-detect)
 			if (currentMoney >= upgradePrice [0]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [0];
 				upgrade1Active = true;
 				//code for VIP section
@@ -236,6 +258,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [2] == 2) {
 			// Slippery Fingers 101: A Guide to Pickpocket (Pickpocket from all sides with 25% penalty from sides and 50% in front)
 			if (currentMoney >= upgradePrice [1]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [1];
 				upgrade2Active = true;
 				//code for all direction pickpocket
@@ -245,6 +268,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [2] == 3) {
 			// Funky Fresh Outfit (Access Nightclub level)
 			if (currentMoney >= upgradePrice [2]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [2];
 				upgrade3Active = true;
 				//code Nightclub level access?
@@ -254,6 +278,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [2] == 4) {
 			// A Loan Extension (One time purchase of 2 day extension)
 			if (currentMoney >= upgradePrice [3]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [3];
 				upgrade4Active = true;
 				//code for additional days
@@ -263,6 +288,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [2] == 5) {
 			// DJ Bribe (Consumable for repeating song in the level)
 			if (currentMoney >= upgradePrice [4]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [4];
 				upgrade5Active = true;
 				//code for consumables addition
@@ -272,6 +298,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [2] == 6) {
 			// Dazzler Strips (Increase Maximum Detection Meter by 5)
 			if (currentMoney >= upgradePrice [5]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [5];
 				upgrade6Active = true;
 				//code for detection meter increase
@@ -281,6 +308,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [2] == 7) {
 			// Plastic Finger Extension (Raise minimum cash per pickpocket by 20)
 			if (currentMoney >= upgradePrice [6]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [6];
 				upgrade7Active = true;
 				//code for minimum cash increase
@@ -290,11 +318,14 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (selectedUpgrades [2] == 8) {
 			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time)
 			if (currentMoney >= upgradePrice [7]) {
+				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [7];
 				upgrade8Active = true;
 				//code for Detected HP increase
 				removeFromArray(8);
 			}
+		} else {
+			Debug.Log ("You can't buy this upgrade");
 		}
 	}
 }
