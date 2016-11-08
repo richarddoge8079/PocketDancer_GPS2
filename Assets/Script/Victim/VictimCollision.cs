@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class VictimCollision : MonoBehaviour {
 	//VFX
 	public GameObject rob;
-
+	public Canvas UICanvas;
 	//End if VFX
 	public GameObject victimBackFX;
-
+	public Image coins;
 	public float pickpocketRange;
 	public bool playerInRangeFront = false;
 	public bool playerInRangeBack = false;
@@ -100,14 +101,14 @@ public class VictimCollision : MonoBehaviour {
 
 					picked = true;
 
+					Image fuck = (Image)Instantiate (coins,new Vector3 (coll.transform.position.x,coll.transform.position.y,coll.transform.position.z),Quaternion.identity);
+					fuck.transform.SetParent (UICanvas.transform);
 					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minBackMoney, maxBackMoney);
 					if (UIManager.Instance.updateTotalMoney) 
 					{
 						UIManager.Instance.UiVictimMoney += money;
 						GameManager.Instance.pickPocket += 1;
-
-						picked = true;
 					}
 					else
 					{
