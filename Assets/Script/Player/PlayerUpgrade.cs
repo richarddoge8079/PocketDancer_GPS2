@@ -15,7 +15,7 @@ public class PlayerUpgrade : MonoBehaviour {
 	public bool upgrade7Active;
 	public bool upgrade8Active;
 
-	int currentMoney;
+	public int currentMoney;
 
 	public Button upgrade1;
 	public Button upgrade2;
@@ -29,8 +29,8 @@ public class PlayerUpgrade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("game begin");
-		currentMoney = gameObject.GetComponent<PlayerStats> ().moneyCount;
-		//currentMoney = 10000;
+		//currentMoney = gameObject.GetComponent<PlayerStats> ().moneyCount;
+		currentMoney = 10000;
 		upgrade1 = gameObject.GetComponent<Button> ();
 		upgrade2 = gameObject.GetComponent<Button> ();
 		upgrade3 = gameObject.GetComponent<Button> ();
@@ -69,7 +69,7 @@ public class PlayerUpgrade : MonoBehaviour {
 	void removeFromArray(int i)
 	{
 		var list = new List<int> (Upgrades);
-		list.RemoveAt (i);
+		list.Remove (i);
 		Upgrades = list.ToArray();
 	}
 
