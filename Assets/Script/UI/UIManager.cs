@@ -50,6 +50,8 @@ public class UIManager : MonoBehaviour {
 	public bool updateTotalMoney = false;
 	public int UiVictimMoney; 
 
+	public Text loadingText;
+
 	// Use this for initialization
 	void Awake () {
 	}
@@ -156,7 +158,11 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void GotoScene(string sceneName){
-		SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
+		if(loadingText != null){
+			loadingText.enabled = true;
+		}
+		DataManager.Instance.sceneName = sceneName;
+		SceneManager.LoadSceneAsync ("LoadingScreen");
 	}
 
 	public void ExitGame(){

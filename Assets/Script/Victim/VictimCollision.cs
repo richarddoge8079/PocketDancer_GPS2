@@ -85,6 +85,10 @@ public class VictimCollision : MonoBehaviour {
 	{
 		if(coll.CompareTag("Player"))
 		{
+			if(GameManager.Instance.playerStatsScript.isDetected){
+				DataManager.Instance.sceneName = "Hideout";
+
+			}
 			if (playerInRangeBack)  
 			{
 				if (!picked)
