@@ -22,6 +22,7 @@ public class LoadingScreen : MonoBehaviour {
 	public string sceneName;
 	private bool canLoad = false;
 	private bool gotRoutine = false;
+	private bool clicked = false;
 
 	void OnEnable () 
 	{
@@ -43,7 +44,6 @@ public class LoadingScreen : MonoBehaviour {
 		mat.color = Color.black;
 		tempPosition = transform.position;
 		StartCoroutine ("LoadScene");
-
 
 		sceneName = DataManager.Instance.sceneName;
 	}
@@ -79,7 +79,8 @@ public class LoadingScreen : MonoBehaviour {
 	public void SwitchScene()
 	{
 		Debug.Log("switching");
-		if (gotRoutine) {
+		if (clicked && !gotRoutine) {
+			gotRoutine = true;
 			StartCoroutine ("OpenDoor");
 		}
 	}
@@ -111,7 +112,7 @@ public class LoadingScreen : MonoBehaviour {
 		if(fingerID == 0 && canLoad){
 			if (pos.y >= 0 && pos.x >= 0)
 			{
-				gotRoutine = true;
+				clicked = true;
 				SwitchScene ();
 			} 
 		}
