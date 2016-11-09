@@ -46,7 +46,8 @@ public class PlayerUpgrade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("game begin");
-		currentMoney = gameObject.GetComponent<PlayerStats> ().moneyCount;
+		//currentMoney = gameObject.GetComponent<PlayerStats> ().moneyCount;
+		currentMoney = DataManager.Instance.moneyCount;
 		//currentMoney = 10000;
 		upgrade1 = gameObject.GetComponent<Button> ();
 		upgrade2 = gameObject.GetComponent<Button> ();
@@ -60,13 +61,8 @@ public class PlayerUpgrade : MonoBehaviour {
 	void Awake()
 	{
 		Debug.Log ("game loop");
+		fetchLatestStat ();
 		reshuffle (Upgrades);
-		/*for (int i = 0; i < Upgrades.Length; i++) {
-			for (int j = 0; j < selectedUpgrades.Length; j++) {
-				selectedUpgrades [i] = Upgrades [j];
-				i++;
-			}
-		}*/
 		for (int i = 0; i < selectedUpgrades.Length; i++) {
 			for (int j = 0; j < Upgrades.Length; j++) {
 				selectedUpgrades [i] = Upgrades [j];
@@ -104,6 +100,36 @@ public class PlayerUpgrade : MonoBehaviour {
 
 		Day.text = "Day(s) left: " + DataManager.Instance.dayCount;	
 	}	
+
+	void fetchLatestStat()
+	{
+		upgrade1Active = DataManager.Instance.upgrade1Active;
+		upgrade2Active = DataManager.Instance.upgrade2Active;
+		upgrade3Active = DataManager.Instance.upgrade3Active;
+		upgrade4Active = DataManager.Instance.upgrade4Active;
+		upgrade5Active = DataManager.Instance.upgrade5Active;
+		upgrade6Active = DataManager.Instance.upgrade6Active;
+		upgrade7Active = DataManager.Instance.upgrade7Active;
+		upgrade8Active = DataManager.Instance.upgrade8Active;
+		if (DataManager.Instance.upgrade2Active == true) {
+			removeFromArray (2);
+		}
+		if (DataManager.Instance.upgrade4Active == true) {
+			removeFromArray (4);
+		}
+		if (DataManager.Instance.upgrade5Active == true) {
+			removeFromArray (5);
+		}
+		if (DataManager.Instance.upgrade6Active == true) {
+			removeFromArray (6);
+		}
+		if (DataManager.Instance.upgrade7Active == true) {
+			removeFromArray (7);
+		}
+		if (DataManager.Instance.upgrade8Active == true) {
+			removeFromArray (8);
+		}
+	}
 
 	void removeFromArray(int i)
 	{
@@ -215,8 +241,9 @@ public class PlayerUpgrade : MonoBehaviour {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [0];
 				upgrade2Active = true;
+				DataManager.Instance.upgrade2Active = true;
 				//code for all direction pickpocket
-				removeFromArray(2);
+				removeFromArray (2);
 			}
 		}
 		/*if (selectedUpgrades [0] == 3) {
@@ -235,8 +262,9 @@ public class PlayerUpgrade : MonoBehaviour {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [1];
 				upgrade4Active = true;
+				DataManager.Instance.upgrade4Active = true;
 				//code for additional days
-				removeFromArray(4);
+				removeFromArray (4);
 			}
 		}
 		if (selectedUpgrades [0] == 5) {
@@ -245,8 +273,9 @@ public class PlayerUpgrade : MonoBehaviour {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [2];
 				upgrade5Active = true;
+				DataManager.Instance.upgrade5Active = true;
 				//code for consumables addition
-				removeFromArray(5);
+				removeFromArray (5);
 			}
 		}
 		if (selectedUpgrades [0] == 6) {
@@ -255,8 +284,9 @@ public class PlayerUpgrade : MonoBehaviour {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [3];
 				upgrade6Active = true;
+				DataManager.Instance.upgrade6Active = true;
 				//code for detection meter increase
-				removeFromArray(6);
+				removeFromArray (6);
 			}
 		}
 		if (selectedUpgrades [0] == 7) {
@@ -265,8 +295,9 @@ public class PlayerUpgrade : MonoBehaviour {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [4];
 				upgrade7Active = true;
+				DataManager.Instance.upgrade7Active = true;
 				//code for minimum cash increase
-				removeFromArray(7);
+				removeFromArray (7);
 			}
 		}
 		if (selectedUpgrades [0] == 8) {
@@ -275,6 +306,7 @@ public class PlayerUpgrade : MonoBehaviour {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [5];
 				upgrade8Active = true;
+				DataManager.Instance.upgrade8Active = true;
 				//code for Detected HP increase
 				removeFromArray (8);
 			}
@@ -296,12 +328,13 @@ public class PlayerUpgrade : MonoBehaviour {
 		}*/
 		if (selectedUpgrades [1] == 2) {
 			// Slippery Fingers 101: A Guide to Pickpocket (Pickpocket from all sides with 25% penalty from sides and 50% in front)
-			if (currentMoney >= upgradePrice [1]) {
+			if (currentMoney >= upgradePrice [0]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [1];
+				currentMoney -= upgradePrice [0];
 				upgrade2Active = true;
+				DataManager.Instance.upgrade2Active = true;
 				//code for all direction pickpocket
-				removeFromArray(2);
+				removeFromArray (2);
 			}
 		}
 		/*if (selectedUpgrades [1] == 3) {
@@ -316,52 +349,57 @@ public class PlayerUpgrade : MonoBehaviour {
 		}*/
 		if (selectedUpgrades [1] == 4) {
 			// A Loan Extension (One time purchase of 2 day extension)
-			if (currentMoney >= upgradePrice [3]) {
+			if (currentMoney >= upgradePrice [1]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [3];
+				currentMoney -= upgradePrice [1];
 				upgrade4Active = true;
+				DataManager.Instance.upgrade4Active = true;
 				//code for additional days
-				removeFromArray(4);
+				removeFromArray (4);
 			}
 		}
 		if (selectedUpgrades [1] == 5) {
 			// DJ Bribe (Consumable for repeating song in the level)
-			if (currentMoney >= upgradePrice [4]) {
+			if (currentMoney >= upgradePrice [2]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [4];
+				currentMoney -= upgradePrice [2];
 				upgrade5Active = true;
+				DataManager.Instance.upgrade5Active = true;
 				//code for consumables addition
-				removeFromArray(5);
+				removeFromArray (5);
 			}
 		}
 		if (selectedUpgrades [1] == 6) {
 			// Dazzler Strips (Increase Maximum Detection Meter by 5)
-			if (currentMoney >= upgradePrice [5]) {
+			if (currentMoney >= upgradePrice [3]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [5];
+				currentMoney -= upgradePrice [3];
 				upgrade6Active = true;
+				DataManager.Instance.upgrade6Active = true;
 				//code for detection meter increase
-				removeFromArray(6);
+				removeFromArray (6);
 			}
 		}
 		if (selectedUpgrades [1] == 7) {
 			// Plastic Finger Extension (Raise minimum cash per pickpocket by 20)
-			if (currentMoney >= upgradePrice [6]) {
+			if (currentMoney >= upgradePrice [4]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [6];
+				currentMoney -= upgradePrice [4];
 				upgrade7Active = true;
+				DataManager.Instance.upgrade7Active = true;
 				//code for minimum cash increase
-				removeFromArray(7);
+				removeFromArray (7);
 			}
 		}
 		if (selectedUpgrades [1] == 8) {
 			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time)
-			if (currentMoney >= upgradePrice [7]) {
+			if (currentMoney >= upgradePrice [5]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [7];
+				currentMoney -= upgradePrice [5];
 				upgrade8Active = true;
+				DataManager.Instance.upgrade8Active = true;
 				//code for Detected HP increase
-				removeFromArray(8);
+				removeFromArray (8);
 			}
 		} else {
 			Debug.Log ("You can't buy this upgrade");
@@ -381,12 +419,13 @@ public class PlayerUpgrade : MonoBehaviour {
 		}*/
 		if (selectedUpgrades [2] == 2) {
 			// Slippery Fingers 101: A Guide to Pickpocket (Pickpocket from all sides with 25% penalty from sides and 50% in front)
-			if (currentMoney >= upgradePrice [1]) {
+			if (currentMoney >= upgradePrice [2]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [1];
+				currentMoney -= upgradePrice [2];
 				upgrade2Active = true;
+				DataManager.Instance.upgrade2Active = true;
 				//code for all direction pickpocket
-				removeFromArray(2);
+				removeFromArray (2);
 			}
 		}
 		/*if (selectedUpgrades [2] == 3) {
@@ -401,52 +440,57 @@ public class PlayerUpgrade : MonoBehaviour {
 		}*/
 		if (selectedUpgrades [2] == 4) {
 			// A Loan Extension (One time purchase of 2 day extension)
-			if (currentMoney >= upgradePrice [3]) {
+			if (currentMoney >= upgradePrice [1]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [3];
+				currentMoney -= upgradePrice [1];
 				upgrade4Active = true;
+				DataManager.Instance.upgrade4Active = true;
 				//code for additional days
-				removeFromArray(4);
+				removeFromArray (4);
 			}
 		}
 		if (selectedUpgrades [2] == 5) {
 			// DJ Bribe (Consumable for repeating song in the level)
-			if (currentMoney >= upgradePrice [4]) {
+			if (currentMoney >= upgradePrice [2]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [4];
+				currentMoney -= upgradePrice [2];
 				upgrade5Active = true;
+				DataManager.Instance.upgrade5Active = true;
 				//code for consumables addition
-				removeFromArray(5);
+				removeFromArray (5);
 			}
 		}
 		if (selectedUpgrades [2] == 6) {
 			// Dazzler Strips (Increase Maximum Detection Meter by 5)
-			if (currentMoney >= upgradePrice [5]) {
+			if (currentMoney >= upgradePrice [3]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [5];
+				currentMoney -= upgradePrice [3];
 				upgrade6Active = true;
+				DataManager.Instance.upgrade6Active = true;
 				//code for detection meter increase
-				removeFromArray(6);
+				removeFromArray (6);
 			}
 		}
 		if (selectedUpgrades [2] == 7) {
 			// Plastic Finger Extension (Raise minimum cash per pickpocket by 20)
-			if (currentMoney >= upgradePrice [6]) {
+			if (currentMoney >= upgradePrice [4]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [6];
+				currentMoney -= upgradePrice [4];
 				upgrade7Active = true;
+				DataManager.Instance.upgrade7Active = true;
 				//code for minimum cash increase
-				removeFromArray(7);
+				removeFromArray (7);
 			}
 		}
 		if (selectedUpgrades [2] == 8) {
 			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time)
-			if (currentMoney >= upgradePrice [7]) {
+			if (currentMoney >= upgradePrice [5]) {
 				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [7];
+				currentMoney -= upgradePrice [5];
 				upgrade8Active = true;
+				DataManager.Instance.upgrade8Active = true;
 				//code for Detected HP increase
-				removeFromArray(8);
+				removeFromArray (8);
 			}
 		} else {
 			Debug.Log ("You can't buy this upgrade");
