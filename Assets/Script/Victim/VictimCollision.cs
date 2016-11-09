@@ -7,6 +7,7 @@ public class VictimCollision : MonoBehaviour {
 	//VFX
 	public GameObject rob;
 	public Canvas UICanvas;
+	public Camera camera;
 	//End if VFX
 	public GameObject victimBackFX;
 	public Image coins;
@@ -100,9 +101,9 @@ public class VictimCollision : MonoBehaviour {
 					}
 
 					picked = true;
-
-					Image fuck = (Image)Instantiate (coins,new Vector3 (coll.transform.position.x,coll.transform.position.y,coll.transform.position.z),Quaternion.identity);
-					fuck.transform.SetParent (UICanvas.transform);
+					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+					Image Coin = (Image)Instantiate (coins,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Coin.transform.SetParent (UICanvas.transform);
 					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minBackMoney, maxBackMoney);
 					if (UIManager.Instance.updateTotalMoney) 
@@ -143,7 +144,9 @@ public class VictimCollision : MonoBehaviour {
 					}
 
 					picked = true;
-
+					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+					Image Coin = (Image)Instantiate (coins,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Coin.transform.SetParent (UICanvas.transform);
 					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minRightMoney, maxRightMoney);
 
@@ -185,9 +188,10 @@ public class VictimCollision : MonoBehaviour {
 					}
 
 					picked = true;
-
-					//					Debug.Log ("I've just been robbed!?");
-
+					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+					Image Coin = (Image)Instantiate (coins,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Coin.transform.SetParent (UICanvas.transform);
+					//Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minLeftMoney, maxLeftMoney);
 
 					victimBackFX.SetActive (false);
@@ -216,7 +220,7 @@ public class VictimCollision : MonoBehaviour {
 			} 
 			else 
 			{
-				//				Debug.Log ("Watch Where You're Going!?");
+				//Debug.Log ("Watch Where You're Going!?");
 				GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 			}
 		}
@@ -236,7 +240,9 @@ public class VictimCollision : MonoBehaviour {
 				}
 
 				picked = true;
-
+				Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+				Image Coin = (Image)Instantiate (coins,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+				Coin.transform.SetParent (UICanvas.transform);
 				//					Debug.Log ("I've just been robbed!?");
 				money = Random.Range (minFrontMoney, maxFrontMoney);
 				if (UIManager.Instance.updateTotalMoney) 

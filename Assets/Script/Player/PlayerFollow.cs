@@ -15,6 +15,11 @@ public class PlayerFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if(transform.position == GameManager.Instance.playerObject.transform.position){
+			return;
+		}
+
 		float posX = Mathf.SmoothDamp (transform.position.x,GameManager.Instance.playerObject.transform.position.x, ref xSpeed,smoothTimerX);
 		float posY = Mathf.SmoothDamp (transform.position.y,GameManager.Instance.playerObject.transform.position.y, ref ySpeed,smoothTimerY);
 		float posZ = Mathf.SmoothDamp (transform.position.z,GameManager.Instance.playerObject.transform.position.z, ref zSpeed,smoothTimerZ);

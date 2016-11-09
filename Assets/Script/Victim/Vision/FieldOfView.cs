@@ -30,6 +30,8 @@ public class FieldOfView : MonoBehaviour {
 		viewMesh.name = "View Mesh";
 		viewMeshFilter.mesh = viewMesh;
 
+		victimBehaviorScript = this.GetComponent<VictimFollow> ().victimObject.GetComponent<VictimBehaviour> ();
+
 		StartCoroutine ("FindTargetsWithDelay", .2f);
 	}
 
