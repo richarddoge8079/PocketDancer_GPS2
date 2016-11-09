@@ -11,6 +11,8 @@ public class VictimCollision : MonoBehaviour {
 	public Camera camera;
 	//End if VFX
 	public GameObject victimBackFX;
+	public GameObject ParticleSystem;
+	
 	public Image Money;
 	public float pickpocketRange;
 	public bool playerInRangeFront = false;
@@ -139,6 +141,7 @@ public class VictimCollision : MonoBehaviour {
 						UIManager.Instance.UpdateMoney ();
 
 						picked = true;
+						ParticleSystem.SetActive (false);
 					}
 				} 
 				else 
@@ -185,6 +188,8 @@ public class VictimCollision : MonoBehaviour {
 						UIManager.Instance.UpdateMoney ();
 						picked = true;
 					}
+					
+					ParticleSystem.SetActive (false);
 				} 
 				else 
 				{
@@ -234,6 +239,8 @@ public class VictimCollision : MonoBehaviour {
 
 						picked = true;
 					}
+					
+					ParticleSystem.SetActive (false);
 				} 
 				else 
 				{
@@ -285,6 +292,8 @@ public class VictimCollision : MonoBehaviour {
 
 					picked = true;
 				}
+				
+				ParticleSystem.SetActive (false);
 			} 
 			else 
 			{
