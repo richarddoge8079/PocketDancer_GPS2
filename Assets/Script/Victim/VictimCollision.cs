@@ -91,6 +91,14 @@ public class VictimCollision : MonoBehaviour {
 			//Detected
 			if(GameManager.Instance.playerStatsScript.isDetected){
 				SceneManager.LoadScene ("You_Got_Caught");
+				DataManager.Instance.upgrade1Active = false;
+				DataManager.Instance.upgrade2Active = false;
+				DataManager.Instance.upgrade3Active = false;
+				DataManager.Instance.upgrade4Active = false;
+				DataManager.Instance.upgrade5Active = false;
+				DataManager.Instance.upgrade6Active = false;
+				DataManager.Instance.upgrade7Active = false;
+				DataManager.Instance.upgrade8Active = false;
 				return;
 			}
 			//End of Detected
