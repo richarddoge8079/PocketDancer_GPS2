@@ -22,7 +22,7 @@ public class TutorialImage : MonoBehaviour {
 		if (Physics.Raycast (tutorialRay, out isTutorial, tutorialRange)) {
 			checkPlayer ();
 		} 
-		//Debug.DrawRay (transform.position, transform.right * tutorialRange, Color.red);
+		Debug.DrawRay (transform.position, transform.right * tutorialRange, Color.red);
 	}
 
 	void checkPlayer()

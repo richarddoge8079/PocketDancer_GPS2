@@ -17,11 +17,11 @@ public class VictimCautionIcon : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (victimBehaviorScript.playerInSight == true && GameManager.Instance.playerStatsScript.detectionLevel > 0.0f) 
+		if (victimBehaviorScript.playerInSight == true && GameManager.Instance.playerStatsScript.detectionLevel > 0.0f && GameManager.Instance.playerStatsScript.detectionLevel < 100.0f) 
 		{
 			questionMark.SetActive (true);
 		} 
-		else if (victimBehaviorScript.playerInSight == true && GameManager.Instance.playerStatsScript.detectionLevel == 100.0f) 
+		else if (victimBehaviorScript.playerInSight == true && GameManager.Instance.playerStatsScript.detectionLevel >= 100.0f) 
 		{
 			exclamationMark.SetActive (true);
 		} 
