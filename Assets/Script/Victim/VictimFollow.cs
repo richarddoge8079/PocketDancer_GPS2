@@ -18,8 +18,10 @@ public class VictimFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		transform.rotation = victimObject.transform.rotation;
+
 		if(transform.position == victimObject.transform.position){
-			Debug.Log ("No Follow");
+//			Debug.Log ("No Follow");
 			return;
 		}
 
@@ -29,7 +31,6 @@ public class VictimFollow : MonoBehaviour {
 
 		transform.position = new Vector3 (posX,posY,posZ);
 
-		transform.rotation = victimObject.transform.rotation;
 	}
 
 	public void SetFollow(GameObject ga){
