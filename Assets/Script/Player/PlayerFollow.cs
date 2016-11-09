@@ -16,6 +16,7 @@ public class PlayerFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		transform.rotation = GameManager.Instance.playerObject.transform.rotation;
 		if(transform.position == GameManager.Instance.playerObject.transform.position){
 			return;
 		}
@@ -26,6 +27,5 @@ public class PlayerFollow : MonoBehaviour {
 
 		transform.position = new Vector3 (posX,posY,posZ);
 
-		transform.rotation = GameManager.Instance.playerObject.transform.rotation;
 	}
 }
