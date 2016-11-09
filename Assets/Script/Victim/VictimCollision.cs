@@ -10,7 +10,7 @@ public class VictimCollision : MonoBehaviour {
 	public Camera camera;
 	//End if VFX
 	public GameObject victimBackFX;
-	public Image coins;
+	public Image Money;
 	public float pickpocketRange;
 	public bool playerInRangeFront = false;
 	public bool playerInRangeBack = false;
@@ -102,7 +102,7 @@ public class VictimCollision : MonoBehaviour {
 
 					picked = true;
 					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
-					Image Coin = (Image)Instantiate (coins,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
 					Coin.transform.SetParent (UICanvas.transform);
 					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minBackMoney, maxBackMoney);
@@ -145,7 +145,7 @@ public class VictimCollision : MonoBehaviour {
 
 					picked = true;
 					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
-					Image Coin = (Image)Instantiate (coins,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
 					Coin.transform.SetParent (UICanvas.transform);
 					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minRightMoney, maxRightMoney);
@@ -189,7 +189,7 @@ public class VictimCollision : MonoBehaviour {
 
 					picked = true;
 					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
-					Image Coin = (Image)Instantiate (coins,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
 					Coin.transform.SetParent (UICanvas.transform);
 					//Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minLeftMoney, maxLeftMoney);
@@ -241,7 +241,7 @@ public class VictimCollision : MonoBehaviour {
 
 				picked = true;
 				Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
-				Image Coin = (Image)Instantiate (coins,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+				Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
 				Coin.transform.SetParent (UICanvas.transform);
 				//					Debug.Log ("I've just been robbed!?");
 				money = Random.Range (minFrontMoney, maxFrontMoney);
