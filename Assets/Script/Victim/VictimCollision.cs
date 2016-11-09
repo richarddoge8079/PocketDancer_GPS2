@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VictimCollision : MonoBehaviour {
 	//VFX
@@ -85,6 +86,14 @@ public class VictimCollision : MonoBehaviour {
 	{
 		if(coll.CompareTag("Player"))
 		{
+			//Detected
+			if(GameManager.Instance.playerStatsScript.isDetected){
+				//Your Logic
+				SceneManager.LoadScene ("You_Got_Caught");
+				return;
+			}
+			//End of Detected
+
 			if (playerInRangeBack)  
 			{
 				if (!picked)
@@ -101,18 +110,22 @@ public class VictimCollision : MonoBehaviour {
 					}
 
 					picked = true;
-					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
-					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
-					Coin.transform.SetParent (UICanvas.transform);
-					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minBackMoney, maxBackMoney);
+					//					Debug.Log ("I've just been robbed!?");
+
 					if (UIManager.Instance.updateTotalMoney) 
 					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
 						UIManager.Instance.UiVictimMoney += money;
 						GameManager.Instance.pickPocket += 1;
 					}
 					else
 					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
 						UIManager.Instance.UiVictimMoney += money;
 						UIManager.Instance.UpdateMoney ();
 
@@ -123,10 +136,6 @@ public class VictimCollision : MonoBehaviour {
 				{
 					//					Debug.Log ("Why did someone touch my butt?!");
 					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
-					if (GameManager.Instance.playerStatsScript.detectionLevel >= 50) 
-					{
-						//						Instantiate(questionMark, transform.localPosition + new Vector3(0f, 1.5f, 0f), )
-					}
 				}
 			} 
 			if (playerInRangeRight)  
@@ -144,16 +153,15 @@ public class VictimCollision : MonoBehaviour {
 					}
 
 					picked = true;
-					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
-					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
-					Coin.transform.SetParent (UICanvas.transform);
-					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minRightMoney, maxRightMoney);
-
+					//					Debug.Log ("I've just been robbed!?");
 					victimBackFX.SetActive (false);
 
 					if (UIManager.Instance.updateTotalMoney) 
 					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
 						UIManager.Instance.UiVictimMoney += money;
 						GameManager.Instance.pickPocket += 1;
 
@@ -161,6 +169,9 @@ public class VictimCollision : MonoBehaviour {
 					}
 					else
 					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
 						UIManager.Instance.UiVictimMoney += money;
 						UIManager.Instance.UpdateMoney ();
 						picked = true;
@@ -188,16 +199,16 @@ public class VictimCollision : MonoBehaviour {
 					}
 
 					picked = true;
-					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
-					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
-					Coin.transform.SetParent (UICanvas.transform);
-					//Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minLeftMoney, maxLeftMoney);
 
+					//Debug.Log ("I've just been robbed!?");
 					victimBackFX.SetActive (false);
 
 					if (UIManager.Instance.updateTotalMoney) 
 					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
 						UIManager.Instance.UiVictimMoney += money;
 						GameManager.Instance.pickPocket += 1;
 
@@ -205,6 +216,9 @@ public class VictimCollision : MonoBehaviour {
 					}
 					else
 					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
 						UIManager.Instance.UiVictimMoney += money;
 						UIManager.Instance.UpdateMoney ();
 
@@ -240,13 +254,13 @@ public class VictimCollision : MonoBehaviour {
 				}
 
 				picked = true;
-				Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
-				Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
-				Coin.transform.SetParent (UICanvas.transform);
 				//					Debug.Log ("I've just been robbed!?");
 				money = Random.Range (minFrontMoney, maxFrontMoney);
 				if (UIManager.Instance.updateTotalMoney) 
 				{
+					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Coin.transform.SetParent (UICanvas.transform);
 					UIManager.Instance.UiVictimMoney += money;
 					GameManager.Instance.pickPocket += 1;
 
@@ -254,6 +268,9 @@ public class VictimCollision : MonoBehaviour {
 				}
 				else
 				{
+					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Coin.transform.SetParent (UICanvas.transform);
 					UIManager.Instance.UiVictimMoney += money;
 					UIManager.Instance.UpdateMoney ();
 
@@ -264,10 +281,6 @@ public class VictimCollision : MonoBehaviour {
 			{
 				//					Debug.Log ("Why did someone touch my butt?!");
 				GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
-				if (GameManager.Instance.playerStatsScript.detectionLevel >= 50) 
-				{
-					//						Instantiate(questionMark, transform.localPosition + new Vector3(0f, 1.5f, 0f), )
-				}
 			}
 		} 
 	}
