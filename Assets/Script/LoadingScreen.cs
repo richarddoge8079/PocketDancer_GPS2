@@ -14,6 +14,8 @@ public class LoadingScreen : MonoBehaviour {
 	public GameObject cameraObject;
 	public GameObject plane;
 	public GameObject door;
+	public AudioSource sfx;
+	public AudioClip doorOpening;
 
 	private Vector3 tempPosition;
 	private AsyncOperation async;
@@ -86,6 +88,8 @@ public class LoadingScreen : MonoBehaviour {
 
 	IEnumerator OpenDoor()
 	{
+		sfx.clip = doorOpening;
+		sfx.Play();
 		door.GetComponent<SpriteRenderer> ().sprite = openDoor;
 		yield return new WaitForSeconds (1f);
 		cameraObject.GetComponent<Animator> ().Play ("CameraMovement");
