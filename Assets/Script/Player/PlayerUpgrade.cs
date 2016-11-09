@@ -24,7 +24,9 @@ public class PlayerUpgrade : MonoBehaviour {
 	public Sprite Upgrade7;
 	public Sprite Upgrade8;
 
-	public int currentMoney;
+	public Text Money;
+	public float currentMoney;
+	public Text Day;
 
 	public Button upgrade1;
 	public Button upgrade2;
@@ -93,8 +95,14 @@ public class PlayerUpgrade : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+	{
+		if (Money != null) 
+		{
+			Money.text = "$ " + currentMoney;
+		}
+
+		Day.text = "Day(s) left: " + DataManager.Instance.dayCount;	
 	}	
 
 	void removeFromArray(int i)
@@ -443,6 +451,12 @@ public class PlayerUpgrade : MonoBehaviour {
 		} else {
 			Debug.Log ("You can't buy this upgrade");
 		}
+	}
+	
+	public void UpdateDays()
+	{
+		DataManager.Instance.dayCount -= 1;
+		DataManager.Instance.moneyCount = currentMoney;
 	}
 }
 
