@@ -17,4 +17,9 @@ public class ChooseScene : MonoBehaviour {
 	public void PickScene(){
 		SceneManager.LoadScene("LoadingScreen_HouseParty_1");
 	}
+	
+	public void BackToMainMenu()
+	{
+		SceneManager.LoadScene("MainMenu");
+	}
 }
