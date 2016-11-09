@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class ChooseScene : MonoBehaviour {
 
+<<<<<<< HEAD
 	public PlayerUpgrade playerUpgradeScript;
 	public string sceneName;
 
@@ -12,6 +13,8 @@ public class ChooseScene : MonoBehaviour {
 	
 	}
 	
+=======
+>>>>>>> a206c28dfa7b4db1f8c9670a7e7148f216aaf635
 	// Update is called once per frame
 	void Update () {
 	

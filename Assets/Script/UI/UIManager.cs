@@ -123,10 +123,12 @@ public class UIManager : MonoBehaviour {
 			else 
 			{
 				moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount + "(" + "+" + UiVictimMoney + ")";
-				if (UiVictimMoney <= 0) {
+				if (UiVictimMoney <= 0) 
+				{
 					updateTotalMoney = false;
 				} 
-				else {
+				else 
+				{
 					GameManager.Instance.playerStatsScript.moneyCount += 1;
 					UiVictimMoney -= 1;
 				}
