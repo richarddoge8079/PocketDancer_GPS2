@@ -4,21 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class ChooseScene : MonoBehaviour {
 
-<<<<<<< HEAD
 	public PlayerUpgrade playerUpgradeScript;
 	public string sceneName;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-=======
->>>>>>> a206c28dfa7b4db1f8c9670a7e7148f216aaf635
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	public void PickScene(){
 		//Club Level
