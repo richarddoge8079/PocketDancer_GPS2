@@ -31,6 +31,8 @@ public class DataManager : MonoBehaviour {
 	public int dayCount;
 	public float moneyCount;
 
+	public string sceneName;
+
 	//Upgrades
 	public PlayerUpgrade playerUpgradeScript;
 

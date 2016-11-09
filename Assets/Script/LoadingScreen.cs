@@ -28,6 +28,8 @@ public class LoadingScreen : MonoBehaviour {
 		// Subscribe to events
 		InputManagerScript.Instance.EvtOnTouchDown 	+= OnTouchDown;		
 		InputManagerScript.Instance.EvtOnTouchUp 	+= OnTouchUp;
+
+		sceneName = DataManager.Instance.sceneName;
 	}
 
 	void OnDisable() {
@@ -41,6 +43,9 @@ public class LoadingScreen : MonoBehaviour {
 		mat.color = Color.black;
 		tempPosition = transform.position;
 		StartCoroutine ("LoadScene");
+
+
+		sceneName = DataManager.Instance.sceneName;
 	}
 
 	IEnumerator LoadScene()
@@ -48,7 +53,7 @@ public class LoadingScreen : MonoBehaviour {
 		if (sceneName == "")
 			yield break;
 
-		async = SceneManager.LoadSceneAsync(sceneName);
+		async = SceneManager.LoadSceneAsync(sceneName+"");
 		async.allowSceneActivation = false;
 		Debug.Log("start loading");
 

@@ -4,18 +4,21 @@ using UnityEngine.SceneManagement;
 
 public class ChooseScene : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public PlayerUpgrade playerUpgradeScript;
+	public string sceneName;
 
 	public void PickScene(){
-		SceneManager.LoadScene("LoadingScreen_HouseParty_1");
+		//Club Level
+		if (playerUpgradeScript.upgrade1Active) {
+//			SceneManager.LoadScene("Club_1");
+			sceneName = "Club_1";
+		} 
+		// House Level
+		else {
+			sceneName = "HouseParty_1";
+		}
+		DataManager.Instance.sceneName = sceneName;
+		SceneManager.LoadSceneAsync ("LoadingScreen");
 	}
 	
 	public void BackToMainMenu()

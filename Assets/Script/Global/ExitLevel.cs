@@ -29,6 +29,7 @@ public class ExitLevel : MonoBehaviour {
 
 			UIManager.Instance.GotoScene(sceneName);
 //			SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
+			this.gameObject.SetActive(false);
 		}
 	}
 }
