@@ -2,7 +2,6 @@ Library/
 obj/
 .vs/
 Temp/
-ProjectSettings/
 Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj
 Assembly-UnityScript.unityproj

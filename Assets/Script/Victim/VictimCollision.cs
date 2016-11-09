@@ -86,6 +86,14 @@ public class VictimCollision : MonoBehaviour {
 	{
 		if(coll.CompareTag("Player"))
 		{
+			//Detected
+			if(GameManager.Instance.playerStatsScript.isDetected){
+				//Your Logic
+				SceneManager.LoadScene ("You_Got_Caught");
+				return;
+			}
+			//End of Detected
+
 			if (playerInRangeBack)  
 			{
 				if (!picked)
@@ -128,10 +136,6 @@ public class VictimCollision : MonoBehaviour {
 				{
 					//					Debug.Log ("Why did someone touch my butt?!");
 					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
-					if (GameManager.Instance.playerStatsScript.detectionLevel >= 50) 
-					{
-						//						Instantiate(questionMark, transform.localPosition + new Vector3(0f, 1.5f, 0f), )
-					}
 				}
 			} 
 			if (playerInRangeRight)  
@@ -277,10 +281,6 @@ public class VictimCollision : MonoBehaviour {
 			{
 				//					Debug.Log ("Why did someone touch my butt?!");
 				GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
-				if (GameManager.Instance.playerStatsScript.detectionLevel >= 100) 
-				{
-					SceneManager.LoadScene ("You_Got_Caught");
-				}
 			}
 		} 
 	}
