@@ -54,45 +54,49 @@ public class VictimCollision : MonoBehaviour {
 
 	void Update ()
 	{
-		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
-		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
-		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
-		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
-		if (Physics.Raycast (pickpocketRayBack, out isPickpocketed, pickpocketRange)) 
+//		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
+//		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
+//		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
+//		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
+		if (Physics.Raycast (transform.position, -transform.forward, out isPickpocketed, pickpocketRange)) 
 		{
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
 				playerInRangeBack = true;
+				StopCoroutine ("Timer");
 				//				Debug.Log ("Target In Range");
 			} 
 		} 
-		else if (Physics.Raycast (pickpocketRayRight, out isPickpocketed, pickpocketRange)) 
+		else if (Physics.Raycast (transform.position, transform.right, out isPickpocketed, pickpocketRange)) 
 		{
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
 				playerInRangeRight = true;
+				StopCoroutine ("Timer");
 				//Debug.Log ("Target In Range");
 			} 
 		} 
-		else if (Physics.Raycast (pickpocketRayLeft, out isPickpocketed, pickpocketRange)) 
+		else if (Physics.Raycast (transform.position, -transform.right, out isPickpocketed, pickpocketRange)) 
 		{
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
 				playerInRangeLeft = true;
+				StopCoroutine ("Timer");
 				//Debug.Log ("Target In Range");
 			} 
 		} 
-		else if (Physics.Raycast (pickpocketRayFront, out isPickpocketed, pickpocketRange)) 
+		else if (Physics.Raycast (transform.position, transform.forward, out isPickpocketed, pickpocketRange)) 
 		{
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
 				playerInRangeFront = true;
+				StopCoroutine ("Timer");
 				//Debug.Log ("Target In Range");
 			} 
 		} 
 		else 
 		{
-			StartCoroutine (Timer (defaultTime));
+			StartCoroutine ("Timer" ,defaultTime);
 		}
 		//Debug.DrawRay (transform.localPosition, -transform.forward * pickpocketRange, Color.green);
 	}
@@ -102,7 +106,7 @@ public class VictimCollision : MonoBehaviour {
 		{
 			//Detected
 			if(GameManager.Instance.playerStatsScript.isDetected){
-				SceneManager.LoadScene ("You_Got_Caught");
+				SceneManager.LoadScene ("Hideout");
 				DataManager.Instance.upgrade1Active = false;
 				DataManager.Instance.upgrade2Active = false;
 				DataManager.Instance.upgrade3Active = false;

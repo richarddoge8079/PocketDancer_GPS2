@@ -26,8 +26,18 @@ public class ExitLevel : MonoBehaviour {
 //			else {
 //				UIManager.Instance.GotoScene("LoseScene");
 //			}
-
-			UIManager.Instance.GotoScene(sceneName);
+			//Win
+			if (DataManager.Instance.moneyCount >= 3000) {
+				UIManager.Instance.GotoScene ("WinScene");
+			} 
+			//Lose
+			else if(DataManager.Instance.dayCount <= 0){
+				UIManager.Instance.GotoScene ("LoseScene");
+			}
+			// COntinue Level
+			else {
+				UIManager.Instance.GotoScene(sceneName);
+			}
 //			SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
 			this.gameObject.SetActive(false);
 		}
