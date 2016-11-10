@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -11,8 +11,7 @@ public class VictimCollision : MonoBehaviour {
 	public Camera camera;
 	//End if VFX
 	public GameObject victimBackFX;
-	public GameObject ParticleSystem;
-	
+
 	public Image Money;
 	public float pickpocketRange;
 	public bool playerInRangeFront = false;
@@ -42,7 +41,7 @@ public class VictimCollision : MonoBehaviour {
 		UICanvas = UIManager.Instance.gameObject.GetComponent<Canvas>();
 		camera = Camera.main;
 		allDirectionPick = DataManager.Instance.upgrade2Active;
-		
+
 		if(DataManager.Instance.upgrade7Active == true)
 		{
 			minFrontMoney += 20;
@@ -54,11 +53,20 @@ public class VictimCollision : MonoBehaviour {
 
 	void Update ()
 	{
+<<<<<<< HEAD
 //		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
 //		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
 //		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
 //		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
 		if (Physics.Raycast (transform.position, -transform.forward, out isPickpocketed, pickpocketRange)) 
+=======
+		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
+		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
+		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
+		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
+		Debug.DrawRay (transform.position,-transform.forward);
+		if (Physics.Raycast (pickpocketRayBack, out isPickpocketed, pickpocketRange)) 
+>>>>>>> 49caa3ee7c2efd59ca59347a083017bd348598a1
 		{
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
@@ -155,7 +163,7 @@ public class VictimCollision : MonoBehaviour {
 						UIManager.Instance.UpdateMoney ();
 
 						picked = true;
-						ParticleSystem.SetActive (false);
+						victimBackFX.SetActive (false);
 					}
 				} 
 				else 
@@ -205,18 +213,13 @@ public class VictimCollision : MonoBehaviour {
 							picked = true;
 						}
 
-						ParticleSystem.SetActive (false);
+						victimBackFX.SetActive (false);
 					} 
 					else 
 					{
 						//Debug.Log ("Why did someone touch my butt?!");
 						GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 					}
-				}
-				else 
-				{
-					//Debug.Log ("Why did someone touch my butt?!");
-					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 				}
 			} 
 			if (playerInRangeLeft) {
@@ -257,7 +260,7 @@ public class VictimCollision : MonoBehaviour {
 							picked = true;
 						}
 
-						ParticleSystem.SetActive (false);
+						victimBackFX.SetActive (false);
 					} else {
 						//Debug.Log ("Why did someone touch my butt?!");
 						GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
@@ -266,10 +269,6 @@ public class VictimCollision : MonoBehaviour {
 					//Debug.Log ("Watch Where You're Going!?");
 					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 				}
-			}
-			else {
-				//Debug.Log ("Watch Where You're Going!?");
-				GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 			}
 		}
 		if (playerInRangeFront)  
@@ -307,15 +306,11 @@ public class VictimCollision : MonoBehaviour {
 						picked = true;
 					}
 
-					ParticleSystem.SetActive (false);
+					victimBackFX.SetActive (false);
 				} else {
 					//					Debug.Log ("Why did someone touch my butt?!");
 					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 				}
-			}
-			else {
-				//					Debug.Log ("Why did someone touch my butt?!");
-				GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
 			}
 		} 
 	}
