@@ -42,6 +42,14 @@ public class VictimCollision : MonoBehaviour {
 		UICanvas = UIManager.Instance.gameObject.GetComponent<Canvas>();
 		camera = Camera.main;
 		allDirectionPick = DataManager.Instance.upgrade2Active;
+		
+		if(DataManager.Instance.upgrade7Active == true)
+		{
+			minFrontMoney += 20;
+			minBackMoney += 20;
+			minLeftMoney += 20;
+			minRightMoney += 20;
+		}
 	}
 
 	void Update ()
