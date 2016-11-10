@@ -56,11 +56,13 @@ public class PlayerUpgrade : MonoBehaviour {
 		upgrade2Image = upgrade2Image.GetComponent<UnityEngine.UI.Image> ();
 		upgrade3Image = upgrade3Image.GetComponent<UnityEngine.UI.Image> ();
 		days = DataManager.Instance.dayCount;
+
 	}
 
 	void Awake()
 	{
 		Debug.Log ("game loop");
+		removeFromArray (5);
 		fetchLatestStat ();
 		reshuffle (Upgrades);
 		for (int i = 0; i < selectedUpgrades.Length; i++) {
@@ -258,7 +260,7 @@ public class PlayerUpgrade : MonoBehaviour {
 				//code Nightclub level access?
 				removeFromArray(3);
 			}
-		}*/
+		}
 		if (selectedUpgrades [0] == 4) {
 			// A Loan Extension (One time purchase of 2 day extension)
 			if (currentMoney >= upgradePrice [1]) {
@@ -275,7 +277,7 @@ public class PlayerUpgrade : MonoBehaviour {
 					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
 				}	
 			}
-		}
+		}*/
 		if (selectedUpgrades [0] == 5) {
 			// DJ Bribe (Consumable for repeating song in the level)
 			if (currentMoney >= upgradePrice [2]) {
@@ -360,7 +362,7 @@ public class PlayerUpgrade : MonoBehaviour {
 				//code Nightclub level access?
 				removeFromArray(3);
 			}
-		}*/
+		}
 		if (selectedUpgrades [1] == 4) {
 			// A Loan Extension (One time purchase of 2 day extension)
 			if (currentMoney >= upgradePrice [1]) {
@@ -377,7 +379,7 @@ public class PlayerUpgrade : MonoBehaviour {
 					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
 				}	
 			}
-		}
+		}*/
 		if (selectedUpgrades [1] == 5) {
 			// DJ Bribe (Consumable for repeating song in the level)
 			if (currentMoney >= upgradePrice [2]) {
@@ -462,7 +464,7 @@ public class PlayerUpgrade : MonoBehaviour {
 				//code Nightclub level access?
 				removeFromArray(3);
 			}
-		}*/
+		}
 		if (selectedUpgrades [2] == 4) {
 			// A Loan Extension (One time purchase of 2 day extension)
 			if (currentMoney >= upgradePrice [1]) {
@@ -479,7 +481,7 @@ public class PlayerUpgrade : MonoBehaviour {
 					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
 				}	
 			}
-		}
+		}*/
 		if (selectedUpgrades [2] == 5) {
 			// DJ Bribe (Consumable for repeating song in the level)
 			if (currentMoney >= upgradePrice [2]) {

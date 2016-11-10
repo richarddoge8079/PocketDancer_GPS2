@@ -1,44 +1,314 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class TutorialImage : MonoBehaviour {
+public class VictimCollision : MonoBehaviour {
+	//VFX
+	public GameObject rob;
+	public Canvas UICanvas;
+	public Camera camera;
+	//End if VFX
+	public GameObject victimBackFX;
+	public GameObject ParticleSystem;
 
-	public GameObject self;
-	public GameObject other;
-	public float tutorialRange;
-	RaycastHit isTutorial;
-	public float timer;
-	public Image tutImage;
-
+	public Image Money;
+	public float pickpocketRange;
+	public bool playerInRangeFront = false;
+	public bool playerInRangeBack = false;
+	public bool playerInRangeLeft = false;
+	public bool playerInRangeRight = false;
+	public bool picked = false;
+	public int maxFrontMoney;
+	public int minFrontMoney;
+	public int maxBackMoney;
+	public int minBackMoney;
+	public int maxLeftMoney;
+	public int minLeftMoney;
+	public int maxRightMoney;
+	public int minRightMoney;
+	public int money;
+	public float defaultTime;
+	public float detectionLevel;
+	RaycastHit isPickpocketed;
 	// Use this for initialization
-	void Start () {
-
-	}
-
 	// Update is called once per frame
-	void Update () {
-		Ray tutorialRay = new Ray (transform.position, transform.right);
-		if (Physics.Raycast (tutorialRay, out isTutorial, tutorialRange)) {
-			checkPlayer ();
-		} 
-		//Debug.DrawRay (transform.position, transform.right * tutorialRange, Color.red);
+
+	void Start()
+	{
+		ObjectPoolingScript.Instance.CreatePool (rob, 5, 10);
+		UICanvas = UIManager.Instance.gameObject.GetComponent<Canvas>();
+		camera = Camera.main;
 	}
 
-	void checkPlayer()
+	void Update ()
 	{
-		if (isTutorial.collider.CompareTag ("Player")) {
-			UIManager.Instance.tutorialImage.sprite = tutImage.sprite;
-			UIManager.Instance.EnableTutorial (true);	
-			StartCoroutine (Timer (timer));
+		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
+		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
+		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
+		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
+		if (Physics.Raycast (pickpocketRayBack, out isPickpocketed, pickpocketRange)) 
+		{
+			if (isPickpocketed.collider.CompareTag("Player")) 
+			{
+				playerInRangeBack = true;
+				//				Debug.Log ("Target In Range");
+			} 
+		} 
+		else if (Physics.Raycast (pickpocketRayRight, out isPickpocketed, pickpocketRange)) 
+		{
+			if (isPickpocketed.collider.CompareTag("Player")) 
+			{
+				playerInRangeRight = true;
+				//Debug.Log ("Target In Range");
+			} 
+		} 
+		else if (Physics.Raycast (pickpocketRayLeft, out isPickpocketed, pickpocketRange)) 
+		{
+			if (isPickpocketed.collider.CompareTag("Player")) 
+			{
+				playerInRangeLeft = true;
+				//Debug.Log ("Target In Range");
+			} 
+		} 
+		else if (Physics.Raycast (pickpocketRayFront, out isPickpocketed, pickpocketRange)) 
+		{
+			if (isPickpocketed.collider.CompareTag("Player")) 
+			{
+				playerInRangeFront = true;
+				//Debug.Log ("Target In Range");
+			} 
+		} 
+		else 
+		{
+			StartCoroutine (Timer (defaultTime));
+		}
+		//Debug.DrawRay (transform.localPosition, -transform.forward * pickpocketRange, Color.green);
+	}
+	void OnTriggerEnter (Collider coll)
+	{
+		if(coll.CompareTag("Player"))
+		{
+			//Detected
+			if(GameManager.Instance.playerStatsScript.isDetected){
+				SceneManager.LoadScene ("You_Got_Caught");
+				DataManager.Instance.upgrade1Active = false;
+				DataManager.Instance.upgrade2Active = false;
+				DataManager.Instance.upgrade3Active = false;
+				DataManager.Instance.upgrade4Active = false;
+				DataManager.Instance.upgrade5Active = false;
+				DataManager.Instance.upgrade6Active = false;
+				DataManager.Instance.upgrade7Active = false;
+				DataManager.Instance.upgrade8Active = false;
+				return;
+			}
+			//End of Detected
+
+			if (playerInRangeBack)  
+			{
+				if (!picked)
+				{
+					//					Debug.Log ("I've just been robbed!?");
+					//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+
+					GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
+
+					if (go != null) 
+					{
+						//! Reseting the bullet attributes
+						go.transform.position = transform.position;
+					}
+
+					picked = true;
+					money = Random.Range (minBackMoney, maxBackMoney);
+					//					Debug.Log ("I've just been robbed!?");
+
+					if (UIManager.Instance.updateTotalMoney) 
+					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
+						UIManager.Instance.UiVictimMoney += money;
+						GameManager.Instance.pickPocket += 1;
+					}
+					else
+					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
+						UIManager.Instance.UiVictimMoney += money;
+						UIManager.Instance.UpdateMoney ();
+
+						picked = true;
+						ParticleSystem.SetActive (false);
+					}
+				} 
+				else 
+				{
+					//					Debug.Log ("Why did someone touch my butt?!");
+					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
+				}
+			} 
+			if (playerInRangeRight)  
+			{
+				if (!picked)
+				{
+					//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+
+					GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
+
+					if (go != null) 
+					{
+						//! Reseting the bullet attributes
+						go.transform.position = transform.position;
+					}
+
+					picked = true;
+					money = Random.Range (minRightMoney, maxRightMoney);
+					//					Debug.Log ("I've just been robbed!?");
+					victimBackFX.SetActive (false);
+
+					if (UIManager.Instance.updateTotalMoney) 
+					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
+						UIManager.Instance.UiVictimMoney += money;
+						GameManager.Instance.pickPocket += 1;
+
+						picked = true;
+					}
+					else
+					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
+						UIManager.Instance.UiVictimMoney += money;
+						UIManager.Instance.UpdateMoney ();
+						picked = true;
+					}
+
+					ParticleSystem.SetActive (false);
+				} 
+				else 
+				{
+					//Debug.Log ("Why did someone touch my butt?!");
+					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
+				}
+			} 
+			if (playerInRangeLeft)  
+			{
+				if (!picked)
+				{
+					//Debug.Log ("I've just been robbed!?");
+					//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+
+					GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
+
+					if (go != null) 
+					{
+						//! Reseting the bullet attributes
+						go.transform.position = transform.position;
+					}
+
+					picked = true;
+					money = Random.Range (minLeftMoney, maxLeftMoney);
+
+					//Debug.Log ("I've just been robbed!?");
+					victimBackFX.SetActive (false);
+
+					if (UIManager.Instance.updateTotalMoney) 
+					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
+						UIManager.Instance.UiVictimMoney += money;
+						GameManager.Instance.pickPocket += 1;
+
+						picked = true;
+					}
+					else
+					{
+						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+						Coin.transform.SetParent (UICanvas.transform);
+						UIManager.Instance.UiVictimMoney += money;
+						UIManager.Instance.UpdateMoney ();
+
+
+						picked = true;
+					}
+
+					ParticleSystem.SetActive (false);
+				} 
+				else 
+				{
+					//Debug.Log ("Why did someone touch my butt?!");
+					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
+				}
+			} 
+			else 
+			{
+				//Debug.Log ("Watch Where You're Going!?");
+				GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
+			}
+		}
+		if (playerInRangeFront)  
+		{
+			if (!picked)
+			{
+				//					Debug.Log ("I've just been robbed!?");
+				//Instantiate(rob, GameManager.Instance.playerObject.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+
+				GameObject go = ObjectPoolingScript.Instance.GetObject ("MoneyParticleSystem");
+
+				if (go != null) 
+				{
+					//! Reseting the bullet attributes
+					go.transform.position = transform.position;
+				}
+
+				picked = true;
+				//					Debug.Log ("I've just been robbed!?");
+				money = Random.Range (minFrontMoney, maxFrontMoney);
+				if (UIManager.Instance.updateTotalMoney) 
+				{
+					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Coin.transform.SetParent (UICanvas.transform);
+					UIManager.Instance.UiVictimMoney += money;
+					GameManager.Instance.pickPocket += 1;
+
+					picked = true;
+				}
+				else
+				{
+					Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
+					Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
+					Coin.transform.SetParent (UICanvas.transform);
+					UIManager.Instance.UiVictimMoney += money;
+					UIManager.Instance.UpdateMoney ();
+
+					picked = true;
+				}
+
+				ParticleSystem.SetActive (false);
+			} 
+			else 
+			{
+				//					Debug.Log ("Why did someone touch my butt?!");
+				GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
+			}
 		} 
 	}
 
-	IEnumerator Timer(float timer)
+	IEnumerator Timer(float Delay)
 	{
-		yield return new WaitForSeconds (timer);
-		UIManager.Instance.EnableTutorial (false);	
-		self.SetActive (false);
-		other.SetActive (false);
+		yield return new WaitForSeconds (Delay);
+		playerInRangeBack= false;
+		playerInRangeFront= false;
+		playerInRangeRight = false;
+		playerInRangeLeft = false;
 	}
 }
