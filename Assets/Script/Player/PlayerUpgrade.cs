@@ -26,6 +26,7 @@ public class PlayerUpgrade : MonoBehaviour {
 	public Text Money;
 	public float currentMoney;
 	public Text Day;
+	public int days;
 
 	public Button upgrade1;
 	public Button upgrade2;
@@ -46,15 +47,15 @@ public class PlayerUpgrade : MonoBehaviour {
 	void Start () {
 		Debug.Log ("game begin");
 		//currentMoney = gameObject.GetComponent<PlayerStats> ().moneyCount;
-		//currentMoney = DataManager.Instance.moneyCount;
-		currentMoney = 10000;
+		currentMoney = DataManager.Instance.moneyCount;
+		//currentMoney = 10000;
 		upgrade1 = upgrade1.GetComponent<Button> ();
 		upgrade2 = upgrade2.GetComponent<Button> ();
 		upgrade3 = upgrade3.GetComponent<Button> ();
 		upgrade1Image = upgrade1Image.GetComponent<UnityEngine.UI.Image> ();
 		upgrade2Image = upgrade2Image.GetComponent<UnityEngine.UI.Image> ();
 		upgrade3Image = upgrade3Image.GetComponent<UnityEngine.UI.Image> ();
-
+		days = DataManager.Instance.dayCount;
 	}
 
 	void Awake()
@@ -96,8 +97,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		{
 			Money.text = "$ " + currentMoney;
 		}
-
-		Day.text = "Day(s) left: " + DataManager.Instance.dayCount;	
+		if (Day != null)
+		{
+			Day.text = "Day(s) left: " + days;
+		}
 	}	
 
 	void fetchLatestStat()

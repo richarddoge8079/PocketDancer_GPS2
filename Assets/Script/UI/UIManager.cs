@@ -118,11 +118,11 @@ public class UIManager : MonoBehaviour {
 			if (!updateTotalMoney) 
 			{
 				//			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
-				moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
+				moneyText.text = GameManager.Instance.playerStatsScript.moneyCount.ToString();
 			} 
 			else 
 			{
-				moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount + "(" + "+" + UiVictimMoney + ")";
+				moneyText.text = GameManager.Instance.playerStatsScript.moneyCount + "(" + "+" + UiVictimMoney + ")";
 				if (UiVictimMoney <= 0) 
 				{
 					updateTotalMoney = false;
