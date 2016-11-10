@@ -269,6 +269,11 @@ public class PlayerUpgrade : MonoBehaviour {
 				//code for additional days
 				removeFromArray (4);
 				upgrade1.interactable = false;
+				
+				if(upgrade4Active == true)
+				{
+					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
+				}	
 			}
 		}
 		if (selectedUpgrades [0] == 5) {
@@ -366,6 +371,11 @@ public class PlayerUpgrade : MonoBehaviour {
 				//code for additional days
 				removeFromArray (4);
 				upgrade2.interactable = false;
+				
+				if(upgrade4Active == true)
+				{
+					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
+				}	
 			}
 		}
 		if (selectedUpgrades [1] == 5) {
@@ -463,6 +473,11 @@ public class PlayerUpgrade : MonoBehaviour {
 				//code for additional days
 				removeFromArray (4);
 				upgrade3.interactable = false;
+				
+				if(upgrade4Active == true)
+				{
+					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
+				}	
 			}
 		}
 		if (selectedUpgrades [2] == 5) {
