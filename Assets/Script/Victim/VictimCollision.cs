@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -53,20 +53,12 @@ public class VictimCollision : MonoBehaviour {
 
 	void Update ()
 	{
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
 //		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
 //		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
 //		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
 		if (Physics.Raycast (transform.position, -transform.forward, out isPickpocketed, pickpocketRange)) 
-=======
-		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
-		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
-		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
-		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
-		Debug.DrawRay (transform.position,-transform.forward);
-		if (Physics.Raycast (pickpocketRayBack, out isPickpocketed, pickpocketRange)) 
->>>>>>> 49caa3ee7c2efd59ca59347a083017bd348598a1
 		{
 			if (isPickpocketed.collider.CompareTag("Player")) 
 			{
