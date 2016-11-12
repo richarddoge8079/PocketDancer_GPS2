@@ -57,6 +57,8 @@ public class PlayerUpgrade : MonoBehaviour {
 		upgrade3Image = upgrade3Image.GetComponent<UnityEngine.UI.Image> ();
 		days = DataManager.Instance.dayCount;
 
+		DataManager.Instance.canMinusDay = true;
+
 	}
 
 	void Awake()
@@ -536,7 +538,7 @@ public class PlayerUpgrade : MonoBehaviour {
 	
 	public void UpdateDays()
 	{
-		DataManager.Instance.dayCount -= 1;
+//		DataManager.Instance.dayCount -= 1;
 		DataManager.Instance.moneyCount = currentMoney;
 	}
 }

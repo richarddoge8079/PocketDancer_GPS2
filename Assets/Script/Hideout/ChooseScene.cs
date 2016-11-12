@@ -9,14 +9,14 @@ public class ChooseScene : MonoBehaviour {
 
 	public void PickScene(){
 		//Club Level
-		if (playerUpgradeScript.upgrade1Active) {
-//			SceneManager.LoadScene("Club_1");
-			sceneName = "Club_1";
-		} 
+//		if (playerUpgradeScript.upgrade1Active) {
+////			SceneManager.LoadScene("Club_1");
+//			sceneName = "Club_1";
+//		} 
 		// House Level
-		else {
+//		else {
 			sceneName = "HouseParty_1";
-		}
+//		}
 		DataManager.Instance.sceneName = sceneName;
 		SceneManager.LoadSceneAsync ("LoadingScreen");
 	}

@@ -33,6 +33,8 @@ public class DataManager : MonoBehaviour {
 
 	public string sceneName;
 
+	public bool canMinusDay;
+
 	//Upgrades
 	public PlayerUpgrade playerUpgradeScript;
 
@@ -135,13 +137,10 @@ public class DataManager : MonoBehaviour {
 		moneyCount = 340;
 	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public void MinusDay(){
+		if(canMinusDay){
+			dayCount -= 1;
+			canMinusDay = false;
+		}
 	}
 }

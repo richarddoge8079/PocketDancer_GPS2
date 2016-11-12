@@ -115,6 +115,7 @@ public class VictimCollision : MonoBehaviour {
 				DataManager.Instance.upgrade6Active = false;
 				DataManager.Instance.upgrade7Active = false;
 				DataManager.Instance.upgrade8Active = false;
+				DataManager.Instance.MinusDay ();
 				return;
 			}
 			//End of Detected

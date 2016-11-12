@@ -20,6 +20,7 @@ public class ExitLevel : MonoBehaviour {
 			//			GameManager.Instance.RestartLevel ();
 			DataManager.Instance.moneyCount = GameManager.Instance.playerStatsScript.moneyCount;
 			DataManager.Instance.Save ();
+			DataManager.Instance.MinusDay ();
 //			if (GameManager.Instance.pickPocket > 11) {
 //				UIManager.Instance.GotoScene ("WinScene");
 //			} 
@@ -27,7 +28,7 @@ public class ExitLevel : MonoBehaviour {
 //				UIManager.Instance.GotoScene("LoseScene");
 //			}
 			//Win
-			if (DataManager.Instance.moneyCount >= 3000) {
+			if (DataManager.Instance.moneyCount >= 2500) {
 				UIManager.Instance.GotoScene ("WinScene");
 			} 
 			//Lose
