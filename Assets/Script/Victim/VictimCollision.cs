@@ -34,6 +34,7 @@ public class VictimCollision : MonoBehaviour {
 	public bool allDirectionPick;
 	// Use this for initialization
 	// Update is called once per frame
+	public float visionTimer;
 
 	void Start()
 	{
@@ -41,6 +42,7 @@ public class VictimCollision : MonoBehaviour {
 		UICanvas = UIManager.Instance.gameObject.GetComponent<Canvas>();
 		camera = Camera.main;
 		allDirectionPick = DataManager.Instance.upgrade2Active;
+		StartCoroutine ("DrawVisionTimer", visionTimer);
 
 		if(DataManager.Instance.upgrade7Active == true)
 		{
@@ -53,52 +55,7 @@ public class VictimCollision : MonoBehaviour {
 
 	void Update ()
 	{
-//<<<<<<< HEAD
-//		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
-//		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
-//		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
-//		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
-		if (Physics.Raycast (transform.position, -transform.forward, out isPickpocketed, pickpocketRange)) 
-		{
-			if (isPickpocketed.collider.CompareTag("Player")) 
-			{
-				playerInRangeBack = true;
-				StopCoroutine ("Timer");
-				//				Debug.Log ("Target In Range");
-			} 
-		} 
-		else if (Physics.Raycast (transform.position, transform.right, out isPickpocketed, pickpocketRange)) 
-		{
-			if (isPickpocketed.collider.CompareTag("Player")) 
-			{
-				playerInRangeRight = true;
-				StopCoroutine ("Timer");
-				//Debug.Log ("Target In Range");
-			} 
-		} 
-		else if (Physics.Raycast (transform.position, -transform.right, out isPickpocketed, pickpocketRange)) 
-		{
-			if (isPickpocketed.collider.CompareTag("Player")) 
-			{
-				playerInRangeLeft = true;
-				StopCoroutine ("Timer");
-				//Debug.Log ("Target In Range");
-			} 
-		} 
-		else if (Physics.Raycast (transform.position, transform.forward, out isPickpocketed, pickpocketRange)) 
-		{
-			if (isPickpocketed.collider.CompareTag("Player")) 
-			{
-				playerInRangeFront = true;
-				StopCoroutine ("Timer");
-				//Debug.Log ("Target In Range");
-			} 
-		} 
-		else 
-		{
-			StartCoroutine ("Timer" ,defaultTime);
-		}
-		//Debug.DrawRay (transform.localPosition, -transform.forward * pickpocketRange, Color.green);
+
 	}
 	void OnTriggerEnter (Collider coll)
 	{
@@ -315,5 +272,61 @@ public class VictimCollision : MonoBehaviour {
 		playerInRangeFront= false;
 		playerInRangeRight = false;
 		playerInRangeLeft = false;
+	}
+
+	void DrawDetection()
+	{
+		//<<<<<<< HEAD
+		//		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
+		//		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
+		//		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
+		//		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
+		if (Physics.Raycast (transform.position, -transform.forward, out isPickpocketed, pickpocketRange)) 
+		{
+			if (isPickpocketed.collider.CompareTag("Player")) 
+			{
+				playerInRangeBack = true;
+				StopCoroutine ("Timer");
+				//				Debug.Log ("Target In Range");
+			} 
+		} 
+		else if (Physics.Raycast (transform.position, transform.right, out isPickpocketed, pickpocketRange)) 
+		{
+			if (isPickpocketed.collider.CompareTag("Player")) 
+			{
+				playerInRangeRight = true;
+				StopCoroutine ("Timer");
+				//Debug.Log ("Target In Range");
+			} 
+		} 
+		else if (Physics.Raycast (transform.position, -transform.right, out isPickpocketed, pickpocketRange)) 
+		{
+			if (isPickpocketed.collider.CompareTag("Player")) 
+			{
+				playerInRangeLeft = true;
+				StopCoroutine ("Timer");
+				//Debug.Log ("Target In Range");
+			} 
+		} 
+		else if (Physics.Raycast (transform.position, transform.forward, out isPickpocketed, pickpocketRange)) 
+		{
+			if (isPickpocketed.collider.CompareTag("Player")) 
+			{
+				playerInRangeFront = true;
+				StopCoroutine ("Timer");
+				//Debug.Log ("Target In Range");
+			} 
+		} 
+		else 
+		{
+			StartCoroutine ("Timer" ,defaultTime);
+		}
+		//Debug.DrawRay (transform.localPosition, -transform.forward * pickpocketRange, Color.green);
+	}
+
+	IEnumerator DrawVisionTimer(float t){
+		yield return new WaitForSeconds (t);
+		DrawDetection ();
+		StartCoroutine ("DrawVisionTimer",visionTimer);
 	}
 }

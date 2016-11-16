@@ -24,6 +24,8 @@ public class FieldOfView : MonoBehaviour {
 	bool checkPlayer;
 	public VictimBehaviour victimBehaviorScript;
 
+	public float visionTimer;
+
 	void Start()
 	{
 		viewMesh = new Mesh ();
@@ -33,6 +35,7 @@ public class FieldOfView : MonoBehaviour {
 		victimBehaviorScript = this.GetComponent<VictimFollow> ().victimObject.GetComponent<VictimBehaviour> ();
 
 		StartCoroutine ("FindTargetsWithDelay", .2f);
+		StartCoroutine ("DrawVisionTimer", visionTimer);
 	}
 
 	IEnumerator FindTargetsWithDelay(float delay)
@@ -46,7 +49,7 @@ public class FieldOfView : MonoBehaviour {
 
 	void LateUpdate()
 	{
-		DrawFieldOFView ();
+//		DrawFieldOFView ();
 	}
 
 	void FindVisibleTargets()
@@ -201,5 +204,12 @@ public class FieldOfView : MonoBehaviour {
 			pointA = _pointA;
 			pointB = _pointB;
 		}
+	}
+
+	//DrawFieldofViewTimer
+	IEnumerator DrawVisionTimer(float t){
+		yield return new WaitForSeconds (t);
+		DrawFieldOFView ();
+		StartCoroutine ("DrawVisionTimer",visionTimer);
 	}
 }
