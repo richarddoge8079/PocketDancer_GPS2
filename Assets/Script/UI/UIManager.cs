@@ -52,6 +52,11 @@ public class UIManager : MonoBehaviour {
 
 	public Text loadingText;
 
+	//Zone Text
+	public Text zoneText;
+	public GameObject zoneParent;
+//	public Animator zoneTextAnimator;
+
 	// Use this for initialization
 	void Awake () {
 	}
@@ -188,6 +193,13 @@ public class UIManager : MonoBehaviour {
 //			GameManager.Instance.playerStatsScript.moneyCount += 1;
 //			UiVictimMoney -= 1;
 		updateTotalMoney = true;
+	}
+
+	public void TriggerUI(string txt){
+		zoneParent.SetActive(false);
+		zoneParent.SetActive(true);
+		zoneText.text = txt;
+//		zoneTextAnimator.Play ("ZoneUI_Parent_Idle");
 	}
 
 }

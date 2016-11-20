@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour {
 
 	public int moneyCount;
 
+	public bool canVIP;
+
 	void Awake(){
 		GameManager.Instance.InitializeGame ();
 	}
