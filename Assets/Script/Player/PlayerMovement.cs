@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
 
 	public Vector3 previousPos;
 
+	public GameObject rippleSpawnPosition;
+
 	// Use this for initialization
 	void OnEnable () 
 	{
@@ -173,6 +175,7 @@ public class PlayerMovement : MonoBehaviour
 
 			UIManager.Instance.onBeatFX_Color.a += 0.8f;
 			UIManager.Instance.beatImageFX_Color.a += 0.8f;
+
 		}
 		else if(GameManager.Instance.inSight == true && !BeatsManager.Instance.onBeat)
 		{
@@ -182,6 +185,17 @@ public class PlayerMovement : MonoBehaviour
 
 			UIManager.Instance.onBeatFX_Color.a += 0.8f;
 			UIManager.Instance.beatImageFX_Color.a = 0.0f;
+
+		}
+
+		//RippleFX
+		if (BeatsManager.Instance.onBeat) {
+			GameObject rippleObject = ObjectPoolingScript.Instance.GetObject ("RippleFX_OnBeat");
+			rippleObject.transform.position = rippleSpawnPosition.transform.position;
+		} 
+		else {
+			GameObject rippleObject = ObjectPoolingScript.Instance.GetObject ("RippleFX_OffBeat");
+			rippleObject.transform.position = rippleSpawnPosition.transform.position;
 		}
 	}
 

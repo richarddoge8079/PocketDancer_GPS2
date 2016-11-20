@@ -5,11 +5,21 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class VictimCollision : MonoBehaviour {
+
+	//MonoBehaviors
+	public VictimFollowerSpawner victimFollowerSpawnerScript;
+
 	//VFX
 	public GameObject rob;
 	public Canvas UICanvas;
 	public Camera camera;
 	//End if VFX
+
+	//Picked Visual Que
+	public SkinnedMeshRenderer myMeshRenderer;
+	public Color disabledColor;
+	//ned of Picked Visual Que
+
 	public GameObject victimBackFX;
 
 	public Image Money;
@@ -38,6 +48,8 @@ public class VictimCollision : MonoBehaviour {
 
 	void Start()
 	{
+//		myMaterial = victimFollowerSpawnerScript.victimFollower.GetComponent<Material> ();
+
 		ObjectPoolingScript.Instance.CreatePool (rob, 5, 10);
 		UICanvas = UIManager.Instance.gameObject.GetComponent<Canvas>();
 		camera = Camera.main;
@@ -115,6 +127,8 @@ public class VictimCollision : MonoBehaviour {
 						picked = true;
 						victimBackFX.SetActive (false);
 					}
+
+					CheckPicked ();//Change Material Color
 				} 
 				else 
 				{
@@ -163,6 +177,7 @@ public class VictimCollision : MonoBehaviour {
 							picked = true;
 						}
 
+						CheckPicked ();//Change Material Color
 						victimBackFX.SetActive (false);
 					} 
 					else 
@@ -211,6 +226,8 @@ public class VictimCollision : MonoBehaviour {
 						}
 
 						victimBackFX.SetActive (false);
+
+						CheckPicked ();//Change Material Color
 					} else {
 						//Debug.Log ("Why did someone touch my butt?!");
 						GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
@@ -257,6 +274,8 @@ public class VictimCollision : MonoBehaviour {
 					}
 
 					victimBackFX.SetActive (false);
+
+					CheckPicked ();//Change Material Color
 				} else {
 					//					Debug.Log ("Why did someone touch my butt?!");
 					GameManager.Instance.playerStatsScript.detectionLevel += detectionLevel;
@@ -272,6 +291,12 @@ public class VictimCollision : MonoBehaviour {
 		playerInRangeFront= false;
 		playerInRangeRight = false;
 		playerInRangeLeft = false;
+	}
+
+	void CheckPicked(){
+		if(picked){
+			myMeshRenderer.material.color = disabledColor;
+		}
 	}
 
 	void DrawDetection()
@@ -327,6 +352,9 @@ public class VictimCollision : MonoBehaviour {
 	IEnumerator DrawVisionTimer(float t){
 		yield return new WaitForSeconds (t);
 		DrawDetection ();
-		StartCoroutine ("DrawVisionTimer",visionTimer);
+		//Optimization
+		if(!picked){
+			StartCoroutine ("DrawVisionTimer",visionTimer);
+		}
 	}
 }

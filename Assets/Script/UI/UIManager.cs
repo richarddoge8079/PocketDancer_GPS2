@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour {
 	public Image tutorialImage;
 //	public Color tutorialImageColor;
 
-	public Image onBeatFX_Image;
+//	public Image onBeatFX_Image;
 	public Color onBeatFX_Color;
 	public float onBeatFX_FadeSpeed;
 
@@ -70,12 +70,12 @@ public class UIManager : MonoBehaviour {
 			tutorialImage.enabled = false;
 		}
 
-		if(onBeatFX_Image != null){
-			//Initialize FX color
-			onBeatFX_Color = onBeatFX_Image.color;
-			onBeatFX_Color.a = 0.0f;
-			onBeatFX_Image.color = onBeatFX_Color;
-		}
+//		if(onBeatFX_Image != null){
+//			//Initialize FX color
+//			onBeatFX_Color = onBeatFX_Image.color;
+//			onBeatFX_Color.a = 0.0f;
+//			onBeatFX_Image.color = onBeatFX_Color;
+//		}
 	}
 
 	// Update is called once per frame
@@ -86,16 +86,16 @@ public class UIManager : MonoBehaviour {
 
 
 		//Screen FX
-		if (onBeatFX_Color.a > 0) {
-			onBeatFX_Color.a -= onBeatFX_FadeSpeed * Time.deltaTime;
-
-			if(onBeatFX_Color.a > 1.0f){
-				onBeatFX_Color.a = 1.0f;
-			}
-		} 
-		else {
-			onBeatFX_Color.a = 0.0f;
-		}
+//		if (onBeatFX_Color.a > 0) {
+//			onBeatFX_Color.a -= onBeatFX_FadeSpeed * Time.deltaTime;
+//
+//			if(onBeatFX_Color.a > 1.0f){
+//				onBeatFX_Color.a = 1.0f;
+//			}
+//		} 
+//		else {
+//			onBeatFX_Color.a = 0.0f;
+//		}
 
 		//BeatUI FX
 		if (beatImageFX_Color.a > 0) {
@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour {
 
 		if(beatImage != null){
 			beatImageFX.color = beatImageFX_Color;
-			onBeatFX_Image.color = onBeatFX_Color;
+//			onBeatFX_Image.color = onBeatFX_Color;
 		}
 
 		if(moneyText != null){//Money UI

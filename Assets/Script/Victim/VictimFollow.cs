@@ -10,9 +10,13 @@ public class VictimFollow : MonoBehaviour {
 
 	public GameObject victimObject;
 
+	//Set VictimMaterial to VictimCollision
+	public SetVictimMaterial setVictimMaterialScript;
+
 	// Use this for initialization
 	void Start () {
-	
+		setVictimMaterialScript.victimObject = this.victimObject;
+		setVictimMaterialScript.SetMaterial ();
 	}
 	
 	// Update is called once per frame

@@ -9,6 +9,7 @@ public class VictimFollowerSpawner : MonoBehaviour {
 	public GameObject navMeshObject;
 	public GameObject navMeshFollow;
 	public VictimBehaviour victimBehaviorScript;
+	public VictimCollision victimCollisionScript;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class VictimFollowerSpawner : MonoBehaviour {
 		navMeshFollow.transform.position = transform.position;
 
 		victimBehaviorScript.navMeshChaserObject = navMeshFollow.GetComponent<NavMeshAgent>();
+//		victimCollisionScript.myMaterial = ;
 	}
 	
 	// Update is called once per frame
