@@ -13,11 +13,14 @@ public class BeatsObject : MonoBehaviour {
 
 	public bool check;
 
+	public float beatGap,startGap;
+
 //	public float[] test;
 
 
 	// Use this for initialization
 	void Start () {
+		transform.position = new Vector3 (transform.position.x - startGap, transform.position.y, transform.position.z);
 		randomBeatSpeed = beatSpeed;
 		if(tombtorial){
 			beatSpeed = 13.11f;
@@ -34,19 +37,37 @@ public class BeatsObject : MonoBehaviour {
 		if(GameManager.Instance.startBeat){
 			transform.Translate (Vector3.right * randomBeatSpeed * Time.deltaTime);
 		}
-		if(transform.position.x >= resetBeatPosition.position.x){
-			transform.position = new Vector3 (initialBeatPosition.position.x,transform.position.y,transform.position.z);
-			UIManager.Instance.OnBeat ();
-			UIManager.Instance.beatImage_Animator.Play ("BeatUI_On");
-			this.gameObject.SetActive(false);
-
-			//Sound Check
-//			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_EXPLOSION);
-		}
 
 		if(transform.position.x >= resetBeatPosition.position.x-0.5f){
 			BeatsManager.Instance.onBeat = true;
+//			return;
 		}
+
+//		if(transform.position.x < resetBeatPosition.position.x){
+//		}
+
+		if(transform.position.x >= resetBeatPosition.position.x){
+//			transform.position = new Vector3 (initialBeatPosition.position.x,transform.position.y,transform.position.z);
+			UIManager.Instance.OnBeat ();
+			UIManager.Instance.beatImage_Animator.Play ("BeatUI_On");
+			transform.position = new Vector3 (transform.position.x - beatGap, transform.position.y, transform.position.z);
+//			this.gameObject.SetActive(false);
+
+			//Sound Check
+			//			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_EXPLOSION);
+		}
+
+//		if(transform.position.x >= resetBeatPosition.position.x){
+//			transform.position = new Vector3 (initialBeatPosition.position.x,transform.position.y,transform.position.z);
+//			UIManager.Instance.OnBeat ();
+//			UIManager.Instance.beatImage_Animator.Play ("BeatUI_On");
+//			this.gameObject.SetActive(false);
+//
+//			//Sound Check
+////			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_EXPLOSION);
+//		}
+
+
 
 	}
 

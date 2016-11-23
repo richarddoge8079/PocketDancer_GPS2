@@ -11,6 +11,8 @@ public class VictimFollowerSpawner : MonoBehaviour {
 	public VictimBehaviour victimBehaviorScript;
 	public VictimCollision victimCollisionScript;
 
+	public VictimCautionIcon victimCautionIconScript;
+
 	// Use this for initialization
 	void Start () {
 //		ga = Instantiate (victimFollower,transform.position,Quaternion.identity);
@@ -21,6 +23,9 @@ public class VictimFollowerSpawner : MonoBehaviour {
 		navMeshFollow.transform.position = transform.position;
 
 		victimBehaviorScript.navMeshChaserObject = navMeshFollow.GetComponent<NavMeshAgent>();
+
+		victimCautionIconScript.victimFollowerObject = ga.gameObject; 
+		victimCautionIconScript.TriggerStart ();
 //		victimCollisionScript.myMaterial = ;
 	}
 	
