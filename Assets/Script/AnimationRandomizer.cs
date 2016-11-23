@@ -3,27 +3,31 @@ using System.Collections;
 
 public class AnimationRandomizer : MonoBehaviour {
 
-	public Animation animationReference;
-	public AnimationClip[] clips;
-	int _currClip = 0;
+	public string interChangeAnimationName;
+	public string[] animationName;
+	public int randomInt;
+
+	public Animator animator;
 
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Input.GetKeyDown ("1")) 
-		{
-			OnCompleteOfClip ();
-		}
+//		if (Input.GetKeyDown ("1")) 
+//		{
+////			OnCompleteOfClip ();
+//		}
 	}
-	void OnCompleteOfClip()
+
+	public void PlayAnimation()
 	{
-		_currClip = Random.Range(0,2);
-		Debug.Log (_currClip);
-		if(_currClip == clips.Length) return;
-		{
-			animationReference.clip = clips [_currClip];
-//		Debug.Log (_currClip);
-			animationReference.Play ();
-		}
+		randomInt = Random.Range (1, 3);
+		animator.SetInteger ("AnimationNumber", randomInt);
+		animator.Play (interChangeAnimationName);
+//		for(int i = 0; i < animationName.Length; i++){
+//			if(i == randomInt){
+////				animator.Play (animationName [i]);
+//				break;
+//			}
+//		}
 	}
 }
