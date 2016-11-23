@@ -31,6 +31,8 @@ public class DataManager : MonoBehaviour {
 	public int dayCount;
 	public float moneyCount;
 
+	public float stolenMoney;
+
 	public string sceneName;
 
 	public bool canMinusDay;

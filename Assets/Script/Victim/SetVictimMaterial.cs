@@ -6,6 +6,9 @@ public class SetVictimMaterial : MonoBehaviour {
 	public SkinnedMeshRenderer myMeshRenderer;
 	public VictimFollow victimFollowScript;
 	public GameObject victimObject;
+	public AnimationRandomizer victimAnimationScript2;
+
+	public VictimBehaviour victimBehaviorScript;
 
 	// Use this for initialization
 	void Start () {
@@ -15,5 +18,8 @@ public class SetVictimMaterial : MonoBehaviour {
 	public void SetMaterial(){
 		victimObject = victimFollowScript.victimObject;
 		victimObject.GetComponent<VictimCollision> ().myMeshRenderer = this.myMeshRenderer;
+
+		victimBehaviorScript = victimObject.GetComponent<VictimBehaviour> ();
+		victimBehaviorScript.victimAnimationScript = this.victimAnimationScript2;
 	}
 }
