@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: a4b09da960038fa479b7ebe399bcce20
+timeCreated: 1480154994
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Base HumanHead
+    100002: Base HumanNeck1
+    100004: Base HumanNeck2
+    100006: Base HumanPelvis
+    100008: Base HumanRibcage
+    100010: Base HumanSpine1
+    100012: Base HumanSpine2
+    100014: Base HumanSpine3
+    100016: Base HumanSpine4
+    100018: //RootNode
+    400000: Base HumanHead
+    400002: Base HumanNeck1
+    400004: Base HumanNeck2
+    400006: Base HumanPelvis
+    400008: Base HumanRibcage
+    400010: Base HumanSpine1
+    400012: Base HumanSpine2
+    400014: Base HumanSpine3
+    400016: Base HumanSpine4
+    400018: //RootNode
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: Base HumanSpine1
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Base HumanSpine2
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Base HumanSpine3
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Base HumanNeck1
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Base HumanHead
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: FirstPose_Right(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Base HumanPelvis
+      position: {x: 0.000000072405385, y: 0.83151966, z: -0.07158509}
+      rotation: {x: -0.20365609, y: 0.008541524, z: -0.7067143, w: 0.67749995}
+      scale: {x: 1, y: 1, z: 0.99999994}
+      transformModified: 1
+    - name: Base HumanSpine1
+      position: {x: -0.045729283, y: -0.0034987628, z: -0.000000012111664}
+      rotation: {x: -0.009172005, y: 0.0005306029, z: -0.15078722, w: 0.98852354}
+      scale: {x: 1.0000004, y: 1.0000004, z: 0.9999999}
+      transformModified: 1
+    - name: Base HumanSpine2
+      position: {x: -0.119466305, y: 0, z: -0.000000012111664}
+      rotation: {x: -0.052768998, y: 0.0030479403, z: 0.12437307, w: 0.99082667}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1}
+      transformModified: 1
+    - name: Base HumanSpine3
+      position: {x: -0.10176946, y: -0.000000012111664, z: 0.000000024223327}
+      rotation: {x: -0.06589186, y: 0.020983947, z: 0.018518051, w: 0.99743426}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+      transformModified: 1
+    - name: Base HumanSpine4
+      position: {x: -0.10936406, y: -0.000000012111664, z: 0.000000012111664}
+      rotation: {x: -0.06438057, y: 0.025369741, z: -0.15709817, w: 0.9851557}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+      transformModified: 1
+    - name: Base HumanRibcage
+      position: {x: -0.14737172, y: 0, z: 0}
+      rotation: {x: -0.012983414, y: 0.013361595, z: -0.0424363, w: 0.9989255}
+      scale: {x: 0.9999991, y: 0.99999964, z: 1.0000002}
+      transformModified: 1
+    - name: Base HumanNeck1
+      position: {x: -0.0007947189, y: -0.003498769, z: 0.000000012111664}
+      rotation: {x: 0.08442682, y: 0.07771862, z: 0.037022043, w: 0.9927041}
+      scale: {x: 1.0000002, y: 0.99999976, z: 1.0000001}
+      transformModified: 1
+    - name: Base HumanNeck2
+      position: {x: -0.06970282, y: -0.00000009689331, z: 0}
+      rotation: {x: 0.30978492, y: 0.0072455406, z: 0.005178824, w: 0.95076495}
+      scale: {x: 1.0000012, y: 0.99999964, z: 1.0000001}
+      transformModified: 1
+    - name: Base HumanHead
+      position: {x: -0.06970282, y: 0.000000048446655, z: -0.000000024223327}
+      rotation: {x: 0.06760514, y: 0.012312074, z: 0.14397833, w: 0.9871921}
+      scale: {x: 1.0000002, y: 0.9999999, z: 0.99999994}
+      transformModified: 1
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

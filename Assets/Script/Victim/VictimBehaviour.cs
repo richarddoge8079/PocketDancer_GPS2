@@ -132,30 +132,30 @@ public class VictimBehaviour : MonoBehaviour {
 
 	void Idle(){
 		transform.Translate (Vector3.zero);
-		//PlayAnimation ();
+		PlayAnimation ();
 	}
 
 	void RotateLeft(){
 		transform.Rotate (0, -90.0f, 0);
-		//PlayAnimation ();
+		PlayAnimation ();
 	}
 
 	void RotateRight(){
 		transform.Rotate (0, 90.0f, 0);
-		//PlayAnimation ();
+		PlayAnimation ();
 	}
 
 	void MoveForward(){
 		transform.Translate (Vector3.forward*speed);
-		//PlayAnimation ();
+		PlayAnimation ();
 	}
 
 	void MoveBackward(){
 		transform.Translate (-Vector3.forward*speed);
-		//PlayAnimation ();
+		PlayAnimation ();
 	}
 
-//	void PlayAnimation(){
-//		victimAnimationScript.PlayAnimation ();
-//	}
+	void PlayAnimation(){
+		victimAnimationScript.PlayAnimation ();
+	}
 }

@@ -17,6 +17,8 @@ public class LoadingScreen : MonoBehaviour {
 	public AudioSource sfx;
 	public AudioClip doorOpening;
 
+	public GameObject particleSystem;
+
 	private Vector3 tempPosition;
 	private AsyncOperation async;
 	public string sceneName;
@@ -26,6 +28,7 @@ public class LoadingScreen : MonoBehaviour {
 
 	void OnEnable () 
 	{
+		particleSystem.SetActive (false);
 		// Subscribe to events
 		InputManagerScript.Instance.EvtOnTouchDown 	+= OnTouchDown;		
 		InputManagerScript.Instance.EvtOnTouchUp 	+= OnTouchUp;
@@ -90,6 +93,8 @@ public class LoadingScreen : MonoBehaviour {
 		yield return new WaitForSeconds (time);
 		verticalSpeed = 0;
 		canLoad = true;
+		//
+		particleSystem.SetActive(true);
 	}
 
 	IEnumerator OpenDoor()

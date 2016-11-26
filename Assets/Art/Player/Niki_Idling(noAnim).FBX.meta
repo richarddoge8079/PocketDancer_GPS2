@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cc42c5be6ab58a748a54f693dc2d42ed
-timeCreated: 1475685890
+timeCreated: 1480155078
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Character
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -20,11 +21,17 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
+    animationImportErrors: '
+
+      Imported file ''Niki_Idling(noAnim)'' conversion failed: Required human bone
+      ''Hips'' not found
+
+
+'
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -57,7 +64,12 @@ ModelImporter:
   copyAvatar: 0
   humanDescription:
     human: []
-    skeleton: []
+    skeleton:
+    - name: Niki_Idling(noAnim)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -68,7 +80,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
