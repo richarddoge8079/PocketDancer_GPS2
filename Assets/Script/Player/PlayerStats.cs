@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerStats : MonoBehaviour {
 
 	public float detectionLevel;
+	public float maxDetectionLevel;
+
 	public bool isDetected;
 
 	public int moneyCount;
@@ -22,6 +24,11 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if(isDetected){
+			detectionLevel = maxDetectionLevel;
+			return;
+		}
 		if (!GameManager.Instance.songEnded) {
 			if (detectionLevel >= 0.1f) {
 				detectionLevel -= 5.0f * Time.deltaTime;

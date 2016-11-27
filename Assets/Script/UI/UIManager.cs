@@ -38,11 +38,19 @@ public class UIManager : MonoBehaviour {
 	public Image tutorialImage;
 //	public Color tutorialImageColor;
 
-//	public Image onBeatFX_Image;
+	//ScreenFX
+	public Image onBeatFX_Image;
 	public Color onBeatFX_Color;
 	public float onBeatFX_FadeSpeed;
+	public bool onBeatFX_TriggerChange;
+	public bool onBeatFX_isCombo;
 
+	//Detection Bar
 	public Slider DetectionBar;
+	public Image redDetectionFX_Image;
+	public Color redDetectionFX_Color;
+	public bool redDetectionFX_TriggerChange;
+	public float redDetectionFX_FadeSpeed;
 
 	//Money Score
 	public Text moneyText;
@@ -68,6 +76,10 @@ public class UIManager : MonoBehaviour {
 
 			beatImageFX_Color = beatImageFX.color;
 		}
+
+		//Detection
+		redDetectionFX_Color = redDetectionFX_Image.color;
+
 //		tutorialImageColor = tutorialImage.color;
 //		tutorialImageColor.a = 0.0f;
 //		tutorialImage.color = tutorialImageColor;
@@ -75,12 +87,12 @@ public class UIManager : MonoBehaviour {
 			tutorialImage.enabled = false;
 		}
 
-//		if(onBeatFX_Image != null){
-//			//Initialize FX color
-//			onBeatFX_Color = onBeatFX_Image.color;
-//			onBeatFX_Color.a = 0.0f;
-//			onBeatFX_Image.color = onBeatFX_Color;
-//		}
+		if(onBeatFX_Image != null){
+			//Initialize FX color
+			onBeatFX_Color = onBeatFX_Image.color;
+			onBeatFX_Color.a = 0.0f;
+			onBeatFX_Image.color = onBeatFX_Color;
+		}
 	}
 
 	// Update is called once per frame
@@ -89,18 +101,66 @@ public class UIManager : MonoBehaviour {
 			DetectionBar.value = GameManager.Instance.playerStatsScript.detectionLevel;
 		}
 
+		//Detection Change Color
+		if (GameManager.Instance.playerStatsScript.detectionLevel > 0) {
+			if (redDetectionFX_Color.a >= 1) {
+				redDetectionFX_TriggerChange = true;
+			} else if (redDetectionFX_Color.a <= 0) {
+				redDetectionFX_TriggerChange = false;
+			}
+
+			if (redDetectionFX_TriggerChange) {
+				redDetectionFX_Color.a -= redDetectionFX_FadeSpeed * Time.deltaTime;
+			} else if (!redDetectionFX_TriggerChange) {
+				redDetectionFX_Color.a += redDetectionFX_FadeSpeed * Time.deltaTime;
+			}
+			redDetectionFX_Image.color = redDetectionFX_Color;
+		} 
+		else {
+			redDetectionFX_Color.a = 0.0f;
+			redDetectionFX_Image.color = redDetectionFX_Color;
+		}
 
 		//Screen FX
-//		if (onBeatFX_Color.a > 0) {
-//			onBeatFX_Color.a -= onBeatFX_FadeSpeed * Time.deltaTime;
+		if (!GameManager.Instance.playerStatsScript.isDetected) {
+//			if (onBeatFX_Color.a > 0) {
+//				onBeatFX_Color.a -= onBeatFX_FadeSpeed * Time.deltaTime;
 //
-//			if(onBeatFX_Color.a > 1.0f){
-//				onBeatFX_Color.a = 1.0f;
+//				if (onBeatFX_Color.a > 1.0f) {
+//					onBeatFX_Color.a = 1.0f;
+//				}
 //			}
-//		} 
-//		else {
-//			onBeatFX_Color.a = 0.0f;
-//		}
+//			else {
+//				onBeatFX_Color.a = 0.0f;
+//			}
+			if (onBeatFX_isCombo) {
+				if (onBeatFX_Color.a >= 1) {
+					onBeatFX_TriggerChange = true;
+				} else if (onBeatFX_Color.a <= 0) {
+					onBeatFX_TriggerChange = false;
+				}
+
+				if (onBeatFX_TriggerChange) {
+					onBeatFX_Color.a -= onBeatFX_FadeSpeed;
+				} 
+				else {
+					onBeatFX_Color.a += onBeatFX_FadeSpeed;
+				}
+				onBeatFX_Image.color = onBeatFX_Color;
+			}
+			else {
+				onBeatFX_Color.a = 0;
+				onBeatFX_Image.color = onBeatFX_Color;
+			}
+
+		} 
+		else {
+			onBeatFX_Color.r = 255;
+			onBeatFX_Color.g = 0;
+			onBeatFX_Color.b = 0;
+			onBeatFX_Color.a = 1;
+			onBeatFX_Image.color = onBeatFX_Color;
+		}
 
 		//BeatUI FX
 		if (beatImageFX_Color.a > 0) {
@@ -200,6 +260,10 @@ public class UIManager : MonoBehaviour {
 		zoneParent.SetActive(true);
 		zoneText.text = txt;
 //		zoneTextAnimator.Play ("ZoneUI_Parent_Idle");
+	}
+
+	public void TriggerCombo(bool temp){
+		onBeatFX_isCombo = temp;
 	}
 
 }

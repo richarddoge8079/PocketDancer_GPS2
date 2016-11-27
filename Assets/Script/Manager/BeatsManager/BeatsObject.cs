@@ -34,6 +34,10 @@ public class BeatsObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(GameManager.Instance.songEnded){
+			return;
+		}
+
 		if(GameManager.Instance.startBeat){
 			transform.Translate (Vector3.right * randomBeatSpeed * Time.deltaTime);
 		}
@@ -52,7 +56,14 @@ public class BeatsObject : MonoBehaviour {
 			UIManager.Instance.beatImage_Animator.Play ("BeatUI_On");
 			transform.position = new Vector3 (transform.position.x - beatGap, transform.position.y, transform.position.z);
 //			this.gameObject.SetActive(false);
-
+//			if (GameManager.Instance.playerMovementScript.isComboOn) {
+//				UIManager.Instance.TriggerCombo (true);
+////				UIManager.Instance.onBeatFX_Color.a += 0.75f;
+////				UIManager.Instance.onBeatFX_Image.color = UIManager.Instance.onBeatFX_Color;
+//			} 
+//			else {
+//				UIManager.Instance.TriggerCombo (false);
+//			}
 			//Sound Check
 			//			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_EXPLOSION);
 		}

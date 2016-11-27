@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
 
 	public GameObject rippleSpawnPosition;
 
+	public int onBeatComboCounter;
+	public bool isComboOn;
+
 	// Use this for initialization
 	void OnEnable () 
 	{
@@ -167,26 +170,41 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	void CheckBeat(){
-		if(BeatsManager.Instance.onBeat)
-		{
-			UIManager.Instance.onBeatFX_Color.r = 1.0f;
-			UIManager.Instance.onBeatFX_Color.g = 1.0f;
-			UIManager.Instance.onBeatFX_Color.b = 1.0f;
+		//ScreenFX
+//		if(BeatsManager.Instance.onBeat)
+//		{
+//			UIManager.Instance.onBeatFX_Color.r = 1.0f;
+//			UIManager.Instance.onBeatFX_Color.g = 1.0f;
+//			UIManager.Instance.onBeatFX_Color.b = 1.0f;
+//
+//			UIManager.Instance.onBeatFX_Color.a += 0.8f;
+//			UIManager.Instance.beatImageFX_Color.a += 0.8f;
+//
+//		}
+//		else if(GameManager.Instance.inSight == true && !BeatsManager.Instance.onBeat)
+//		{
+//			UIManager.Instance.onBeatFX_Color.r = 1.0f;
+//			UIManager.Instance.onBeatFX_Color.g = 0.0f;
+//			UIManager.Instance.onBeatFX_Color.b = 0.0f;
+//
+//			UIManager.Instance.onBeatFX_Color.a += 0.8f;
+//			UIManager.Instance.beatImageFX_Color.a = 0.0f;
+//
+//		}
 
-			UIManager.Instance.onBeatFX_Color.a += 0.8f;
+		//Combo
+		if (BeatsManager.Instance.onBeat) {
 			UIManager.Instance.beatImageFX_Color.a += 0.8f;
-
+			onBeatComboCounter += 1;
+			if(onBeatComboCounter > 3){
+				isComboOn = true;
+			}
+		} 
+		else {
+			onBeatComboCounter = 0;
+			isComboOn = false;
 		}
-		else if(GameManager.Instance.inSight == true && !BeatsManager.Instance.onBeat)
-		{
-			UIManager.Instance.onBeatFX_Color.r = 1.0f;
-			UIManager.Instance.onBeatFX_Color.g = 0.0f;
-			UIManager.Instance.onBeatFX_Color.b = 0.0f;
-
-			UIManager.Instance.onBeatFX_Color.a += 0.8f;
-			UIManager.Instance.beatImageFX_Color.a = 0.0f;
-
-		}
+		UIManager.Instance.TriggerCombo (isComboOn);
 
 		//RippleFX
 		if (BeatsManager.Instance.onBeat) {
