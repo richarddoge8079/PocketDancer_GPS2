@@ -20,7 +20,7 @@ public class AnimationRandomizer : MonoBehaviour {
 
 	public void PlayAnimation()
 	{
-		randomInt = Random.Range (1, 3);
+		randomInt = Random.Range (1, animationName.Length + 1);
 		animator.SetInteger ("AnimationNumber", randomInt);
 		animator.Play (interChangeAnimationName);
 //		for(int i = 0; i < animationName.Length; i++){

@@ -1,0 +1,232 @@
+# CAT Character Animation Clip exported from 3dsmax on Thu Nov 24 00:52:00 2016
+
+Version = 3500
+LengthAxis = 0
+CharacterName = "Base Human"
+ClipLength = 0
+LayerRange = Interval 2 2
+Units = 0.74948
+PathNodeGuess = matrix -9.02989e-007 1.80923e-006 1 -0.902798 -0.430066 1.77067e-009 0.430066 -0.902798 1.90328e-006 -6.51268 -1.55255 0
+Hub {
+  # Base HumanPelvis
+  ValMatrix = matrix 1.7871e-007 0.00348932 0.999994 -0.906315 -0.4226 0.00147476 0.422603 -0.90631 0.00316235 -4.79502e-006 1.55008 79.1091
+  Limb {
+    # L
+    LimbFlags = 12
+    IKFKValues {
+      ValFloat = 0
+    }
+    LimbIKPos {
+      ValFloat = 3
+    }
+    Retargetting {
+      ValFloat = 0
+    }
+    IKTargetValues {
+      ValMatrix = matrix -0.242404 -0.346189 0.906308 -0.768654 -0.501456 -0.397131 0.591956 -0.792903 -0.144544 12.9391 -4.53136 8.33702
+    }
+    LimbBone {
+      # Base HumanLThigh
+      Controller {
+        ValMatrix = matrix 0.98521 0.13478 -0.105804 -0.131203 0.990544 0.040096 0.110207 -0.0256211 0.993579 -1.72446 4.70196 -8.81037
+      }
+      BoneSeg {
+        # Base HumanLThigh
+      }
+    }
+    LimbBone {
+      # Base HumanLCalf
+      Controller {
+        ValMatrix = matrix 0.510451 -0.859811 0.0129891 0.859805 0.510566 0.00761299 -0.0131775 0.0072821 0.999885 -1.59473 -7.24794e-005 -7.82012e-005
+      }
+      BoneSeg {
+        # Base HumanLCalf
+      }
+    }
+    Palm {
+      LMR = -1
+      Controller {
+        ValMatrix = matrix 0.0176168 0.999845 0.000171661 -0.999845 0.0176167 8.88878e-006 5.86328e-006 -0.000171791 1 -2.87169 18.4249 -2.97087
+      }
+      TargetAlignValues {
+        ValFloat = 1
+      }
+    }
+  }
+  Limb {
+    # R
+    LimbFlags = 36
+    IKFKValues {
+      ValFloat = 0
+    }
+    LimbIKPos {
+      ValFloat = 3
+    }
+    Retargetting {
+      ValFloat = 0
+    }
+    IKTargetValues {
+      ValMatrix = matrix -0.0526091 0.00446977 0.998605 -0.943472 -0.327923 -0.0482368 0.32725 -0.944694 0.0214688 -12.9391 12.9244 0
+    }
+    LimbBone {
+      # Base HumanRThigh
+      Controller {
+        ValMatrix = matrix 0.986859 0.120188 0.108 -0.116822 0.992464 -0.0369937 -0.111632 0.0238908 0.993462 -1.72453 4.70196 8.81036
+      }
+      BoneSeg {
+        # Base HumanRThigh
+      }
+    }
+    LimbBone {
+      # Base HumanRCalf
+      Controller {
+        ValMatrix = matrix 0.994324 -0.106337 -0.00190263 0.106336 0.994332 -0.000336647 0.00192763 0.000132418 1 -1.59707 1.71662e-005 2.47956e-005
+      }
+      BoneSeg {
+        # Base HumanRCalf
+      }
+    }
+    Palm {
+      LMR = 1
+      Controller {
+        ValMatrix = matrix 0.0172471 0.999851 0.00102615 -0.999851 0.0172471 -4.76837e-007 -1.8175e-005 -0.00102599 1 -2.87929 18.4056 4.40701
+      }
+      TargetAlignValues {
+        ValFloat = 1
+      }
+    }
+  }
+  Spine {
+    # Spine
+    NumLinks = 4
+    SpineLink {
+      # Base HumanSpine1
+    }
+    SpineLink {
+      # Base HumanSpine2
+    }
+    SpineLink {
+      # Base HumanSpine3
+    }
+    SpineLink {
+      # Base HumanSpine4
+    }
+    AbsRelCtrl {
+      ValFloat = 1
+    }
+    Hub {
+      # Base HumanRibcage
+      ValMatrix = matrix 0.999997 -0.00221634 0 0.00221634 0.999997 1.54919e-011 -3.43352e-014 -1.54918e-011 1 -0.034668 -2.00127 -5.09837e-007
+      Limb {
+        # L
+        LimbFlags = 10
+        IKFKValues {
+          ValFloat = 1
+        }
+        LimbIKPos {
+          ValFloat = 3
+        }
+        Retargetting {
+          ValFloat = 0
+        }
+        CollarBone {
+          # Base HumanLCollarbone
+          Controller {
+            ValMatrix = matrix 0.890849 -0.301836 0.339534 0.371302 0.914388 -0.161334 -0.26177 0.269794 0.926655 3.01616 10.1665 -3.56455
+          }
+        }
+        LimbBone {
+          # Base HumanLUpperarm
+          Controller {
+            ValMatrix = matrix -0.0476945 0.0999508 -0.99385 -0.0150113 0.994797 0.100767 0.998749 0.0197249 -0.045946 0 0 0
+          }
+          BoneSeg {
+            # Base HumanLUpperarm
+          }
+        }
+        LimbBone {
+          # Base HumanLForearm
+          Controller {
+            ValMatrix = matrix 0.513587 0.852002 0.101613 -0.857978 0.50852 0.0726923 0.0102617 -0.124516 0.992165 0 0 0
+          }
+          BoneSeg {
+            # Base HumanLForearm
+          }
+        }
+        Palm {
+          LMR = -1
+          Controller {
+            ValMatrix = matrix 0.790894 -0.0342308 0.610997 0.611919 0.0330354 -0.79023 0.00686568 0.998865 0.0470739 0 0 0
+          }
+          TargetAlignValues {
+            ValFloat = 1
+          }
+        }
+      }
+      Limb {
+        # R
+        LimbFlags = 34
+        IKFKValues {
+          ValFloat = 1
+        }
+        LimbIKPos {
+          ValFloat = 3
+        }
+        Retargetting {
+          ValFloat = 0
+        }
+        CollarBone {
+          # Base HumanRCollarbone
+          Controller {
+            ValMatrix = matrix 0.888229 -0.305225 -0.343346 0.375651 0.912781 0.160367 0.264452 -0.271421 0.925417 3.01616 10.1665 3.56454
+          }
+        }
+        LimbBone {
+          # Base HumanRUpperarm
+          Controller {
+            ValMatrix = matrix 0.295034 0.833343 0.467434 -0.127991 0.519269 -0.844974 -0.946877 0.189468 0.259863 0 0 0
+          }
+          BoneSeg {
+            # Base HumanRUpperarm
+          }
+        }
+        LimbBone {
+          # Base HumanRForearm
+          Controller {
+            ValMatrix = matrix 1 -5.53132e-005 -0.000340948 -0.000198523 0.715726 -0.698381 0.000282656 0.698382 0.715725 0 0 0
+          }
+          BoneSeg {
+            # Base HumanRForearm
+          }
+        }
+        Palm {
+          LMR = 1
+          Controller {
+            ValMatrix = matrix 0.769775 -0.231344 0.594916 -0.598139 -0.586856 0.545736 0.222877 -0.775935 -0.590126 0 0 0
+          }
+          TargetAlignValues {
+            ValFloat = 1
+          }
+        }
+      }
+      Spine {
+        # Neck
+        NumLinks = 2
+        SpineLink {
+          # Base HumanNeck1
+        }
+        SpineLink {
+          # Base HumanNeck2
+        }
+        AbsRelCtrl {
+          ValFloat = 1
+        }
+        Hub {
+          # Base HumanHead
+          ValMatrix = matrix 1 0 -4.26326e-014 0 1 0 4.26326e-014 0 1 -0.162034 2.25241 2.30868e-005
+        }
+      }
+    }
+  }
+}
+
