@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b686b33ad733e594193dd1967cccb8a9
-timeCreated: 1475512023
+guid: 30e19c1ae613a824aa52aca3588a2e73
+timeCreated: 1480444145
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cupboard
-    4300002: Cupboard_003
+    4300000: Cupboard_003
   materials:
     importMaterials: 1
     materialName: 0
