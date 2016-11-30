@@ -11,6 +11,7 @@ public class HideoutCameraMovingScript : MonoBehaviour
 
 	Vector3 offset;		// Offset position of the camera
 	Vector3 targetPosition;		// the target position to interpolate/ move to
+	public GameObject Noticeboard;
 
 	public bool MoveToSafe = false;
 	public bool BackFromWardrobe = false;
@@ -18,21 +19,27 @@ public class HideoutCameraMovingScript : MonoBehaviour
 	public bool MoveToDoor = false;
 	public bool BackFromSafe = false;
 	public bool MoveToWardrobe = false;
+	public bool OnTheBoard = false;
 
 	bool isPlayingAnimation;
 	float AnimTimer;
-	public bool isDrag;
+	bool isDrag;
 	float isDragTimer;
 
 	public GameObject UpgSysUI;
+	public GameObject GoToWardrobe;
+	public GameObject GoToBoard;
+	public GameObject BackFromBoard;
+	public Text DaysCount;
+	public Text Moneyleft;
 
 	int CameraPosition = 0;
 
 	private Animator anim;
 
 	float timer;
-	bool UpgradeButtonPress = false;
 	bool BackToMM = false;
+	bool UpgradeButtonPress = false;
 	bool BoardButtonPress = false;
 
 	// Use this for initialization
@@ -252,11 +259,29 @@ public class HideoutCameraMovingScript : MonoBehaviour
 
 	void Start()
 	{
-		anim.Play ("CameraMoving");
+		DataManager.Instance.dayCount -= 1;
+
+		if(DataManager.Instance.dayCount == DataManager.Instance.dayCount)
+		{
+			anim.Play ("CameraMoving");
+		}
+		else if(DataManager.Instance.dayCount < DataManager.Instance.dayCount - 1)
+		{
+			anim.Play ("CameraMovingAfterTutorial");
+		}
+
+		DaysCount.text = DataManager.Instance.dayCount.ToString();
+
+		Noticeboard = GameObject.Find ("Noticeboard");
 	}
 
 	void Update()
 	{
+		float CurrentMoney;
+
+		CurrentMoney = 20000.0f - DataManager.Instance.moneyCount;
+		Moneyleft.text = CurrentMoney.ToString ();
+
 		if (!isDrag)
 		{
 			if (UpgradeButtonPress == true)
@@ -265,7 +290,23 @@ public class HideoutCameraMovingScript : MonoBehaviour
 			} 
 			else if (BoardButtonPress == true)
 			{
-				GotoBoardPress ();
+				timer += Time.deltaTime;
+
+				if (timer >= 1.0f)
+				{
+					BackFromBoard.SetActive (true);
+					timer = 0.0f;
+				}
+			}
+			else if (BoardButtonPress == false)
+			{
+				timer += Time.deltaTime;
+
+				if (timer >= 1.0f)
+				{
+					GoToBoard.SetActive (true);
+					timer = 0.0f;
+				}
 			} 
 			else if (BackToMM == true)
 			{
@@ -288,7 +329,7 @@ public class HideoutCameraMovingScript : MonoBehaviour
 		{
 			AnimTimer += Time.deltaTime;
 
-			if(MoveToSafe = true && AnimTimer >= 1.0f)
+			if(MoveToSafe = true && AnimTimer >= 1.5f)
 			{
 				isPlayingAnimation = false;
 				AnimTimer = 0.0f;
@@ -304,7 +345,7 @@ public class HideoutCameraMovingScript : MonoBehaviour
 				isPlayingAnimation = false;
 				AnimTimer = 0.0f;
 			}
-			else if(BackFromSafe == true && MoveToSafe == true && AnimTimer >= 1.0f)
+			else if(BackFromSafe == true && MoveToSafe == true && AnimTimer >= 1.5f)
 			{
 				isPlayingAnimation = false;
 				AnimTimer = 0.0f;
@@ -353,20 +394,51 @@ public class HideoutCameraMovingScript : MonoBehaviour
 	public void GotoBoardPress()
 	{
 		BoardButtonPress = true;
+
 		anim.Play ("MiddlePartToBoard");
+		GoToBoard.SetActive (false);
+
+		OnTheBoard = true;
+
 		timer += Time.deltaTime;
 
-		if (timer >= 2.0f)
+		if (timer >= 1.0f)
 		{
-			//UpgSysUI.SetActive (true);
+			Debug.Log ("HII");
+			BackFromBoard.SetActive (true);
 			timer = 0.0f;
 		}
 	}
 
+	public void BackFromBoardPress()
+	{		
+		if (Noticeboard.GetComponent<DaySelectedScript> ().IsSelected == false)
+		{
+			BoardButtonPress = false;
+
+			anim.Play ("MiddlePartFromBoard");
+			BackFromBoard.SetActive (false);
+
+			OnTheBoard = false;
+		}
+	}
 
 	public void BackToMainMenu()
 	{
 		BackToMM = true;
+		SceneManager.LoadScene("MainMenu");
+	}
+
+	public void GoToLevel()
+	{
+		anim.Play ("GoToChooseLevel");
+		GoToWardrobe.SetActive (false);
+	}
+
+	public void BackFromLevel()
+	{
+		anim.Play ("BackFromChooseLevel");
+		GoToWardrobe.SetActive(true);
 	}
 		
 	/*void FadeToClear()
