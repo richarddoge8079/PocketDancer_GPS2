@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 	public int onBeatComboCounter;
 	public bool isComboOn;
 
+	StrongVibration strongVibration;
 	// Use this for initialization
 	void OnEnable () 
 	{
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Start()
 	{
-
+		strongVibration = GetComponent<StrongVibration> ();
 	}
 
 	bool OnTouchDown(int fingerID, Vector2 pos)
@@ -242,6 +243,7 @@ public class PlayerMovement : MonoBehaviour
 	void CheckDetection(){
 		if(!BeatsManager.Instance.onBeat && GameManager.Instance.inSight){
 			GameManager.Instance.playerStatsScript.detectionLevel += 28.0f;
+			strongVibration.VibrateFunction ();
 		}
 	}
 
