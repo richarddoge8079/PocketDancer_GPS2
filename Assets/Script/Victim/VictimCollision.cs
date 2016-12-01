@@ -45,7 +45,6 @@ public class VictimCollision : MonoBehaviour {
 	// Use this for initialization
 	// Update is called once per frame
 	public float visionTimer;
-	public bool isOnBeat;
 
 	void Start()
 	{
@@ -56,9 +55,8 @@ public class VictimCollision : MonoBehaviour {
 		camera = Camera.main;
 		allDirectionPick = DataManager.Instance.upgrade2Active;
 		StartCoroutine ("DrawVisionTimer", visionTimer);
-		isOnBeat = gameObject.GetComponent<PlayerMovement> ().isComboOn;
 
-		if(isOnBeat == true)
+		if(DataManager.Instance.upgrade7Active == true)
 		{
 			minFrontMoney += 20;
 			minBackMoney += 20;
@@ -78,12 +76,14 @@ public class VictimCollision : MonoBehaviour {
 			//Detected
 			if(GameManager.Instance.playerStatsScript.isDetected){
 				SceneManager.LoadScene ("Hideout");
-				//SceneManager.LoadScene ("Level Failed Scene Name Here");
 				DataManager.Instance.upgrade1Active = false;
 				DataManager.Instance.upgrade2Active = false;
 				DataManager.Instance.upgrade3Active = false;
 				DataManager.Instance.upgrade4Active = false;
 				DataManager.Instance.upgrade5Active = false;
+				DataManager.Instance.upgrade6Active = false;
+				DataManager.Instance.upgrade7Active = false;
+				DataManager.Instance.upgrade8Active = false;
 				DataManager.Instance.MinusDay ();
 				return;
 			}

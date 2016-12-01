@@ -45,6 +45,9 @@ public class DataManager : MonoBehaviour {
 	public bool upgrade3Active;
 	public bool upgrade4Active;
 	public bool upgrade5Active;
+	public bool upgrade6Active;
+	public bool upgrade7Active;
+	public bool upgrade8Active;
 
 	public void Save(){
 		if (File.Exists (Application.persistentDataPath + "/playerInfo.dat")) {
@@ -62,6 +65,9 @@ public class DataManager : MonoBehaviour {
 			data.upgrade3Active = upgrade3Active;
 			data.upgrade4Active = upgrade4Active;
 			data.upgrade5Active = upgrade5Active;
+			data.upgrade6Active = upgrade6Active;
+			data.upgrade7Active = upgrade7Active;
+			data.upgrade8Active = upgrade8Active;
 
 			bf.Serialize (file, data);
 			file.Close ();
@@ -79,6 +85,9 @@ public class DataManager : MonoBehaviour {
 			data.upgrade3Active = upgrade3Active;
 			data.upgrade4Active = upgrade4Active;
 			data.upgrade5Active = upgrade5Active;
+			data.upgrade6Active = upgrade6Active;
+			data.upgrade7Active = upgrade7Active;
+			data.upgrade8Active = upgrade8Active;
 
 			bf.Serialize (file, data);
 			file.Close ();
@@ -101,6 +110,9 @@ public class DataManager : MonoBehaviour {
 			upgrade3Active = data.upgrade3Active;
 			upgrade4Active = data.upgrade4Active;
 			upgrade5Active = data.upgrade5Active;
+			upgrade6Active = data.upgrade6Active;
+			upgrade7Active = data.upgrade7Active;
+			upgrade8Active = data.upgrade8Active;
 
 			file.Close ();
 		}
@@ -117,10 +129,13 @@ public class DataManager : MonoBehaviour {
 		public bool upgrade3Active;
 		public bool upgrade4Active;
 		public bool upgrade5Active;
+		public bool upgrade6Active;
+		public bool upgrade7Active;
+		public bool upgrade8Active;
 	}
 
 	public void ResetData(){
-		dayCount = 7;
+		dayCount = 3;
 		moneyCount = 340;
 	}
 

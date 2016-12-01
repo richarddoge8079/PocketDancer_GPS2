@@ -21,12 +21,11 @@ public class PlayerStats : MonoBehaviour {
 //		DataManager.Instance.Load ();
 		moneyCount = (int)DataManager.Instance.moneyCount;
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
 
 		if(isDetected){
-			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_DETECTED);
 			detectionLevel = maxDetectionLevel;
 			return;
 		}
@@ -44,7 +43,7 @@ public class PlayerStats : MonoBehaviour {
 		} 
 		else 
 		{
-			if (DataManager.Instance.upgrade5Active == false) 
+			if (DataManager.Instance.upgrade6Active == false) 
 			{
 				if(detectionLevel <= 99.0f)
 				{
@@ -68,7 +67,7 @@ public class PlayerStats : MonoBehaviour {
 				}
 			}
 		}
-		if(DataManager.Instance.upgrade5Active == false && detectionLevel >= 100.0f || DataManager.Instance.upgrade5Active == true && detectionLevel >= 105.0f)
+		if(DataManager.Instance.upgrade6Active == false && detectionLevel >= 100.0f || DataManager.Instance.upgrade6Active == true && detectionLevel >= 105.0f)
 		{
 			isDetected = true;
 		}

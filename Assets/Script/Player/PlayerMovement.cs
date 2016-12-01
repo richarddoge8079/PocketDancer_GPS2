@@ -209,7 +209,6 @@ public class PlayerMovement : MonoBehaviour
 		//RippleFX
 		if (BeatsManager.Instance.onBeat) {
 			GameObject rippleObject = ObjectPoolingScript.Instance.GetObject ("RippleFX_OnBeat");
-			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_ONBEAT);
 			rippleObject.transform.position = rippleSpawnPosition.transform.position;
 		} 
 		else {
