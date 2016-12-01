@@ -213,6 +213,16 @@ public class PlayerMovement : MonoBehaviour
 		} 
 		else {
 			GameObject rippleObject = ObjectPoolingScript.Instance.GetObject ("RippleFX_OffBeat");
+			int offBeatSound = Random.Range (1, 4);
+			if (offBeatSound == 1) {
+				SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_OFFBEAT1);
+			} else if (offBeatSound == 2) {
+				SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_OFFBEAT2);
+			} else if (offBeatSound == 3) {
+				SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_OFFBEAT3);
+			} else if (offBeatSound == 4) {
+				SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_OFFBEAT4);
+			}
 			rippleObject.transform.position = rippleSpawnPosition.transform.position;
 		}
 	}
