@@ -541,4 +541,76 @@ public class PlayerUpgrade : MonoBehaviour {
 //		DataManager.Instance.dayCount -= 1;
 		DataManager.Instance.moneyCount = currentMoney;
 	}
+<<<<<<< Updated upstream
+=======
+
+	void probabilitySelection()
+	{
+		float rdm1 = Random.Range (1, 100);
+		float rdm2 = Random.Range (1, 100);
+		float rdm3 = Random.Range (1, 100);
+		if(rdm1 >= 0.35)
+		{
+			Debug.Log ("rdm1: " + 1);
+		}
+		else if(rdm1 >= 0.45)
+		{
+			Debug.Log ("rdm1: " + 2);
+		}
+		else if(rdm1 >= 0.05)
+		{
+			Debug.Log ("rdm1: " + 3);
+		}
+		else if(rdm1 >= 0.1)
+		{
+			Debug.Log ("rdm1: " + 4);
+		}
+		else if(rdm1 >= 0.05)
+		{
+			Debug.Log ("rdm1: " + 5);
+		}
+
+		if(rdm2 >= 0.35 && rdm2 != rdm1)
+		{
+			Debug.Log ("rdm2: " + 1);
+		}
+		else if(rdm2 >= 0.45 && rdm2 != rdm1)
+		{
+			Debug.Log ("rdm2: " + 2);
+		}
+		else if(rdm2 >= 0.05 && rdm2 != rdm1)
+		{
+			Debug.Log ("rdm2: " + 3);
+		}
+		else if(rdm2 >= 0.1 && rdm2 != rdm1)
+		{
+			Debug.Log ("rdm2: " + 4);
+		}
+		else if(rdm2 >= 0.05 && rdm2 != rdm1)
+		{
+			Debug.Log ("rdm2: " + 5);
+		}
+
+		if(rdm3 >= 0.35 && rdm3 != rdm1 && rdm3 != rdm2)
+		{
+			Debug.Log ("rdm3: " + 1);
+		}
+		else if(rdm3 >= 0.45 && rdm3 != rdm1 && rdm3 != rdm2)
+		{
+			Debug.Log ("rdm3: " + 2);
+		}
+		else if(rdm3 >= 0.05 && rdm3 != rdm1 && rdm3 != rdm2)
+		{
+			Debug.Log ("rdm3: " + 3);
+		}
+		else if(rdm3 >= 0.1 && rdm3 != rdm1 && rdm3 != rdm2)
+		{
+			Debug.Log ("rdm3: " + 4);
+		}
+		else if(rdm3 >= 0.05 && rdm3 != rdm1 && rdm3 != rdm2)
+		{
+			Debug.Log ("rdm3: " + 5);
+		}
+	}
+>>>>>>> Stashed changes
 }
