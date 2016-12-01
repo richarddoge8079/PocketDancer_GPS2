@@ -10,8 +10,6 @@ public enum AudioClipID
 	SFX_POWERUP = 100,
 	SFX_EXPLOSION = 101,
 	SFX_ITEMPICKUP = 102,
-<<<<<<< Updated upstream
-=======
 	SFX_DETECTED = 103,
 	SFX_ONBEAT = 104,
 	SFX_BUTTONPRESS = 105,
@@ -19,10 +17,6 @@ public enum AudioClipID
 	SFX_OFFBEAT2 = 107,
 	SFX_OFFBEAT3 = 108,
 	SFX_OFFBEAT4 = 109,
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 	TOTAL
 }

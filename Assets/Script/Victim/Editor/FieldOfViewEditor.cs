@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor (typeof (FieldOfView))]
+[CustomEditor (typeof (FieldOfViewEditor))]
 public class FieldOfViewEditor : Editor{
 
-	void OnSceneGUI()
+	/*void OnSceneGUI()
 	{
 		FieldOfView fow = (FieldOfView)target;
 		Handles.color = Color.white;
@@ -20,6 +20,6 @@ public class FieldOfViewEditor : Editor{
 		foreach (Transform visibleTarget in fow.visibleTargets) {
 			Handles.DrawLine (fow.transform.position, visibleTarget.position);
 		}
-	}
+	}*/
 }
 
