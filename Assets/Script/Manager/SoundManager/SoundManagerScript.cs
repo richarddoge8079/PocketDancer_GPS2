@@ -19,6 +19,9 @@ public enum AudioClipID
 	SFX_OFFBEAT2 = 107,
 	SFX_OFFBEAT3 = 108,
 	SFX_OFFBEAT4 = 109,
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 	TOTAL

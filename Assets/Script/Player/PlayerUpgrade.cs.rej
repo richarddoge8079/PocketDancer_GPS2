@@ -1,0 +1,9 @@
+diff a/Assets/Script/Player/PlayerUpgrade.cs b/Assets/Script/Player/PlayerUpgrade.cs	(rejected hunks)
+@@ -54,7 +54,6 @@
+ 	void Awake()
+ 	{
+ 		Debug.Log ("game loop");
+-		removeFromArray (5);
+ 		fetchLatestStat ();
+ 		reshuffle (Upgrades);
+ 		for (int i = 0; i < selectedUpgrades.Length; i++) {
