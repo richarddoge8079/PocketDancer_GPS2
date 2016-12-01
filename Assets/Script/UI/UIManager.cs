@@ -54,7 +54,8 @@ public class UIManager : MonoBehaviour {
 
 	//Money Score
 	public Text moneyText;
-//	public Text detectionText;
+	public Text updateMoney;
+	public GameObject UpdateMoneyUI;
 	public bool updateTotalMoney = false;
 	public int UiVictimMoney; 
 
@@ -184,10 +185,14 @@ public class UIManager : MonoBehaviour {
 			{
 				//			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
 				moneyText.text = GameManager.Instance.playerStatsScript.moneyCount.ToString();
+				UpdateMoneyUI.SetActive (false);
+				updateMoney.text = " ";
 			} 
 			else 
 			{
-				moneyText.text = GameManager.Instance.playerStatsScript.moneyCount + "(" + "+" + UiVictimMoney + ")";
+				moneyText.text = GameManager.Instance.playerStatsScript.moneyCount.ToString();
+				UpdateMoneyUI.SetActive (true);
+				updateMoney.text = UiVictimMoney.ToString ();
 				if (UiVictimMoney <= 0) 
 				{
 					updateTotalMoney = false;
