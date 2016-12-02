@@ -22,7 +22,7 @@ public class ChooseScene : MonoBehaviour {
 	}
 	public void PickScene02()
 	{
-		sceneName = " ";
+		sceneName = "Club_1";
 		DataManager.Instance.sceneName = sceneName;
 		SceneManager.LoadSceneAsync ("LoadingScreen");
 	}
