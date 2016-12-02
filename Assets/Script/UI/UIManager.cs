@@ -142,10 +142,10 @@ public class UIManager : MonoBehaviour {
 				}
 
 				if (onBeatFX_TriggerChange) {
-					onBeatFX_Color.a -= onBeatFX_FadeSpeed;
+					onBeatFX_Color.a -= onBeatFX_FadeSpeed * Time.deltaTime;
 				} 
 				else {
-					onBeatFX_Color.a += onBeatFX_FadeSpeed;
+					onBeatFX_Color.a += onBeatFX_FadeSpeed * Time.deltaTime;
 				}
 				onBeatFX_Image.color = onBeatFX_Color;
 			}
@@ -186,13 +186,13 @@ public class UIManager : MonoBehaviour {
 				//			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
 				moneyText.text = GameManager.Instance.playerStatsScript.moneyCount.ToString();
 				UpdateMoneyUI.SetActive (false);
-				updateMoney.text = " ";
+//				updateMoney.text = " ";
 			} 
 			else 
 			{
 				moneyText.text = GameManager.Instance.playerStatsScript.moneyCount.ToString();
 				UpdateMoneyUI.SetActive (true);
-				updateMoney.text = UiVictimMoney.ToString ();
+//				updateMoney.text = UiVictimMoney.ToString ();
 				if (UiVictimMoney <= 0) 
 				{
 					updateTotalMoney = false;

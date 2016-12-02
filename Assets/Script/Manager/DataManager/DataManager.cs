@@ -38,7 +38,7 @@ public class DataManager : MonoBehaviour {
 	public bool canMinusDay;
 
 	//Upgrades
-	public PlayerUpgrade playerUpgradeScript;
+//	public PlayerUpgrade playerUpgradeScript;
 
 	public bool upgrade1Active;
 	public bool upgrade2Active;
