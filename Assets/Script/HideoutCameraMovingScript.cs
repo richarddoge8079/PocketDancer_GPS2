@@ -542,14 +542,44 @@ public class HideoutCameraMovingScript : MonoBehaviour
 
 	public void GotoUpgradePress()
 	{
-		UpgradeButtonPress = true;
-		anim.Play ("MiddlePartToTablet");
 		timer += Time.deltaTime;
-
-		if (timer >= 2.0f)
+		if(DataManager.Instance.dayCount > 1)
 		{
-			UpgSysUI.SetActive (true);
-			timer = 0.0f;
+			UpgradeButtonPress = true;
+			anim.Play ("MiddlePartToTablet");
+
+			if (timer >= 2.6f)
+			{
+				UpgSysUI.SetActive (true);
+				timer = 0.0f;
+			}
+		}
+		else
+		{
+			UpgradeButtonPress = true;
+			anim.Play ("MiddlePartToTabletInTutorial");
+
+			if (timer >= 2.6f)
+			{
+				UpgSysUI.SetActive (true);
+				timer = 0.0f;
+			}
+		}
+	}
+
+	public void BackFromUpgradePress()
+	{
+		if(DataManager.Instance.dayCount > 1)
+		{
+			UpgradeButtonPress = false;
+			anim.Play ("MiddlePartFromTablet");
+			UpgSysUI.SetActive (false);
+		}
+		else
+		{
+			UpgradeButtonPress = false;
+			anim.Play ("MiddlePartFromTabletInTutorial");
+			UpgSysUI.SetActive (false);
 		}
 	}
 
@@ -702,6 +732,7 @@ public class HideoutCameraMovingScript : MonoBehaviour
 		}
 	}*/
 }
+
 
 
 
