@@ -404,87 +404,69 @@ public class PlayerUpgrade : MonoBehaviour {
 
 	void probabilitySelection()
 	{
-		int u1, u2, u3;
-		int rdm1 = Random.Range (1, 100);
-		if(rdm1 >= 35 && rdm1 < 45)
+		float rdm1 = Random.value;
+		float rdm2 = Random.value;
+		float rdm3 = Random.value;
+		if(rdm1 >= 0.35)
 		{
-			u1 = 1;
 			Debug.Log ("rdm1: " + 1);
 		}
-		else if(rdm1 >= 45)
+		else if(rdm1 >= 0.45)
 		{
-			u1 = 2;
 			Debug.Log ("rdm1: " + 2);
 		}
-		else if(rdm1 >= 5 && rdm1 < 10)
+		else if(rdm1 >= 0.05)
 		{
-			u1 = 3;
 			Debug.Log ("rdm1: " + 3);
 		}
-		else if(rdm1 >= 10 && rdm1 < 35)
+		else if(rdm1 >= 0.1)
 		{
-			u1 = 4;
 			Debug.Log ("rdm1: " + 4);
 		}
-		else if(rdm1 >= 5 && rdm1 < 10)
+		else if(rdm1 >= 0.05)
 		{
-			u1 = 5;
 			Debug.Log ("rdm1: " + 5);
 		}
 
-
-		int rdm2 = Random.Range (1, 100);
-		if(rdm2 >= 35 && rdm2 < 45 && u2 != u1)
+		if(rdm2 >= 0.35 && rdm2 != rdm1)
 		{
-			u2 = 1;
 			Debug.Log ("rdm2: " + 1);
 		}
-		else if(rdm2 >= 45 && u2 != u1)
+		else if(rdm2 >= 0.45 && rdm2 != rdm1)
 		{
-			u2 = 2;
 			Debug.Log ("rdm2: " + 2);
 		}
-		else if(rdm2 >= 5 && rdm2 < 10 && u2 != u1)
+		else if(rdm2 >= 0.05 && rdm2 != rdm1)
 		{
-			u2 = 3;
 			Debug.Log ("rdm2: " + 3);
 		}
-		else if(rdm2 >= 10 && rdm2 < 35 && u2 != u1)
+		else if(rdm2 >= 0.1 && rdm2 != rdm1)
 		{
-			u2 = 4;
 			Debug.Log ("rdm2: " + 4);
 		}
-		else if(rdm2 >= 5 && rdm2 < 10 && u2 != u1)
+		else if(rdm2 >= 0.05 && rdm2 != rdm1)
 		{
-			u2 = 5;
 			Debug.Log ("rdm2: " + 5);
 		}
 
-
-		int rdm3 = Random.Range (1, 100);
-		if(rdm2 >= 35 && rdm2 < 45 && u3 != u1 && u3 != u2)
+		if(rdm3 >= 0.35 && rdm3 != rdm1 && rdm3 != rdm2)
 		{
-			u3 = 1;
 			Debug.Log ("rdm3: " + 1);
 		}
-		else if(rdm2 >= 45 && u3 != u1 && u3 != u2)
+		else if(rdm3 >= 0.45 && rdm3 != rdm1 && rdm3 != rdm2)
 		{
-			u3 = 2;
 			Debug.Log ("rdm3: " + 2);
 		}
-		else if(rdm3 >= 5 && rdm3 < 10 && u3 != u1 && u3 != u2)
+		else if(rdm3 >= 0.05 && rdm3 != rdm1 && rdm3 != rdm2)
 		{
-			u3 = 3;
 			Debug.Log ("rdm3: " + 3);
 		}
-		else if(rdm3 >= 10 && rdm3 < 35 && u3 != u1 && u3 != u2)
+		else if(rdm3 >= 0.1 && rdm3 != rdm1 && rdm3 != rdm2)
 		{
-			u3 = 4;
 			Debug.Log ("rdm3: " + 4);
 		}
-		else if(rdm3 >= 5 && rdm3 < 10 && u3 != u1 && u3 != u2)
+		else if(rdm3 >= 0.05 && rdm3 != rdm1 && rdm3 != rdm2)
 		{
-			u3 = 5;
 			Debug.Log ("rdm3: " + 5);
 		}
 	}
