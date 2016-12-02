@@ -34,7 +34,7 @@ public class PlayerUpgrade : MonoBehaviour {
 	public int[] selectedUpgrades = new int[3];
 	public int[] upgradePrice = new int[5] {100,200,500,50,85};
 
-	int[] weights;
+	/*int[] weights;
 	int weightTotal;
 
 	struct upgrades { //this is just for code-read niceness
@@ -53,7 +53,7 @@ public class PlayerUpgrade : MonoBehaviour {
 			if ( total > randVal ) break;
 		}
 		return result;
-	}
+	}*/
 
 	void Awake()
 	{
@@ -73,7 +73,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		Upgrade2Sprite ();
 		Upgrade3Sprite ();
 
-		weights = new int[5]; //number of things
+		/*weights = new int[5]; //number of things
 
 		//weighting of each thing, high number means more occurrance
 		weights[upgrades.suitNTie] = 35;
@@ -85,7 +85,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		weightTotal = 100;
 		foreach ( int w in weights ) {
 			weightTotal += w;
-		}
+		}*/
 	}
 
 	// Use this for initialization
