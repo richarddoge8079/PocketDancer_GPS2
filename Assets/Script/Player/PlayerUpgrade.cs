@@ -34,21 +34,25 @@ public class PlayerUpgrade : MonoBehaviour {
 	public int[] selectedUpgrades = new int[3];
 	public int[] upgradePrice = new int[5] {100,200,500,50,85};
 
-	// Use this for initialization
-	void Start () {
-		Debug.Log ("game begin");
-		currentMoney = DataManager.Instance.moneyCount;
-		//currentMoney = 10000;
-		upgrade1 = upgrade1.GetComponent<Button> ();
-		upgrade2 = upgrade2.GetComponent<Button> ();
-		upgrade3 = upgrade3.GetComponent<Button> ();
-		upgrade1Image = upgrade1Image.GetComponent<UnityEngine.UI.Image> ();
-		upgrade2Image = upgrade2Image.GetComponent<UnityEngine.UI.Image> ();
-		upgrade3Image = upgrade3Image.GetComponent<UnityEngine.UI.Image> ();
-		days = DataManager.Instance.dayCount;
+	int[] weights;
+	int weightTotal;
 
-		DataManager.Instance.canMinusDay = true;
+	struct upgrades { //this is just for code-read niceness
+		public const int suitNTie = 1;
+		public const int funkyFreshOutfit = 2;
+		public const int loanExtension = 3;
+		public const int dazzlerStrips = 4;
+		public const int crashCourseTaiChi = 5;
+	}
 
+	void RandomWeighted () {
+		int result = 0, total = 0;
+		int randVal = Random.Range( 0, weightTotal );
+		for ( result = 0; result < weights.Length; result++ ) {
+			total += weights[result];
+			if ( total > randVal ) break;
+		}
+		//return result;
 	}
 
 	void Awake()
@@ -63,11 +67,41 @@ public class PlayerUpgrade : MonoBehaviour {
 				i++;
 			}
 		}
-		probabilitySelection ();
+		//probabilitySelection ();
 		Debug.Log ("game start");
 		Upgrade1Sprite ();
 		Upgrade2Sprite ();
 		Upgrade3Sprite ();
+
+		weights = new int[5]; //number of things
+
+		//weighting of each thing, high number means more occurrance
+		weights[upgrades.suitNTie] = 35;
+		weights[upgrades.funkyFreshOutfit] = 45;
+		weights[upgrades.loanExtension] = 5;
+		weights[upgrades.dazzlerStrips] = 10;
+		weights[upgrades.crashCourseTaiChi] = 5;
+
+		weightTotal = 100;
+		foreach ( int w in weights ) {
+			weightTotal += w;
+		}
+	}
+
+	// Use this for initialization
+	void Start () {
+		Debug.Log ("game begin");
+		currentMoney = DataManager.Instance.moneyCount;
+		//currentMoney = 10000;
+		upgrade1 = upgrade1.GetComponent<Button> ();
+		upgrade2 = upgrade2.GetComponent<Button> ();
+		upgrade3 = upgrade3.GetComponent<Button> ();
+		upgrade1Image = upgrade1Image.GetComponent<UnityEngine.UI.Image> ();
+		upgrade2Image = upgrade2Image.GetComponent<UnityEngine.UI.Image> ();
+		upgrade3Image = upgrade3Image.GetComponent<UnityEngine.UI.Image> ();
+		days = DataManager.Instance.dayCount;
+
+		DataManager.Instance.canMinusDay = true;
 	}
 
 	void reshuffle(int[] upgrade)
@@ -402,7 +436,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		DataManager.Instance.moneyCount = currentMoney;
 	}
 
-	void probabilitySelection()
+	/*void probabilitySelection()
 	{
 		float rdm1 = Random.value;
 		float rdm2 = Random.value;
@@ -469,5 +503,5 @@ public class PlayerUpgrade : MonoBehaviour {
 		{
 			Debug.Log ("rdm3: " + 5);
 		}
-	}
+	}*/
 }
