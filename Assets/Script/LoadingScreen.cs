@@ -19,6 +19,8 @@ public class LoadingScreen : MonoBehaviour {
 
 	public GameObject particleSystem;
 
+	public GameObject tapMeText;
+
 	private Vector3 tempPosition;
 	private AsyncOperation async;
 	public string sceneName;
@@ -49,6 +51,7 @@ public class LoadingScreen : MonoBehaviour {
 		StartCoroutine ("LoadScene");
 
 		sceneName = DataManager.Instance.sceneName;
+		tapMeText.SetActive (false);
 	}
 
 	IEnumerator LoadScene()
@@ -95,10 +98,12 @@ public class LoadingScreen : MonoBehaviour {
 		canLoad = true;
 		//
 		particleSystem.SetActive(true);
+		tapMeText.SetActive (true);
 	}
 
 	IEnumerator OpenDoor()
 	{
+		tapMeText.SetActive (false);
 		sfx.clip = doorOpening;
 		sfx.Play();
 		door.GetComponent<SpriteRenderer> ().sprite = openDoor;
