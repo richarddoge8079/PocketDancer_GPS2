@@ -26,13 +26,6 @@ public class ChooseScene : MonoBehaviour {
 		DataManager.Instance.sceneName = sceneName;
 		SceneManager.LoadSceneAsync ("LoadingScreen");
 	}
-
-	public void PickScene03()
-	{
-		sceneName = " ";
-		DataManager.Instance.sceneName = sceneName;
-		SceneManager.LoadSceneAsync ("LoadingScreen");
-	}
 	
 	public void BackToMainMenu()
 	{
