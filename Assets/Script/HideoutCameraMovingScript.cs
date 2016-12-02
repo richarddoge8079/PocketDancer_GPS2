@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -29,6 +29,7 @@ public class HideoutCameraMovingScript : MonoBehaviour
 	public GameObject UpgSysUI;
 	public GameObject GoToWardrobe;
 	public GameObject BackFromWardrobes;
+	public GameObject ChooseLevel;
 	public GameObject GoToBoard;
 	public GameObject BackFromBoard;
 	public Text DaysCount;
@@ -626,12 +627,14 @@ public class HideoutCameraMovingScript : MonoBehaviour
 		{
 			anim.Play ("GoToChooseLevel");
 			GoToWardrobe.SetActive (false);
+			ChooseLevel.SetActive (true);
 			BackFromWardrobes.SetActive (true);
 		} 
 		else 
 		{
 			anim.Play ("GoToChooseLevelInTutorial");
 			GoToWardrobe.SetActive (false);
+			ChooseLevel.SetActive (true);
 			BackFromWardrobes.SetActive (true);
 		}
 	}
@@ -642,12 +645,14 @@ public class HideoutCameraMovingScript : MonoBehaviour
 		{
 			anim.Play ("BackFromChooseLevel");
 			BackFromWardrobes.SetActive (false);
+			ChooseLevel.SetActive (false);
 			GoToWardrobe.SetActive(true);
 		} 
 		else 
 		{
 			anim.Play ("BackFromChooseLevelInLevel");
 			BackFromWardrobes.SetActive (false);
+			ChooseLevel.SetActive (false);
 			GoToWardrobe.SetActive(true);
 		}
 	}
@@ -697,5 +702,7 @@ public class HideoutCameraMovingScript : MonoBehaviour
 		}
 	}*/
 }
+
+
 
 
