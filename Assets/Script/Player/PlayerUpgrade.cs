@@ -45,14 +45,14 @@ public class PlayerUpgrade : MonoBehaviour {
 		public const int crashCourseTaiChi = 5;
 	}
 
-	void RandomWeighted () {
+	int RandomWeighted () {
 		int result = 0, total = 0;
 		int randVal = Random.Range( 0, weightTotal );
 		for ( result = 0; result < weights.Length; result++ ) {
 			total += weights[result];
 			if ( total > randVal ) break;
 		}
-		//return result;
+		return result;
 	}
 
 	void Awake()
