@@ -92,8 +92,12 @@ public class HideoutCameraMovingScript : MonoBehaviour
 		return rayPosition;
 	}
 
+//	public Vector2 initialFingerPos;
+
 	bool OnTouchDown(int fingerID, Vector2 pos)
 	{
+//		Debug.Log ("Left : " + dragThresholdLeft + "/nRight : " + dragThresholdRight);
+//		initialFingerPos = pos;
 		return true;
 	}
 
