@@ -46,10 +46,11 @@ public class VictimCollision : MonoBehaviour {
 	// Update is called once per frame
 	public float visionTimer;
 
+
 	void Start()
 	{
 //		myMaterial = victimFollowerSpawnerScript.victimFollower.GetComponent<Material> ();
-
+//		this.gameObject.SetActive(true);
 		ObjectPoolingScript.Instance.CreatePool (rob, 5, 10);
 		UICanvas = UIManager.Instance.gameObject.GetComponent<Canvas>();
 		camera = Camera.main;
@@ -113,6 +114,7 @@ public class VictimCollision : MonoBehaviour {
 						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
 						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
 						Coin.transform.SetParent (UICanvas.transform);
+						Coin.gameObject.SetActive (true);
 						UIManager.Instance.UiVictimMoney += money;
 						GameManager.Instance.pickPocket += 1;
 					}
@@ -121,6 +123,7 @@ public class VictimCollision : MonoBehaviour {
 						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
 						Image Coin = (Image)Instantiate (Money,new Vector3 (screenPos.x,screenPos.y,transform.position.z),Quaternion.identity);
 						Coin.transform.SetParent (UICanvas.transform);
+						Coin.gameObject.SetActive (true);
 						UIManager.Instance.UiVictimMoney += money;
 						UIManager.Instance.UpdateMoney ();
 

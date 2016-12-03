@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ﻿//using UnityEngine;
 //using System.Collections;
 //using System.Collections.Generic;
@@ -490,7 +490,7 @@
 //		}
 //	}
 //}
-=======
+
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -998,4 +998,4 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 	}*/
 }
->>>>>>> 6701c19239b8bd5d7cff283cd2905b50dd684b40
+

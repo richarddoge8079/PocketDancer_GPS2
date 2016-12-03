@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class ChooseScene : MonoBehaviour {
 
-//	public PlayerUpgrade playerUpgradeScript;
+	public PlayerUpgrade playerUpgradeScript;
 	public string sceneName;
 
 	public void PickScene01(){

@@ -24,6 +24,7 @@ public class FloatingMoney : MonoBehaviour {
 			gameObject.GetComponent<RectTransform> ().localPosition = Vector2.Lerp (gameObject.GetComponent<RectTransform> ().localPosition, GameObject.FindGameObjectWithTag ("Wallet").GetComponent<RectTransform> ().localPosition, 0.5f);
 			if (gameObject.GetComponent<RectTransform> ().localPosition == GameObject.FindGameObjectWithTag ("Wallet").GetComponent<RectTransform> ().localPosition) {
 				Destroy (gameObject);
+				Debug.Log ("AA");
 			}
 		}
 	}

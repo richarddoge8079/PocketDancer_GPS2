@@ -186,13 +186,13 @@ public class UIManager : MonoBehaviour {
 				//			moneyText.text = "$" + GameManager.Instance.playerStatsScript.moneyCount;
 				moneyText.text = GameManager.Instance.playerStatsScript.moneyCount.ToString();
 				UpdateMoneyUI.SetActive (false);
-//				updateMoney.text = " ";
+				updateMoney.text = " ";
 			} 
 			else 
 			{
 				moneyText.text = GameManager.Instance.playerStatsScript.moneyCount.ToString();
 				UpdateMoneyUI.SetActive (true);
-//				updateMoney.text = UiVictimMoney.ToString ();
+				updateMoney.text = UiVictimMoney.ToString ();
 				if (UiVictimMoney <= 0) 
 				{
 					updateTotalMoney = false;

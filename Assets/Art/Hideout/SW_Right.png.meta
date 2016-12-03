@@ -1,0 +1,418 @@
+fileFormatVersion: 2
+guid: 09695f9674f27db45b93b87083380a8b
+timeCreated: 1480609270
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SW_Right_1
+    21300002: SW_Right_2
+    21300004: SW_Right_3
+    21300006: SW_Right_4
+    21300008: SW_Right_5
+    21300010: SW_Right_6
+    21300012: Press1
+    21300014: Press2
+    21300016: Press3
+    21300018: Press4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SW_Right_1
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 1019
+        width: 231
+        height: 409
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16.5, y: 131.5}
+        - {x: 5.5, y: 135.5}
+        - {x: -13.5, y: 135.5}
+        - {x: -22.5, y: 129.5}
+        - {x: -65.5, y: 1.5}
+        - {x: -110.5, y: 17.5}
+        - {x: -110.5, y: -122.5}
+        - {x: -20.5, y: -204.5}
+        - {x: 55.5, y: -204.5}
+        - {x: 107.5, y: -198.5}
+        - {x: 115.5, y: -189.5}
+        - {x: 115.5, y: -5.5}
+        - {x: 40.5, y: 73.5}
+      - - {x: -107.5, y: 144.5}
+        - {x: -115.5, y: 129.5}
+        - {x: -115.5, y: 120.5}
+        - {x: 36.5, y: 120.5}
+        - {x: 115.5, y: 148.5}
+        - {x: 115.5, y: 188.5}
+        - {x: 81.5, y: 203.5}
+        - {x: 69.5, y: 204.5}
+        - {x: -4.5, y: 204.5}
+        - {x: -4.5, y: 201.5}
+    - name: SW_Right_2
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 517
+        width: 254
+        height: 412
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 120, y: -6}
+        - {x: 108, y: 24}
+        - {x: 110, y: 95}
+        - {x: 112, y: 127}
+        - {x: 25, y: 114}
+        - {x: 7, y: 135}
+        - {x: -47, y: 135}
+        - {x: -96, y: 15}
+        - {x: -127, y: -20}
+        - {x: -127, y: -112}
+        - {x: -125, y: -117}
+        - {x: -48, y: -206}
+        - {x: 53, y: -206}
+        - {x: 89, y: -202}
+        - {x: 96, y: -184}
+        - {x: 127, y: -103}
+        - {x: 127, y: -43}
+      - - {x: 110, y: 193}
+        - {x: 79, y: 206}
+        - {x: 3, y: 206}
+        - {x: 3, y: 203}
+        - {x: -113, y: 130}
+        - {x: -113, y: 123}
+        - {x: -112, y: 122}
+        - {x: -102, y: 124}
+        - {x: -53, y: 122}
+        - {x: 39, y: 122}
+        - {x: 123, y: 181}
+        - {x: 123, y: 188}
+        - {x: 122, y: 190}
+    - name: SW_Right_3
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 1018
+        width: 271
+        height: 415
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 108.5, y: 109.5}
+        - {x: 91.5, y: 126.5}
+        - {x: 53.5, y: 109.5}
+        - {x: 11.5, y: 68.5}
+        - {x: -11.5, y: 130.5}
+        - {x: -15.5, y: 133.5}
+        - {x: -47.5, y: 133.5}
+        - {x: -100.5, y: 34.5}
+        - {x: -135.5, y: -19.5}
+        - {x: -135.5, y: -119.5}
+        - {x: -55.5, y: -198.5}
+        - {x: -43.5, y: -207.5}
+        - {x: 41.5, y: -207.5}
+        - {x: 80.5, y: -205.5}
+        - {x: 119.5, y: -125.5}
+        - {x: 119.5, y: -38.5}
+        - {x: 106.5, y: 27.5}
+      - - {x: 17.5, y: 207.5}
+        - {x: 18.5, y: 204.5}
+        - {x: -97.5, y: 133.5}
+        - {x: -97.5, y: 124.5}
+        - {x: -96.5, y: 123.5}
+        - {x: -86.5, y: 125.5}
+        - {x: -29.5, y: 123.5}
+        - {x: 52.5, y: 123.5}
+        - {x: 135.5, y: 181.5}
+        - {x: 135.5, y: 192.5}
+        - {x: 103.5, y: 207.5}
+    - name: SW_Right_4
+      rect:
+        serializedVersion: 2
+        x: 1655
+        y: 518
+        width: 297
+        height: 416
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 62.5, y: 41}
+        - {x: 100.5, y: 109}
+        - {x: 63.5, y: 125}
+        - {x: 5.5, y: 68}
+        - {x: -13.5, y: 132}
+        - {x: -61.5, y: 132}
+        - {x: -107.5, y: 15}
+        - {x: -121.5, y: 2}
+        - {x: -148.5, y: -34}
+        - {x: -148.5, y: -95}
+        - {x: -141.5, y: -117}
+        - {x: -80.5, y: -208}
+        - {x: 77.5, y: -208}
+        - {x: 107.5, y: -129}
+        - {x: 107.5, y: -34}
+        - {x: 95.5, y: 28}
+      - - {x: 31.5, y: 208}
+        - {x: -84.5, y: 133}
+        - {x: -84.5, y: 126}
+        - {x: -83.5, y: 125}
+        - {x: -79.5, y: 125}
+        - {x: -15.5, y: 124}
+        - {x: 66.5, y: 124}
+        - {x: 148.5, y: 182}
+        - {x: 148.5, y: 195}
+        - {x: 100.5, y: 208}
+    - name: SW_Right_5
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 13
+        width: 323
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 83.5, y: 107.5}
+        - {x: 50.5, y: 125.5}
+        - {x: 33.5, y: 103.5}
+        - {x: -13.5, y: 67.5}
+        - {x: -30.5, y: 111.5}
+        - {x: 67.5, y: 157.5}
+        - {x: 67.5, y: 128.5}
+        - {x: 70.5, y: 119.5}
+        - {x: 161.5, y: 181.5}
+        - {x: 161.5, y: 198.5}
+        - {x: 110.5, y: 211.5}
+        - {x: 41.5, y: 211.5}
+        - {x: 49.5, y: 195.5}
+        - {x: -58.5, y: 149.5}
+        - {x: -75.5, y: 132.5}
+        - {x: -109.5, y: 0.5}
+        - {x: -134.5, y: 2.5}
+        - {x: -161.5, y: -33.5}
+        - {x: -161.5, y: -107.5}
+        - {x: -158.5, y: -119.5}
+        - {x: -72.5, y: -209.5}
+        - {x: 26.5, y: -209.5}
+        - {x: 56.5, y: -206.5}
+        - {x: 102.5, y: -96.5}
+        - {x: 88.5, y: -5.5}
+        - {x: 78.5, y: 25.5}
+    - name: SW_Right_6
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 17
+        width: 313
+        height: 421
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 54.5, y: 106.5}
+        - {x: 42.5, y: 113.5}
+        - {x: -2.5, y: 113.5}
+        - {x: -140.5, y: 6.5}
+        - {x: -156.5, y: -33.5}
+        - {x: -156.5, y: -96.5}
+        - {x: -155.5, y: -99.5}
+        - {x: -101.5, y: -210.5}
+        - {x: -3.5, y: -210.5}
+        - {x: 22.5, y: -208.5}
+        - {x: 61.5, y: -114.5}
+        - {x: 61.5, y: -29.5}
+        - {x: 35.5, y: 37.5}
+      - - {x: 148.5, y: 210.5}
+        - {x: -51.5, y: 210.5}
+        - {x: -80.5, y: 201.5}
+        - {x: -80.5, y: 129.5}
+        - {x: -79.5, y: 126.5}
+        - {x: -75.5, y: 127.5}
+        - {x: -8.5, y: 126.5}
+        - {x: 70.5, y: 126.5}
+        - {x: 116.5, y: 159.5}
+        - {x: 155.5, y: 187.5}
+        - {x: 155.5, y: 192.5}
+    - name: Press1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1019
+        width: 224
+        height: 338
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 109, y: 28}
+        - {x: 33, y: 109}
+        - {x: 4, y: 109}
+        - {x: 10, y: 169}
+        - {x: -23, y: 169}
+        - {x: -36, y: 148}
+        - {x: -53, y: 56}
+        - {x: -66, y: 12}
+        - {x: -86, y: 38}
+        - {x: -97, y: 31}
+        - {x: -112, y: 5}
+        - {x: -112, y: -64}
+        - {x: -111, y: -79}
+        - {x: -61, y: -121}
+        - {x: -26, y: -169}
+        - {x: 46, y: -169}
+        - {x: 99, y: -163}
+        - {x: 108, y: -145}
+        - {x: 110, y: -98}
+        - {x: 110, y: -4}
+    - name: Press2
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 1019
+        width: 225
+        height: 351
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8.5, y: 102.5}
+        - {x: 35.5, y: 164.5}
+        - {x: 11.5, y: 175.5}
+        - {x: -31.5, y: 175.5}
+        - {x: -41.5, y: 162.5}
+        - {x: -61.5, y: 8.5}
+        - {x: -81.5, y: 31.5}
+        - {x: -92.5, y: 24.5}
+        - {x: -112.5, y: -17.5}
+        - {x: -112.5, y: -44.5}
+        - {x: -101.5, y: -82.5}
+        - {x: -100.5, y: -86.5}
+        - {x: -72.5, y: -114.5}
+        - {x: -22.5, y: -175.5}
+        - {x: 49.5, y: -175.5}
+        - {x: 103.5, y: -168.5}
+        - {x: 112.5, y: -153.5}
+        - {x: 112.5, y: 23.5}
+        - {x: 37.5, y: 103.5}
+    - name: Press3
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 518
+        width: 224
+        height: 369
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35, y: 90.5}
+        - {x: 23, y: 91.5}
+        - {x: 35, y: 115.5}
+        - {x: 45, y: 153.5}
+        - {x: 20, y: 184.5}
+        - {x: -36, y: 184.5}
+        - {x: -40, y: 183.5}
+        - {x: -61, y: 153.5}
+        - {x: -45, y: 84.5}
+        - {x: -62, y: -3.5}
+        - {x: -82, y: 22.5}
+        - {x: -93, y: 15.5}
+        - {x: -112, y: -17.5}
+        - {x: -112, y: -62.5}
+        - {x: -105, y: -98.5}
+        - {x: -58, y: -137.5}
+        - {x: -23, y: -184.5}
+        - {x: 49, y: -184.5}
+        - {x: 103, y: -177.5}
+        - {x: 112, y: -169.5}
+        - {x: 112, y: 14.5}
+        - {x: 97, y: 30.5}
+    - name: Press4
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 518
+        width: 224
+        height: 381
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 68, y: 58.5}
+        - {x: 32, y: 86.5}
+        - {x: 58, y: 123.5}
+        - {x: 44, y: 173.5}
+        - {x: 20, y: 190.5}
+        - {x: -33, y: 190.5}
+        - {x: -72, y: 158.5}
+        - {x: -61, y: 96.5}
+        - {x: -39, y: 84.5}
+        - {x: -49, y: 34.5}
+        - {x: -52, y: 7.5}
+        - {x: -82, y: 16.5}
+        - {x: -93, y: 9.5}
+        - {x: -112, y: -23.5}
+        - {x: -112, y: -68.5}
+        - {x: -105, y: -104.5}
+        - {x: -58, y: -143.5}
+        - {x: -23, y: -190.5}
+        - {x: 49, y: -190.5}
+        - {x: 103, y: -183.5}
+        - {x: 112, y: -168.5}
+        - {x: 112, y: -1.5}
+        - {x: 111, y: 6.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
