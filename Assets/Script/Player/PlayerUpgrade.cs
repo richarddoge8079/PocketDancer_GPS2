@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine.UI;
 
 public class PlayerUpgrade : MonoBehaviour {
@@ -22,7 +23,7 @@ public class PlayerUpgrade : MonoBehaviour {
 	public Animation Upgrade3Button;
 	public Animation Upgrade4Button;
 	public Animation Upgrade5Button;
-	public AnimatorControllerParameter UpgradeButton;
+	public AnimatorController UpgradeButton;
 
 	public Text Money;
 	public float currentMoney;
@@ -225,7 +226,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		//SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
 		if (selectedUpgrades [0] == 1) {
 			// Suit & Tie (Enter VIP section without being insta-detect)
-
+			Upgrade1Button.Play("UpgradeButton");
 			if (currentMoney >= upgradePrice [0]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [0];
@@ -237,6 +238,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [0] == 2) {
 			// Funky Fresh Outfit (Access Nightclub level)
+			Upgrade1Button.Play("upgrade2Button");
 			if (currentMoney >= upgradePrice [1]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [1];
@@ -249,6 +251,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [0] == 3) {
 			// A Loan Extension (One time purchase of 2 day extension)
+			Upgrade1Button.Play("upgrade3Button");
 			if (currentMoney >= upgradePrice [2]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [2];
@@ -264,6 +267,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [0] == 4) {
 			// Dazzler Strips (Increase Maximum Detection Meter by 5)
+			Upgrade1Button.Play("upgrade4Button");
 			if (currentMoney >= upgradePrice [3]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [3];
@@ -276,6 +280,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [0] == 5) {
 			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
+			Upgrade1Button.Play("upgrade5Button");
 			if (currentMoney >= upgradePrice [4]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [4];
