@@ -55,22 +55,22 @@ public class VictimCollision : MonoBehaviour {
 		ObjectPoolingScript.Instance.CreatePool (rob, 5, 10);
 		UICanvas = UIManager.Instance.gameObject.GetComponent<Canvas>();
 		camera = Camera.main;
-		comboActivated = GetComponent<PlayerMovement> ().isComboOn;
+//		comboActivated = GetComponent<PlayerMovement> ().isComboOn;
 		StartCoroutine ("DrawVisionTimer", visionTimer);
 
-		if(comboActivated == true)
-		{
-			minFrontMoney += 20;
-			minBackMoney += 20;
-			minLeftMoney += 20;
-			minRightMoney += 20;
-			allDirectionPick = true;
-		}
+//		if(comboActivated == true)
+//		{
+//			minFrontMoney += 20;
+//			minBackMoney += 20;
+//			minLeftMoney += 20;
+//			minRightMoney += 20;
+//			allDirectionPick = true;
+//		}
 	}
 
 	void Update ()
 	{
-		DrawDetection ();
+//		DrawDetection ();
 	}
 	void OnTriggerEnter (Collider coll)
 	{
@@ -79,7 +79,7 @@ public class VictimCollision : MonoBehaviour {
 			//Detected
 			if(GameManager.Instance.playerStatsScript.isDetected){
 				SceneManager.LoadScene ("Hideout");
-				DataManager.Instance.moneyCount -= DataManager.Instance.stolenMoney;
+				DataManager.Instance.stolenMoney = 0;
 				DataManager.Instance.upgrade1Active = false;
 				DataManager.Instance.upgrade2Active = false;
 				DataManager.Instance.upgrade3Active = false;
@@ -107,6 +107,9 @@ public class VictimCollision : MonoBehaviour {
 
 					picked = true;
 					money = Random.Range (minBackMoney, maxBackMoney);
+					if(comboActivated){
+						money += 20;
+					}
 					//					Debug.Log ("I've just been robbed!?");
 
 					if (UIManager.Instance.updateTotalMoney) 
@@ -156,6 +159,9 @@ public class VictimCollision : MonoBehaviour {
 
 						picked = true;
 						money = Random.Range (minRightMoney, maxRightMoney);
+						if(comboActivated){
+							money += 20;
+						}
 						//					Debug.Log ("I've just been robbed!?");
 						victimBackFX.SetActive (false);
 
@@ -203,6 +209,10 @@ public class VictimCollision : MonoBehaviour {
 
 						picked = true;
 						money = Random.Range (minLeftMoney, maxLeftMoney);
+
+						if(comboActivated){
+							money += 20;
+						}
 
 						//Debug.Log ("I've just been robbed!?");
 						victimBackFX.SetActive (false);
@@ -254,6 +264,10 @@ public class VictimCollision : MonoBehaviour {
 					picked = true;
 					//					Debug.Log ("I've just been robbed!?");
 					money = Random.Range (minFrontMoney, maxFrontMoney);
+					if(comboActivated){
+						money += 20;
+					}
+
 					if (UIManager.Instance.updateTotalMoney) {
 						Vector3 screenPos = camera.WorldToScreenPoint (transform.position);
 						Image Coin = (Image)Instantiate (Money, new Vector3 (screenPos.x, screenPos.y, transform.position.z), Quaternion.identity);
@@ -302,50 +316,53 @@ public class VictimCollision : MonoBehaviour {
 
 	void DrawDetection()
 	{
+		comboActivated = GameManager.Instance.playerMovementScript.isComboOn;
 		//<<<<<<< HEAD
 		//		Ray pickpocketRayBack = new Ray (transform.localPosition, -transform.forward);
 		//		Ray pickpocketRayFront = new Ray (transform.localPosition, transform.forward);
 		//		Ray pickpocketRayRight = new Ray (transform.localPosition, transform.right);
 		//		Ray pickpocketRayLeft = new Ray (transform.localPosition, -transform.right);
-		if (Physics.Raycast (transform.position, -transform.forward, out isPickpocketed, pickpocketRange)) 
-		{
-			if (isPickpocketed.collider.CompareTag("Player")) 
-			{
-				playerInRangeBack = true;
-				StopCoroutine ("Timer");
-				//				Debug.Log ("Target In Range");
-			} 
+		if (comboActivated) {
+			allDirectionPick = true;
+			if (Physics.Raycast (transform.position, -transform.forward, out isPickpocketed, pickpocketRange)) {
+				if (isPickpocketed.collider.CompareTag ("Player")) {
+					playerInRangeBack = true;
+					StopCoroutine ("Timer");
+					//				Debug.Log ("Target In Range");
+				} 
+			} else if (Physics.Raycast (transform.position, transform.right, out isPickpocketed, pickpocketRange)) {
+				if (isPickpocketed.collider.CompareTag ("Player")) {
+					playerInRangeRight = true;
+					StopCoroutine ("Timer");
+					//Debug.Log ("Target In Range");
+				} 
+			} else if (Physics.Raycast (transform.position, -transform.right, out isPickpocketed, pickpocketRange)) {
+				if (isPickpocketed.collider.CompareTag ("Player")) {
+					playerInRangeLeft = true;
+					StopCoroutine ("Timer");
+					//Debug.Log ("Target In Range");
+				} 
+			} else if (Physics.Raycast (transform.position, transform.forward, out isPickpocketed, pickpocketRange)) {
+				if (isPickpocketed.collider.CompareTag ("Player")) {
+					playerInRangeFront = true;
+					StopCoroutine ("Timer");
+					//Debug.Log ("Target In Range");
+				} 
+			} else {
+				StartCoroutine ("Timer", defaultTime);
+			}
 		} 
-		else if (Physics.Raycast (transform.position, transform.right, out isPickpocketed, pickpocketRange)) 
-		{
-			if (isPickpocketed.collider.CompareTag("Player")) 
+		else {
+			allDirectionPick = false;
+			if (Physics.Raycast (transform.position, -transform.forward, out isPickpocketed, pickpocketRange)) 
 			{
-				playerInRangeRight = true;
-				StopCoroutine ("Timer");
-				//Debug.Log ("Target In Range");
-			} 
-		} 
-		else if (Physics.Raycast (transform.position, -transform.right, out isPickpocketed, pickpocketRange)) 
-		{
-			if (isPickpocketed.collider.CompareTag("Player")) 
-			{
-				playerInRangeLeft = true;
-				StopCoroutine ("Timer");
-				//Debug.Log ("Target In Range");
-			} 
-		} 
-		else if (Physics.Raycast (transform.position, transform.forward, out isPickpocketed, pickpocketRange)) 
-		{
-			if (isPickpocketed.collider.CompareTag("Player")) 
-			{
-				playerInRangeFront = true;
-				StopCoroutine ("Timer");
-				//Debug.Log ("Target In Range");
-			} 
-		} 
-		else 
-		{
-			StartCoroutine ("Timer" ,defaultTime);
+				if (isPickpocketed.collider.CompareTag("Player")) 
+				{
+					playerInRangeBack = true;
+					StopCoroutine ("Timer");
+					//				Debug.Log ("Target In Range");
+				} 
+			}
 		}
 		//Debug.DrawRay (transform.localPosition, -transform.forward * pickpocketRange, Color.green);
 	}
