@@ -9,5 +9,6 @@ public class GetStolenMoney : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		stolenMoneyText.text = DataManager.Instance.stolenMoney.ToString ();
+		DataManager.Instance.stolenMoney = 0;
 	}
 }
