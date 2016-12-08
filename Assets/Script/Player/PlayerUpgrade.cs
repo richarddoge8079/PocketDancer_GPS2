@@ -18,12 +18,13 @@ public class PlayerUpgrade : MonoBehaviour {
 	public Sprite Upgrade4Desc;
 	public Sprite Upgrade5Desc;
 
-	public Animation Upgrade1Button;
-	public Animation Upgrade2Button;
-	public Animation Upgrade3Button;
-	public Animation Upgrade4Button;
-	public Animation Upgrade5Button;
-	public AnimatorController UpgradeButton;
+	public Animator UpgradeButton;
+	public GameObject UB1;
+	public GameObject UB2;
+	public GameObject UB3;
+	public GameObject UB4;
+	public GameObject UB5;
+	public GameObject lastUB;
 
 	public Text Money;
 	public float currentMoney;
@@ -40,29 +41,25 @@ public class PlayerUpgrade : MonoBehaviour {
 	public int[] selectedUpgrades = new int[3];
 	public int[] upgradePrice = new int[5] {100,200,500,50,85};
 
-	/*int[] weights;
-	int weightTotal;
-
-	struct upgrades { //this is just for code-read niceness
-		public const int suitNTie = 1;
-		public const int funkyFreshOutfit = 2;
-		public const int loanExtension = 3;
-		public const int dazzlerStrips = 4;
-		public const int crashCourseTaiChi = 5;
-	}
-
-	int RandomWeighted () {
-		int result = 0, total = 0;
-		int randVal = Random.Range( 0, weightTotal );
-		for ( result = 0; result < weights.Length; result++ ) {
-			total += weights[result];
-			if ( total > randVal ) break;
-		}
-		return result;
-	}*/
-
-	void Awake()
+	void Start ()
 	{
+		/*upgrade1 = upgrade1.GetComponent<Button> ();
+		upgrade2 = upgrade2.GetComponent<Button> ();
+		upgrade3 = upgrade3.GetComponent<Button> ();
+		upgrade1Image = upgrade1Image.GetComponent<UnityEngine.UI.Image> ();
+		upgrade2Image = upgrade2Image.GetComponent<UnityEngine.UI.Image> ();
+		upgrade3Image = upgrade3Image.GetComponent<UnityEngine.UI.Image> ();
+		UpgradeButton = UpgradeButton.GetComponent <Animator> ();
+		UB1 = UB1.GetComponent<GameObject> ();
+		UB2 = UB2.GetComponent<GameObject> ();
+		UB3 = UB3.GetComponent<GameObject> ();
+		UB4 = UB4.GetComponent<GameObject> ();
+		UB5 = UB5.GetComponent<GameObject> ();
+		lastUB = lastUB.GetComponent<GameObject> ();*/
+
+		currentMoney = DataManager.Instance.moneyCount;
+		//currentMoney = 10000;
+
 		Debug.Log ("game loop");
 		fetchLatestStat ();
 		reshuffle (Upgrades);
@@ -73,39 +70,11 @@ public class PlayerUpgrade : MonoBehaviour {
 				i++;
 			}
 		}
-		//probabilitySelection ();
 		Debug.Log ("game start");
 		Upgrade1Sprite ();
 		Upgrade2Sprite ();
 		Upgrade3Sprite ();
-
-		/*weights = new int[5]; //number of things
-
-		//weighting of each thing, high number means more occurrance
-		weights[upgrades.suitNTie] = 35;
-		weights[upgrades.funkyFreshOutfit] = 45;
-		weights[upgrades.loanExtension] = 5;
-		weights[upgrades.dazzlerStrips] = 10;
-		weights[upgrades.crashCourseTaiChi] = 5;
-
-		weightTotal = 100;
-		foreach ( int w in weights ) {
-			weightTotal += w;
-		}*/
-	}
-
-	// Use this for initialization
-	void Start () {
 		Debug.Log ("game begin");
-		//currentMoney = DataManager.Instance.moneyCount;
-		currentMoney = 10000;
-		upgrade1 = upgrade1.GetComponent<Button> ();
-		upgrade2 = upgrade2.GetComponent<Button> ();
-		upgrade3 = upgrade3.GetComponent<Button> ();
-		upgrade1Image = upgrade1Image.GetComponent<UnityEngine.UI.Image> ();
-		upgrade2Image = upgrade2Image.GetComponent<UnityEngine.UI.Image> ();
-		upgrade3Image = upgrade3Image.GetComponent<UnityEngine.UI.Image> ();
-
 		DataManager.Instance.canMinusDay = true;
 	}
 
@@ -187,18 +156,33 @@ public class PlayerUpgrade : MonoBehaviour {
 		Debug.Log ("image rotation initiated");
 		if (selectedUpgrades [1] == 1) {
 			upgrade2Image.overrideSprite = Upgrade1Desc;
+			UB5.SetActive(true);
+			lastUB = UB5;
+			UpgradeButton.Play ("UpgradeButton5");
 		}
 		if (selectedUpgrades [1] == 2) {
 			upgrade2Image.overrideSprite = Upgrade2Desc;
+			UB4.SetActive(true);
+			lastUB = UB4;
+			UpgradeButton.Play ("UpgradeButton4");
 		}
 		if (selectedUpgrades [1] == 3) {
 			upgrade2Image.overrideSprite = Upgrade3Desc;
+			UB3.SetActive(true);
+			lastUB = UB3;
+			UpgradeButton.Play ("UpgradeButton3");
 		}
 		if (selectedUpgrades [1] == 4) {
 			upgrade2Image.overrideSprite = Upgrade4Desc;
+			UB1.SetActive(true);
+			lastUB = UB1;
+			UpgradeButton.Play ("UpgradeButton1");
 		}
 		if (selectedUpgrades [1] == 5) {
 			upgrade2Image.overrideSprite = Upgrade5Desc;
+			UB2.SetActive(true);
+			lastUB = UB2;
+			UpgradeButton.Play ("UpgradeButton2");
 		}
 	}
 	void Upgrade3Sprite()
@@ -223,10 +207,13 @@ public class PlayerUpgrade : MonoBehaviour {
 
 	public void onUpgrade1Press()
 	{
-		//SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
+		SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
 		if (selectedUpgrades [0] == 1) {
 			// Suit & Tie (Enter VIP section without being insta-detect)
-			Upgrade1Button.Play("UpgradeButton");
+			lastUB.SetActive(false);
+			UB5.SetActive (true);
+			lastUB = UB5;
+			UpgradeButton.Play ("UpgradeButton5");
 			if (currentMoney >= upgradePrice [0]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [0];
@@ -238,7 +225,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [0] == 2) {
 			// Funky Fresh Outfit (Access Nightclub level)
-			Upgrade1Button.Play("upgrade2Button");
+			lastUB.SetActive(false);
+			UB4.SetActive(true);
+			lastUB = UB4;
+			UpgradeButton.Play ("UpgradeButton4");
 			if (currentMoney >= upgradePrice [1]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [1];
@@ -251,7 +241,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [0] == 3) {
 			// A Loan Extension (One time purchase of 2 day extension)
-			Upgrade1Button.Play("upgrade3Button");
+			lastUB.SetActive(false);
+			UB3.SetActive(true);
+			lastUB = UB3;
+			UpgradeButton.Play ("UpgradeButton3");
 			if (currentMoney >= upgradePrice [2]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [2];
@@ -267,7 +260,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [0] == 4) {
 			// Dazzler Strips (Increase Maximum Detection Meter by 5)
-			Upgrade1Button.Play("upgrade4Button");
+			lastUB.SetActive(false);
+			UB1.SetActive (true);
+			lastUB = UB1;
+			UpgradeButton.Play ("UpgradeButton1");
 			if (currentMoney >= upgradePrice [3]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [3];
@@ -280,7 +276,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [0] == 5) {
 			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
-			Upgrade1Button.Play("upgrade5Button");
+			lastUB.SetActive(false);
+			UB2.SetActive (true);
+			lastUB = UB2;
+			UpgradeButton.Play ("UpgradeButton2");
 			if (currentMoney >= upgradePrice [4]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [4];
@@ -297,8 +296,13 @@ public class PlayerUpgrade : MonoBehaviour {
 
 	public void onUpgrade2Press()
 	{
+		SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
 		if (selectedUpgrades [1] == 1) {
 			// Suit & Tie (Enter VIP section without being insta-detect)
+			lastUB.SetActive(false);
+			UB5.SetActive (true);
+			lastUB = UB5;
+			UpgradeButton.Play ("UpgradeButton5");
 			if (currentMoney >= upgradePrice [0]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [0];
@@ -310,6 +314,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [1] == 2) {
 			// Funky Fresh Outfit (Access Nightclub level)
+			lastUB.SetActive(false);
+			UB4.SetActive(true);
+			lastUB = UB4;
+			UpgradeButton.Play ("UpgradeButton4");
 			if (currentMoney >= upgradePrice [1]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [1];
@@ -322,6 +330,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [1] == 3) {
 			// A Loan Extension (One time purchase of 2 day extension)
+			lastUB.SetActive(false);
+			UB3.SetActive(true);
+			lastUB = UB3;
+			UpgradeButton.Play ("UpgradeButton3");
 			if (currentMoney >= upgradePrice [2]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [2];
@@ -337,6 +349,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [1] == 4) {
 			// Dazzler Strips (Increase Maximum Detection Meter by 5)
+			lastUB.SetActive(false);
+			UB1.SetActive (true);
+			lastUB = UB1;
+			UpgradeButton.Play ("UpgradeButton1");
 			if (currentMoney >= upgradePrice [3]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [3];
@@ -349,6 +365,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [1] == 5) {
 			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
+			lastUB.SetActive(false);
+			UB2.SetActive (true);
+			lastUB = UB2;
+			UpgradeButton.Play ("UpgradeButton2");
 			if (currentMoney >= upgradePrice [4]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [4];
@@ -365,9 +385,13 @@ public class PlayerUpgrade : MonoBehaviour {
 
 	public void onUpgrade3Press()
 	{
-		//SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
+		SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
 		if (selectedUpgrades [2] == 1) {
 			// Suit & Tie (Enter VIP section without being insta-detect)
+			lastUB.SetActive(false);
+			UB5.SetActive (true);
+			lastUB = UB5;
+			UpgradeButton.Play ("UpgradeButton5");
 			if (currentMoney >= upgradePrice [0]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [0];
@@ -379,6 +403,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [2] == 2) {
 			// Funky Fresh Outfit (Access Nightclub level)
+			lastUB.SetActive(false);
+			UB4.SetActive(true);
+			lastUB = UB4;
+			UpgradeButton.Play ("UpgradeButton4");
 			if (currentMoney >= upgradePrice [1]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [1];
@@ -391,6 +419,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [2] == 3) {
 			// A Loan Extension (One time purchase of 2 day extension)
+			lastUB.SetActive(false);
+			UB3.SetActive(true);
+			lastUB = UB3;
+			UpgradeButton.Play ("UpgradeButton3");
 			if (currentMoney >= upgradePrice [2]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [2];
@@ -406,6 +438,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [2] == 4) {
 			// Dazzler Strips (Increase Maximum Detection Meter by 5)
+			lastUB.SetActive(false);
+			UB1.SetActive (true);
+			lastUB = UB1;
+			UpgradeButton.Play ("UpgradeButton1");
 			if (currentMoney >= upgradePrice [3]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [3];
@@ -418,69 +454,10 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 		if (selectedUpgrades [2] == 5) {
 			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
-			if (currentMoney >= upgradePrice [4]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [4];
-				upgrade5Active = true;
-				DataManager.Instance.upgrade5Active = true;
-				//code for detection meter increase
-				removeFromArray (5);
-				//upgrade3.interactable = false;
-			}
-		}
-
-		if (selectedUpgrades [2] == 1) {
-			// Suit & Tie (Enter VIP section without being insta-detect)
-			if (currentMoney >= upgradePrice [0]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [0];
-				upgrade1Active = true;
-				//code for VIP section
-				removeFromArray(1);
-				//upgrade3.interactable = false;
-			}
-		}
-		if (selectedUpgrades [2] == 2) {
-			// Funky Fresh Outfit (Access Nightclub level)
-			if (currentMoney >= upgradePrice [1]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [1];
-				upgrade2Active = true;
-				DataManager.Instance.upgrade2Active = true;
-				//code for all direction pickpocket
-				removeFromArray (2);
-				//upgrade3.interactable = false;
-			}
-		}
-		if (selectedUpgrades [2] == 3) {
-			// A Loan Extension (One time purchase of 2 day extension)
-			if (currentMoney >= upgradePrice [2]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [2];
-				upgrade3Active = true;
-				//code Nightclub level access?
-				removeFromArray(3);
-				//upgrade3.interactable = false;
-				if(upgrade3Active == true)
-				{
-					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
-				}
-			}
-		}
-		if (selectedUpgrades [2] == 4) {
-			// Dazzler Strips (Increase Maximum Detection Meter by 5)
-			if (currentMoney >= upgradePrice [3]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [3];
-				upgrade4Active = true;
-				DataManager.Instance.upgrade4Active = true;
-				//code for additional days
-				removeFromArray (4);
-				//upgrade3.interactable = false;
-			}
-		}
-		if (selectedUpgrades [2] == 5) {
-			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
+			lastUB.SetActive(false);
+			UB2.SetActive (true);
+			lastUB = UB2;
+			UpgradeButton.Play ("UpgradeButton2");
 			if (currentMoney >= upgradePrice [4]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [4];
@@ -495,220 +472,5 @@ public class PlayerUpgrade : MonoBehaviour {
 			Debug.Log ("You can't buy this upgrade");
 		}
 	}
-
-	public void UpdateDays()
-	{
-		//		DataManager.Instance.dayCount -= 1;
-		DataManager.Instance.moneyCount = currentMoney;
-	}
-
-	/*public void onUpgrade2Press()
-	{
-		SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
-		if (selectedUpgrades [1] == 1) {
-			// Suit & Tie (Enter VIP section without being insta-detect)
-			if (currentMoney >= upgradePrice [0]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [0];
-				upgrade1Active = true;
-				//code for VIP section
-				removeFromArray(1);
-				upgrade2.interactable = false;
-			}
-		}
-		if (selectedUpgrades [1] == 2) {
-			// Funky Fresh Outfit (Access Nightclub level)
-			if (currentMoney >= upgradePrice [1]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [1];
-				upgrade2Active = true;
-				DataManager.Instance.upgrade2Active = true;
-				//code for all direction pickpocket
-				removeFromArray (2);
-				upgrade2.interactable = false;
-			}
-		}
-		if (selectedUpgrades [1] == 3) {
-			// A Loan Extension (One time purchase of 2 day extension)
-			if (currentMoney >= upgradePrice [2]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [2];
-				upgrade3Active = true;
-				//code Nightclub level access?
-				removeFromArray(3);
-				upgrade2.interactable = false;
-			}
-		}
-		if (selectedUpgrades [1] == 4) {
-			// Dazzler Strips (Increase Maximum Detection Meter by 5)
-			if (currentMoney >= upgradePrice [3]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [3];
-				upgrade4Active = true;
-				DataManager.Instance.upgrade4Active = true;
-				//code for additional days
-				removeFromArray (4);
-				upgrade2.interactable = false;
-
-				if(upgrade4Active == true)
-				{
-					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
-				}	
-			}
-		}
-		if (selectedUpgrades [1] == 5) {
-			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
-			if (currentMoney >= upgradePrice [4]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [4];
-				upgrade5Active = true;
-				DataManager.Instance.upgrade5Active = true;
-				//code for detection meter increase
-				removeFromArray (5);
-				upgrade2.interactable = false;
-			}
-		} else {
-			Debug.Log ("You can't buy this upgrade");
-		}
-	}
-
-	public void onUpgrade3Press()
-	{
-		SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
-		if (selectedUpgrades [2] == 1) {
-			// Suit & Tie (Enter VIP section without being insta-detect)
-			if (currentMoney >= upgradePrice [0]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [0];
-				upgrade1Active = true;
-				//code for VIP section
-				removeFromArray(1);
-				upgrade3.interactable = false;
-			}
-		}
-		if (selectedUpgrades [2] == 2) {
-			// Funky Fresh Outfit (Access Nightclub level)
-			if (currentMoney >= upgradePrice [1]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [1];
-				upgrade2Active = true;
-				DataManager.Instance.upgrade2Active = true;
-				//code for all direction pickpocket
-				removeFromArray (2);
-				upgrade3.interactable = false;
-			}
-		}
-		if (selectedUpgrades [2] == 3) {
-			// A Loan Extension (One time purchase of 2 day extension)
-			if (currentMoney >= upgradePrice [2]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [2];
-				upgrade3Active = true;
-				//code Nightclub level access?
-				removeFromArray(3);
-				upgrade3.interactable = false;
-			}
-		}
-		if (selectedUpgrades [2] == 4) {
-			// Dazzler Strips (Increase Maximum Detection Meter by 5)
-			if (currentMoney >= upgradePrice [3]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [3];
-				upgrade4Active = true;
-				DataManager.Instance.upgrade4Active = true;
-				//code for additional days
-				removeFromArray (4);
-				upgrade3.interactable = false;
-
-				if(upgrade4Active == true)
-				{
-					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
-				}	
-			}
-		}
-		if (selectedUpgrades [2] == 5) {
-			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
-			if (currentMoney >= upgradePrice [4]) {
-				Debug.Log ("upgrade purchased");
-				currentMoney -= upgradePrice [4];
-				upgrade5Active = true;
-				DataManager.Instance.upgrade5Active = true;
-				//code for detection meter increase
-				removeFromArray (5);
-				upgrade3.interactable = false;
-			}
-		} else {
-			Debug.Log ("You can't buy this upgrade");
-		}
-	}
-
-	void probabilitySelection()
-	{
-		float rdm1 = Random.value;
-		float rdm2 = Random.value;
-		float rdm3 = Random.value;
-		if(rdm1 >= 0.35)
-		{
-			Debug.Log ("rdm1: " + 1);
-		}
-		else if(rdm1 >= 0.45)
-		{
-			Debug.Log ("rdm1: " + 2);
-		}
-		else if(rdm1 >= 0.05)
-		{
-			Debug.Log ("rdm1: " + 3);
-		}
-		else if(rdm1 >= 0.1)
-		{
-			Debug.Log ("rdm1: " + 4);
-		}
-		else if(rdm1 >= 0.05)
-		{
-			Debug.Log ("rdm1: " + 5);
-		}
-
-		if(rdm2 >= 0.35 && rdm2 != rdm1)
-		{
-			Debug.Log ("rdm2: " + 1);
-		}
-		else if(rdm2 >= 0.45 && rdm2 != rdm1)
-		{
-			Debug.Log ("rdm2: " + 2);
-		}
-		else if(rdm2 >= 0.05 && rdm2 != rdm1)
-		{
-			Debug.Log ("rdm2: " + 3);
-		}
-		else if(rdm2 >= 0.1 && rdm2 != rdm1)
-		{
-			Debug.Log ("rdm2: " + 4);
-		}
-		else if(rdm2 >= 0.05 && rdm2 != rdm1)
-		{
-			Debug.Log ("rdm2: " + 5);
-		}
-
-		if(rdm3 >= 0.35 && rdm3 != rdm1 && rdm3 != rdm2)
-		{
-			Debug.Log ("rdm3: " + 1);
-		}
-		else if(rdm3 >= 0.45 && rdm3 != rdm1 && rdm3 != rdm2)
-		{
-			Debug.Log ("rdm3: " + 2);
-		}
-		else if(rdm3 >= 0.05 && rdm3 != rdm1 && rdm3 != rdm2)
-		{
-			Debug.Log ("rdm3: " + 3);
-		}
-		else if(rdm3 >= 0.1 && rdm3 != rdm1 && rdm3 != rdm2)
-		{
-			Debug.Log ("rdm3: " + 4);
-		}
-		else if(rdm3 >= 0.05 && rdm3 != rdm1 && rdm3 != rdm2)
-		{
-			Debug.Log ("rdm3: " + 5);
-		}
-	}*/
 }
 
