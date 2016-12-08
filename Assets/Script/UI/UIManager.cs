@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour {
 	public Text updateMoney;
 	public GameObject UpdateMoneyUI;
 	public bool updateTotalMoney = false;
-	public int UiVictimMoney; 
+	public int UiVictimMoney;
 
 	public Text loadingText;
 

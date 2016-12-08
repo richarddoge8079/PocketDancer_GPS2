@@ -70,7 +70,7 @@ public class VictimCollision : MonoBehaviour {
 
 	void Update ()
 	{
-
+		DrawDetection ();
 	}
 	void OnTriggerEnter (Collider coll)
 	{
@@ -79,6 +79,7 @@ public class VictimCollision : MonoBehaviour {
 			//Detected
 			if(GameManager.Instance.playerStatsScript.isDetected){
 				SceneManager.LoadScene ("Hideout");
+				DataManager.Instance.moneyCount -= DataManager.Instance.stolenMoney;
 				DataManager.Instance.upgrade1Active = false;
 				DataManager.Instance.upgrade2Active = false;
 				DataManager.Instance.upgrade3Active = false;
@@ -115,6 +116,7 @@ public class VictimCollision : MonoBehaviour {
 						Coin.transform.SetParent (UICanvas.transform);
 						Coin.gameObject.SetActive (true);
 						UIManager.Instance.UiVictimMoney += money;
+						DataManager.Instance.stolenMoney += money;
 						GameManager.Instance.pickPocket += 1;
 					}
 					else
@@ -124,6 +126,7 @@ public class VictimCollision : MonoBehaviour {
 						Coin.transform.SetParent (UICanvas.transform);
 						Coin.gameObject.SetActive (true);
 						UIManager.Instance.UiVictimMoney += money;
+						DataManager.Instance.stolenMoney += money;
 						UIManager.Instance.UpdateMoney ();
 
 						picked = true;
@@ -161,6 +164,7 @@ public class VictimCollision : MonoBehaviour {
 							Image Coin = (Image)Instantiate (Money, new Vector3 (screenPos.x, screenPos.y, transform.position.z), Quaternion.identity);
 							Coin.transform.SetParent (UICanvas.transform);
 							UIManager.Instance.UiVictimMoney += money;
+							DataManager.Instance.stolenMoney += money;
 							GameManager.Instance.pickPocket += 1;
 
 							picked = true;
@@ -169,6 +173,7 @@ public class VictimCollision : MonoBehaviour {
 							Image Coin = (Image)Instantiate (Money, new Vector3 (screenPos.x, screenPos.y, transform.position.z), Quaternion.identity);
 							Coin.transform.SetParent (UICanvas.transform);
 							UIManager.Instance.UiVictimMoney += money;
+							DataManager.Instance.stolenMoney += money;
 							UIManager.Instance.UpdateMoney ();
 							picked = true;
 						}
@@ -207,6 +212,7 @@ public class VictimCollision : MonoBehaviour {
 							Image Coin = (Image)Instantiate (Money, new Vector3 (screenPos.x, screenPos.y, transform.position.z), Quaternion.identity);
 							Coin.transform.SetParent (UICanvas.transform);
 							UIManager.Instance.UiVictimMoney += money;
+							DataManager.Instance.stolenMoney += money;
 							GameManager.Instance.pickPocket += 1;
 
 							picked = true;
@@ -215,8 +221,8 @@ public class VictimCollision : MonoBehaviour {
 							Image Coin = (Image)Instantiate (Money, new Vector3 (screenPos.x, screenPos.y, transform.position.z), Quaternion.identity);
 							Coin.transform.SetParent (UICanvas.transform);
 							UIManager.Instance.UiVictimMoney += money;
+							DataManager.Instance.stolenMoney += money;
 							UIManager.Instance.UpdateMoney ();
-
 
 							picked = true;
 						}
@@ -253,6 +259,7 @@ public class VictimCollision : MonoBehaviour {
 						Image Coin = (Image)Instantiate (Money, new Vector3 (screenPos.x, screenPos.y, transform.position.z), Quaternion.identity);
 						Coin.transform.SetParent (UICanvas.transform);
 						UIManager.Instance.UiVictimMoney += money;
+						DataManager.Instance.stolenMoney += money;
 						GameManager.Instance.pickPocket += 1;
 
 						picked = true;
@@ -261,6 +268,7 @@ public class VictimCollision : MonoBehaviour {
 						Image Coin = (Image)Instantiate (Money, new Vector3 (screenPos.x, screenPos.y, transform.position.z), Quaternion.identity);
 						Coin.transform.SetParent (UICanvas.transform);
 						UIManager.Instance.UiVictimMoney += money;
+						DataManager.Instance.stolenMoney += money;
 						UIManager.Instance.UpdateMoney ();
 
 						picked = true;
