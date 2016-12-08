@@ -442,7 +442,7 @@ public class HideoutCameraMovingScript : MonoBehaviour
 
 		CurrentMoney = MaxMoney - DataManager.Instance.moneyCount;
 		DaysCount.text = (MaxDays -  DataManager.Instance.dayCount).ToString();
-		Moneyleft.text = CurrentMoney.ToString ();
+		Moneyleft.text = ("$" + CurrentMoney + " / " + "$" + MaxMoney).ToString ();
 
 		if(DataManager.Instance.dayCount == 3 && (DataManager.Instance.upgrade1Active == true || DataManager.Instance.upgrade2Active == true || DataManager.Instance.upgrade3Active == true || DataManager.Instance.upgrade4Active == true || DataManager.Instance.upgrade5Active == true))
 		{
