@@ -11,16 +11,21 @@ public class PlayerUpgrade : MonoBehaviour {
 	public bool upgrade4Active;
 	public bool upgrade5Active;
 
-	public Sprite Upgrade1;
-	public Sprite Upgrade2;
-	public Sprite Upgrade3;
-	public Sprite Upgrade4;
-	public Sprite Upgrade5;
+	public Sprite Upgrade1Desc;
+	public Sprite Upgrade2Desc;
+	public Sprite Upgrade3Desc;
+	public Sprite Upgrade4Desc;
+	public Sprite Upgrade5Desc;
+
+	public Animation Upgrade1Button;
+	public Animation Upgrade2Button;
+	public Animation Upgrade3Button;
+	public Animation Upgrade4Button;
+	public Animation Upgrade5Button;
+	public AnimatorControllerParameter UpgradeButton;
 
 	public Text Money;
 	public float currentMoney;
-	public Text Day;
-	public int days;
 
 	public Button upgrade1;
 	public Button upgrade2;
@@ -91,15 +96,14 @@ public class PlayerUpgrade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("game begin");
-		currentMoney = DataManager.Instance.moneyCount;
-		//currentMoney = 10000;
+		//currentMoney = DataManager.Instance.moneyCount;
+		currentMoney = 10000;
 		upgrade1 = upgrade1.GetComponent<Button> ();
 		upgrade2 = upgrade2.GetComponent<Button> ();
 		upgrade3 = upgrade3.GetComponent<Button> ();
 		upgrade1Image = upgrade1Image.GetComponent<UnityEngine.UI.Image> ();
 		upgrade2Image = upgrade2Image.GetComponent<UnityEngine.UI.Image> ();
 		upgrade3Image = upgrade3Image.GetComponent<UnityEngine.UI.Image> ();
-		days = DataManager.Instance.dayCount;
 
 		DataManager.Instance.canMinusDay = true;
 	}
@@ -124,10 +128,6 @@ public class PlayerUpgrade : MonoBehaviour {
 		if (Money != null) 
 		{
 			Money.text = "$ " + currentMoney;
-		}
-		if (Day != null)
-		{
-			Day.text = "Day(s) left: " + days;
 		}
 	}	
 
@@ -166,72 +166,73 @@ public class PlayerUpgrade : MonoBehaviour {
 	{
 		Debug.Log ("image rotation initiated");
 		if (selectedUpgrades [0] == 1) {
-			upgrade1Image.overrideSprite = Upgrade1;
+			upgrade1Image.overrideSprite = Upgrade1Desc;
 		}
 		if (selectedUpgrades [0] == 2) {
-			upgrade1Image.overrideSprite = Upgrade2;
+			upgrade1Image.overrideSprite = Upgrade2Desc;
 		}
 		if (selectedUpgrades [0] == 3) {
-			upgrade1Image.overrideSprite = Upgrade3;
+			upgrade1Image.overrideSprite = Upgrade3Desc;
 		}
 		if (selectedUpgrades [0] == 4) {
-			upgrade1Image.overrideSprite = Upgrade4;
+			upgrade1Image.overrideSprite = Upgrade4Desc;
 		}
 		if (selectedUpgrades [0] == 5) {
-			upgrade1Image.overrideSprite = Upgrade5;
+			upgrade1Image.overrideSprite = Upgrade5Desc;
 		}
 	}
 	void Upgrade2Sprite()
 	{
 		Debug.Log ("image rotation initiated");
 		if (selectedUpgrades [1] == 1) {
-			upgrade2Image.overrideSprite = Upgrade1;
+			upgrade2Image.overrideSprite = Upgrade1Desc;
 		}
 		if (selectedUpgrades [1] == 2) {
-			upgrade2Image.overrideSprite = Upgrade2;
+			upgrade2Image.overrideSprite = Upgrade2Desc;
 		}
 		if (selectedUpgrades [1] == 3) {
-			upgrade2Image.overrideSprite = Upgrade3;
+			upgrade2Image.overrideSprite = Upgrade3Desc;
 		}
 		if (selectedUpgrades [1] == 4) {
-			upgrade2Image.overrideSprite = Upgrade4;
+			upgrade2Image.overrideSprite = Upgrade4Desc;
 		}
 		if (selectedUpgrades [1] == 5) {
-			upgrade2Image.overrideSprite = Upgrade5;
+			upgrade2Image.overrideSprite = Upgrade5Desc;
 		}
 	}
 	void Upgrade3Sprite()
 	{
 		Debug.Log ("image rotation initiated");
 		if (selectedUpgrades [2] == 1) {
-			upgrade3Image.overrideSprite = Upgrade1;
+			upgrade3Image.overrideSprite = Upgrade1Desc;
 		}
 		if (selectedUpgrades [2] == 2) {
-			upgrade3Image.overrideSprite = Upgrade2;
+			upgrade3Image.overrideSprite = Upgrade2Desc;
 		}
 		if (selectedUpgrades [2] == 3) {
-			upgrade3Image.overrideSprite = Upgrade3;
+			upgrade3Image.overrideSprite = Upgrade3Desc;
 		}
 		if (selectedUpgrades [2] == 4) {
-			upgrade3Image.overrideSprite = Upgrade4;
+			upgrade3Image.overrideSprite = Upgrade4Desc;
 		}
 		if (selectedUpgrades [2] == 5) {
-			upgrade3Image.overrideSprite = Upgrade5;
+			upgrade3Image.overrideSprite = Upgrade5Desc;
 		}
 	}
 
 	public void onUpgrade1Press()
 	{
-		SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
+		//SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
 		if (selectedUpgrades [0] == 1) {
 			// Suit & Tie (Enter VIP section without being insta-detect)
+
 			if (currentMoney >= upgradePrice [0]) {
 				Debug.Log ("upgrade purchased");
 				currentMoney -= upgradePrice [0];
 				upgrade1Active = true;
 				//code for VIP section
 				removeFromArray(1);
-				upgrade1.interactable = false;
+				//upgrade1.interactable = false;
 			}
 		}
 		if (selectedUpgrades [0] == 2) {
@@ -243,7 +244,7 @@ public class PlayerUpgrade : MonoBehaviour {
 				DataManager.Instance.upgrade2Active = true;
 				//code for all direction pickpocket
 				removeFromArray (2);
-				upgrade1.interactable = false;
+				//upgrade1.interactable = false;
 			}
 		}
 		if (selectedUpgrades [0] == 3) {
@@ -254,7 +255,11 @@ public class PlayerUpgrade : MonoBehaviour {
 				upgrade3Active = true;
 				//code Nightclub level access?
 				removeFromArray(3);
-				upgrade1.interactable = false;
+				//upgrade1.interactable = false;
+				if(upgrade3Active == true)
+				{
+					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
+				}
 			}
 		}
 		if (selectedUpgrades [0] == 4) {
@@ -266,12 +271,7 @@ public class PlayerUpgrade : MonoBehaviour {
 				DataManager.Instance.upgrade4Active = true;
 				//code for additional days
 				removeFromArray (4);
-				upgrade1.interactable = false;
-
-				if(upgrade4Active == true)
-				{
-					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
-				}	
+				//upgrade1.interactable = false;	
 			}
 		}
 		if (selectedUpgrades [0] == 5) {
@@ -283,7 +283,7 @@ public class PlayerUpgrade : MonoBehaviour {
 				DataManager.Instance.upgrade5Active = true;
 				//code for detection meter increase
 				removeFromArray (5);
-				upgrade1.interactable = false;
+				//upgrade1.interactable = false;
 			}
 		} else {
 			Debug.Log ("You can't buy this upgrade");
@@ -291,6 +291,213 @@ public class PlayerUpgrade : MonoBehaviour {
 	}
 
 	public void onUpgrade2Press()
+	{
+		if (selectedUpgrades [1] == 1) {
+			// Suit & Tie (Enter VIP section without being insta-detect)
+			if (currentMoney >= upgradePrice [0]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [0];
+				upgrade1Active = true;
+				//code for VIP section
+				removeFromArray(1);
+				//upgrade2.interactable = false;
+			}
+		}
+		if (selectedUpgrades [1] == 2) {
+			// Funky Fresh Outfit (Access Nightclub level)
+			if (currentMoney >= upgradePrice [1]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [1];
+				upgrade2Active = true;
+				DataManager.Instance.upgrade2Active = true;
+				//code for all direction pickpocket
+				removeFromArray (2);
+				//upgrade2.interactable = false;
+			}
+		}
+		if (selectedUpgrades [1] == 3) {
+			// A Loan Extension (One time purchase of 2 day extension)
+			if (currentMoney >= upgradePrice [2]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [2];
+				upgrade3Active = true;
+				//code Nightclub level access?
+				removeFromArray(3);
+				//upgrade2.interactable = false;
+				if(upgrade3Active == true)
+				{
+					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
+				}
+			}
+		}
+		if (selectedUpgrades [1] == 4) {
+			// Dazzler Strips (Increase Maximum Detection Meter by 5)
+			if (currentMoney >= upgradePrice [3]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [3];
+				upgrade4Active = true;
+				DataManager.Instance.upgrade4Active = true;
+				//code for additional days
+				removeFromArray (4);
+				//upgrade2.interactable = false;
+			}
+		}
+		if (selectedUpgrades [1] == 5) {
+			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
+			if (currentMoney >= upgradePrice [4]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [4];
+				upgrade5Active = true;
+				DataManager.Instance.upgrade5Active = true;
+				//code for detection meter increase
+				removeFromArray (5);
+				//upgrade2.interactable = false;
+			}
+		} else {
+			Debug.Log ("You can't buy this upgrade");
+		}
+	}
+
+	public void onUpgrade3Press()
+	{
+		//SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
+		if (selectedUpgrades [2] == 1) {
+			// Suit & Tie (Enter VIP section without being insta-detect)
+			if (currentMoney >= upgradePrice [0]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [0];
+				upgrade1Active = true;
+				//code for VIP section
+				removeFromArray(1);
+				//upgrade3.interactable = false;
+			}
+		}
+		if (selectedUpgrades [2] == 2) {
+			// Funky Fresh Outfit (Access Nightclub level)
+			if (currentMoney >= upgradePrice [1]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [1];
+				upgrade2Active = true;
+				DataManager.Instance.upgrade2Active = true;
+				//code for all direction pickpocket
+				removeFromArray (2);
+				//upgrade3.interactable = false;
+			}
+		}
+		if (selectedUpgrades [2] == 3) {
+			// A Loan Extension (One time purchase of 2 day extension)
+			if (currentMoney >= upgradePrice [2]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [2];
+				upgrade3Active = true;
+				//code Nightclub level access?
+				removeFromArray(3);
+				//upgrade3.interactable = false;
+				if(upgrade3Active == true)
+				{
+					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
+				}
+			}
+		}
+		if (selectedUpgrades [2] == 4) {
+			// Dazzler Strips (Increase Maximum Detection Meter by 5)
+			if (currentMoney >= upgradePrice [3]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [3];
+				upgrade4Active = true;
+				DataManager.Instance.upgrade4Active = true;
+				//code for additional days
+				removeFromArray (4);
+				//upgrade3.interactable = false;	
+			}
+		}
+		if (selectedUpgrades [2] == 5) {
+			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
+			if (currentMoney >= upgradePrice [4]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [4];
+				upgrade5Active = true;
+				DataManager.Instance.upgrade5Active = true;
+				//code for detection meter increase
+				removeFromArray (5);
+				//upgrade3.interactable = false;
+			}
+		}
+
+		if (selectedUpgrades [2] == 1) {
+			// Suit & Tie (Enter VIP section without being insta-detect)
+			if (currentMoney >= upgradePrice [0]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [0];
+				upgrade1Active = true;
+				//code for VIP section
+				removeFromArray(1);
+				//upgrade3.interactable = false;
+			}
+		}
+		if (selectedUpgrades [2] == 2) {
+			// Funky Fresh Outfit (Access Nightclub level)
+			if (currentMoney >= upgradePrice [1]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [1];
+				upgrade2Active = true;
+				DataManager.Instance.upgrade2Active = true;
+				//code for all direction pickpocket
+				removeFromArray (2);
+				//upgrade3.interactable = false;
+			}
+		}
+		if (selectedUpgrades [2] == 3) {
+			// A Loan Extension (One time purchase of 2 day extension)
+			if (currentMoney >= upgradePrice [2]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [2];
+				upgrade3Active = true;
+				//code Nightclub level access?
+				removeFromArray(3);
+				//upgrade3.interactable = false;
+				if(upgrade3Active == true)
+				{
+					DataManager.Instance.dayCount = DataManager.Instance.dayCount + 2;
+				}
+			}
+		}
+		if (selectedUpgrades [2] == 4) {
+			// Dazzler Strips (Increase Maximum Detection Meter by 5)
+			if (currentMoney >= upgradePrice [3]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [3];
+				upgrade4Active = true;
+				DataManager.Instance.upgrade4Active = true;
+				//code for additional days
+				removeFromArray (4);
+				//upgrade3.interactable = false;
+			}
+		}
+		if (selectedUpgrades [2] == 5) {
+			// Crash Course in Tai Chi (HP increase by 1 during detected stage/Can be bump by NPC 1 more time
+			if (currentMoney >= upgradePrice [4]) {
+				Debug.Log ("upgrade purchased");
+				currentMoney -= upgradePrice [4];
+				upgrade5Active = true;
+				DataManager.Instance.upgrade5Active = true;
+				//code for detection meter increase
+				removeFromArray (5);
+				//upgrade3.interactable = false;
+			}
+		}
+		else {
+			Debug.Log ("You can't buy this upgrade");
+		}
+	}
+
+	public void UpdateDays()
+	{
+		//		DataManager.Instance.dayCount -= 1;
+		DataManager.Instance.moneyCount = currentMoney;
+	}
+
+	/*public void onUpgrade2Press()
 	{
 		SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_BUTTONPRESS);
 		if (selectedUpgrades [1] == 1) {
@@ -430,13 +637,7 @@ public class PlayerUpgrade : MonoBehaviour {
 		}
 	}
 
-	public void UpdateDays()
-	{
-		//		DataManager.Instance.dayCount -= 1;
-		DataManager.Instance.moneyCount = currentMoney;
-	}
-
-	/*void probabilitySelection()
+	void probabilitySelection()
 	{
 		float rdm1 = Random.value;
 		float rdm2 = Random.value;
