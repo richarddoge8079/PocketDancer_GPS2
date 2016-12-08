@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour {
 		} 
 		else 
 		{
-			if (DataManager.Instance.upgrade6Active == false) 
+			if (DataManager.Instance.upgrade4Active == false) 
 			{
 				if(detectionLevel <= 99.0f)
 				{
@@ -67,7 +67,7 @@ public class PlayerStats : MonoBehaviour {
 				}
 			}
 		}
-		if(DataManager.Instance.upgrade6Active == false && detectionLevel >= 100.0f || DataManager.Instance.upgrade6Active == true && detectionLevel >= 105.0f)
+		if(DataManager.Instance.upgrade4Active == false && detectionLevel >= 100.0f || DataManager.Instance.upgrade4Active == true && detectionLevel >= 105.0f)
 		{
 			isDetected = true;
 		}
