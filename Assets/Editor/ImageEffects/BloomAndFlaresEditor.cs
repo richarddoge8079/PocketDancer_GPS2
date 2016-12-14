@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityStandardAssets.ImageEffects
 {
-    [CustomEditor (typeof(BloomAndFlares))]
+    /*[CustomEditor (typeof(BloomAndFlares))]
     class BloomAndFlaresEditor : Editor
     {
         SerializedProperty tweakMode;
@@ -153,5 +153,5 @@ namespace UnityStandardAssets.ImageEffects
 
             serObj.ApplyModifiedProperties();
         }
-    }
+    }*/
 }

@@ -70,6 +70,9 @@ public class PlayerStats : MonoBehaviour {
 		if(DataManager.Instance.upgrade4Active == false && detectionLevel >= 100.0f || DataManager.Instance.upgrade4Active == true && detectionLevel >= 105.0f)
 		{
 			isDetected = true;
+
+			SoundManagerScript.Instance.StopBGM ();
+			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_DETECTED);
 		}
 	}
 }

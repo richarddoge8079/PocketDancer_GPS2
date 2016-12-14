@@ -78,7 +78,7 @@ public class VictimCollision : MonoBehaviour {
 		{
 			//Detected
 			if(GameManager.Instance.playerStatsScript.isDetected){
-				SceneManager.LoadScene ("Hideout");
+				SceneManager.LoadScene ("You_Got_Caught");
 				DataManager.Instance.stolenMoney = 0;
 				DataManager.Instance.upgrade1Active = false;
 				DataManager.Instance.upgrade2Active = false;

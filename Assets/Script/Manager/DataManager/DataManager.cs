@@ -126,7 +126,7 @@ public class DataManager : MonoBehaviour {
 
 	public void MinusDay(){
 		if(canMinusDay){
-			dayCount -= 1;
+			dayCount += 1;
 			canMinusDay = false;
 		}
 	}

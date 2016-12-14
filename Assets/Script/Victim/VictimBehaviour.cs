@@ -47,8 +47,6 @@ public class VictimBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(GameManager.Instance.playerStatsScript.isDetected){
-			SoundManagerScript.Instance.StopBGM ();
-			SoundManagerScript.Instance.PlaySFX (AudioClipID.SFX_DETECTED);
 			isChasingPlayer = true;
 		}
 

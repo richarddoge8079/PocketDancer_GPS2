@@ -1,0 +1,26 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\VibrationScripts\StrongVibration.cs">
+    <Files>
+      <File FileName="Assets\Script\AnimationRandomizer.cs" Line="4" Column="14" />
+      <File FileName="Assets\Script\HideoutCameraMovingScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Manager\DataManager\DataManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Global\ExitLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Victim\VictimCollision.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Victim\VictimBehaviour.cs" Line="159" Column="3" />
+      <File FileName="Assets\Script\Player\PlayerStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\UI\UIManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Manager\SoundManager\SoundManagerScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Global\GotoScene.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\VibrationScripts\LightVibration.cs" Line="32" Column="3" />
+      <File FileName="Assets\Script\YouGotCaughtScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Victim\SetVictimMaterial.cs" Line="9" Column="29" />
+      <File FileName="Assets\Script\VibrationScripts\MediumVibration.cs" Line="34" Column="25" />
+      <File FileName="Assets\Script\VibrationScripts\StrongVibration.cs" Line="36" Column="25" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

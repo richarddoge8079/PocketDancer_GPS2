@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityStandardAssets.ImageEffects
 {
-    [CustomEditor (typeof(SunShafts))]
+    /*[CustomEditor (typeof(SunShafts))]
     class SunShaftsEditor : Editor
     {
         SerializedObject serObj;
@@ -62,7 +62,6 @@ namespace UnityStandardAssets.ImageEffects
 			else
 				(target as SunShafts).camera.depthTextureMode &= ~DepthTextureMode.Depth;
 		}
-		*/
 
             EditorGUILayout.PropertyField (resolution,  new GUIContent("Resolution"));
             EditorGUILayout.PropertyField (screenBlendMode, new GUIContent("Blend mode"));
@@ -101,5 +100,5 @@ namespace UnityStandardAssets.ImageEffects
 
             serObj.ApplyModifiedProperties();
         }
-    }
+    }*/
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UnityStandardAssets.ImageEffects
 {
-    [CustomEditor(typeof(CreaseShading))]
+    /*[CustomEditor(typeof(CreaseShading))]
     class CreaseShadingEditor : Editor {
         SerializedObject serObj;
 
@@ -56,5 +56,5 @@ namespace UnityStandardAssets.ImageEffects
 
             serObj.ApplyModifiedProperties ();
         }
-    }
+    }*/
 }

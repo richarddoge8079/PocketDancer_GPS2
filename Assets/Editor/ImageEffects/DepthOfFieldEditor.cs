@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UnityStandardAssets.ImageEffects
 {
-    [CustomEditor(typeof(DepthOfField))]
+    /*[CustomEditor(typeof(DepthOfField))]
     class DepthOfFieldEditor : Editor
     {
         SerializedObject serObj;
@@ -157,5 +157,5 @@ namespace UnityStandardAssets.ImageEffects
 
             serObj.ApplyModifiedProperties();
         }
-    }
+    }*/
 }

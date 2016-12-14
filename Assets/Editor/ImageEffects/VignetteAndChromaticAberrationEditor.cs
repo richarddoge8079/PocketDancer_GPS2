@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityStandardAssets.ImageEffects
 {
-    [CustomEditor (typeof(VignetteAndChromaticAberration))]
+    /*[CustomEditor (typeof(VignetteAndChromaticAberration))]
     class VignetteAndChromaticAberrationEditor : Editor
     {
         private SerializedObject m_SerObj;
@@ -58,5 +58,5 @@ namespace UnityStandardAssets.ImageEffects
 
             m_SerObj.ApplyModifiedProperties();
         }
-    }
+    }*/
 }

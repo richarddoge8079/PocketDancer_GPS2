@@ -29,11 +29,11 @@ public class StrongVibration : MonoBehaviour {
 	IEnumerator Timer(float t)
 	{
 		yield return new WaitForSeconds (t);
-		Handheld.Vibrate ();
+//		Handheld.Vibrate ();
 		yield return new WaitForSeconds (t);
-		Handheld.Vibrate ();
+//		Handheld.Vibrate ();
 		yield return new WaitForSeconds (t);
-		Handheld.Vibrate ();
+//		Handheld.Vibrate ();
 		canVibrate = false;
 	}
 }

@@ -8,8 +8,9 @@ public class ExitLevel : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		if(coll.CompareTag("Player")){
 			//			GameManager.Instance.RestartLevel ();
-			DataManager.Instance.stolenMoney = DataManager.Instance.moneyCount;
+//			DataManager.Instance.stolenMoney = DataManager.Instance.moneyCount;
 //			DataManager.Instance.stolenMoney = 0;
+			DataManager.Instance.moneyCount += DataManager.Instance.stolenMoney;
 			DataManager.Instance.Save ();
 			DataManager.Instance.MinusDay ();
 //			if (GameManager.Instance.pickPocket > 11) {
@@ -23,7 +24,7 @@ public class ExitLevel : MonoBehaviour {
 				UIManager.Instance.GotoScene ("WinScene");
 			} 
 			//Lose
-			else if(DataManager.Instance.dayCount <= 0){
+			else if(DataManager.Instance.dayCount >= 7){
 				UIManager.Instance.GotoScene ("LoseScene");
 			}
 			// COntinue Level

@@ -29,7 +29,7 @@ public class LightVibration : MonoBehaviour {
 	IEnumerator Timer(float t)
 	{
 		yield return new WaitForSeconds (t);
-		Handheld.Vibrate ();
+//		Handheld.Vibrate ();
 		canVibrate = false;
 	}
 }
